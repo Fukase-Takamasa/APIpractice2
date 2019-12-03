@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		5913449123960E0B001F9862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5913448F23960E0B001F9862 /* LaunchScreen.storyboard */; };
 		5913449C23960E0B001F9862 /* APIpractice2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913449B23960E0B001F9862 /* APIpractice2Tests.swift */; };
 		591344A723960E0B001F9862 /* APIpractice2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344A623960E0B001F9862 /* APIpractice2UITests.swift */; };
+		591344B62396294C001F9862 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344B42396294C001F9862 /* TableViewCell.swift */; };
+		591344B72396294C001F9862 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591344B52396294C001F9862 /* TableViewCell.xib */; };
 		9F5D9ED176692A06773FF760 /* Pods_APIpractice2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */; };
 		BC9DBC9353A091DE5C3DB87A /* Pods_APIpractice2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C5FD1A503DC609049284F5 /* Pods_APIpractice2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +55,8 @@
 		591344A223960E0B001F9862 /* APIpractice2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APIpractice2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		591344A623960E0B001F9862 /* APIpractice2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIpractice2UITests.swift; sourceTree = "<group>"; };
 		591344A823960E0B001F9862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		591344B42396294C001F9862 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		591344B52396294C001F9862 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		5B3C278E45770C8D6CAB2448 /* Pods-APIpractice2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2.release.xcconfig"; path = "Target Support Files/Pods-APIpractice2/Pods-APIpractice2.release.xcconfig"; sourceTree = "<group>"; };
 		6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APIpractice2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		877AE336248A912BFD1026DC /* Pods-APIpractice2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2Tests.debug.xcconfig"; path = "Target Support Files/Pods-APIpractice2Tests/Pods-APIpractice2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				5913448423960E0B001F9862 /* AppDelegate.swift */,
 				5913448623960E0B001F9862 /* SceneDelegate.swift */,
 				5913448823960E0B001F9862 /* ViewController.swift */,
+				591344B42396294C001F9862 /* TableViewCell.swift */,
+				591344B52396294C001F9862 /* TableViewCell.xib */,
 				5913448A23960E0B001F9862 /* Main.storyboard */,
 				5913448D23960E0B001F9862 /* Assets.xcassets */,
 				5913448F23960E0B001F9862 /* LaunchScreen.storyboard */,
@@ -165,7 +171,6 @@
 				EE1949D2821DE09FCCD501A0 /* Pods-APIpractice2UITests.debug.xcconfig */,
 				E8AFE5832C84B72820B2CB62 /* Pods-APIpractice2UITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -278,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5913449123960E0B001F9862 /* LaunchScreen.storyboard in Resources */,
+				591344B72396294C001F9862 /* TableViewCell.xib in Resources */,
 				5913448E23960E0B001F9862 /* Assets.xcassets in Resources */,
 				5913448C23960E0B001F9862 /* Main.storyboard in Resources */,
 			);
@@ -391,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5913448923960E0B001F9862 /* ViewController.swift in Sources */,
+				591344B62396294C001F9862 /* TableViewCell.swift in Sources */,
 				5913448523960E0B001F9862 /* AppDelegate.swift in Sources */,
 				5913448723960E0B001F9862 /* SceneDelegate.swift in Sources */,
 			);
