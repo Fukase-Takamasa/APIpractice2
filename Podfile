@@ -11,6 +11,7 @@ target 'APIpractice2' do
   pod 'RxCocoa', '~> 5'
   pod 'Instantiate'
   pod 'InstantiateStandard'
+  pod 'AlamofireImage'
 
 
   target 'APIpractice2Tests' do

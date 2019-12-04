@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
   - Instantiate (4.0.0)
   - InstantiateStandard (4.0.0):
     - Instantiate (~> 4.0)
@@ -17,6 +19,7 @@ PODS:
   - RxSwift (5.0.1)
 
 DEPENDENCIES:
+  - AlamofireImage
   - Instantiate
   - InstantiateStandard
   - Moya (~> 13.0)
@@ -26,6 +29,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireImage
     - Instantiate
     - InstantiateStandard
     - Moya
@@ -36,6 +40,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   Instantiate: 62516e7dde448721c1f5815a9ee7e0669d034d52
   InstantiateStandard: 18ab1417ba787113350c71a5b2251f0b4448be67
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
@@ -44,6 +49,6 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
 
-PODFILE CHECKSUM: 801b084efe15e1604c16340323c4bf89674aa03d
+PODFILE CHECKSUM: a80a05d05227b104d5888aa1122b003b3b5e1b60
 
 COCOAPODS: 1.8.3

@@ -15,44 +15,122 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sig-QQ-m06">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sig-QQ-m06">
+                                <rect key="frame" x="0.0" y="88" width="414" height="593"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5x-dh-VoI">
+                                <rect key="frame" x="95" y="723" width="225" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="7jI-Ic-edm"/>
+                                    <constraint firstAttribute="height" constant="36" id="eHb-rz-riu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="アドレス不正時のテスト"/>
+                                <connections>
+                                    <segue destination="fpM-qZ-izC" kind="show" id="IEp-nG-PrP"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.8884391191709845" green="0.8884391191709845" blue="0.8884391191709845" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sig-QQ-m06" secondAttribute="trailing" id="1p5-IH-hp0"/>
                             <constraint firstItem="Sig-QQ-m06" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3pr-3L-QT3"/>
                             <constraint firstItem="Sig-QQ-m06" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xdy-FJ-k3H"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Sig-QQ-m06" secondAttribute="bottom" id="dK6-nB-aot"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Sig-QQ-m06" secondAttribute="bottom" constant="132" id="dK6-nB-aot"/>
+                            <constraint firstItem="F5x-dh-VoI" firstAttribute="top" secondItem="Sig-QQ-m06" secondAttribute="bottom" constant="42" id="p4J-3U-OSg"/>
+                            <constraint firstItem="F5x-dh-VoI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="95" id="xRJ-B0-Iai"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="SaM-QG-8dw"/>
                     <connections>
                         <outlet property="tableView" destination="Sig-QQ-m06" id="qH8-yv-EMv"/>
+                        <segue destination="fpM-qZ-izC" kind="show" identifier="toArticle" id="qQh-fF-6ka"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2045" y="-290"/>
+            <point key="canvasLocation" x="1776.8115942028987" y="-291.29464285714283"/>
         </scene>
-        <!--View Controller-->
+        <!--Article View Controller-->
+        <scene sceneID="Pso-It-Khw">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="fpM-qZ-izC" customClass="ArticleViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gXi-81-7bR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSL-FM-U9k">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アドレスが無効な為、 ページを表示できません。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuR-yG-ABY">
+                                <rect key="frame" x="55" y="418" width="304" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Atf-zJ-psl"/>
+                                    <constraint firstAttribute="width" constant="304" id="BnB-zb-ifC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZSL-FM-U9k" firstAttribute="leading" secondItem="dWy-ie-MyK" secondAttribute="leading" id="2Gk-b7-sE8"/>
+                            <constraint firstItem="dWy-ie-MyK" firstAttribute="trailing" secondItem="ZSL-FM-U9k" secondAttribute="trailing" id="ALa-dt-PbK"/>
+                            <constraint firstItem="dWy-ie-MyK" firstAttribute="bottom" secondItem="ZSL-FM-U9k" secondAttribute="bottom" id="Shz-cv-MAH"/>
+                            <constraint firstItem="uuR-yG-ABY" firstAttribute="centerY" secondItem="gXi-81-7bR" secondAttribute="centerY" id="hCf-3h-W3I"/>
+                            <constraint firstItem="uuR-yG-ABY" firstAttribute="centerX" secondItem="gXi-81-7bR" secondAttribute="centerX" id="jnn-Y1-h4v"/>
+                            <constraint firstItem="ZSL-FM-U9k" firstAttribute="top" secondItem="dWy-ie-MyK" secondAttribute="top" id="yo3-aM-GOW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dWy-ie-MyK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ocj-2f-U6t"/>
+                    <connections>
+                        <outlet property="articleWebView" destination="ZSL-FM-U9k" id="90m-C2-L3m"/>
+                        <outlet property="errorMessageLabel" destination="uuR-yG-ABY" id="fON-BP-OaD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yUC-cd-QMI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2531.8840579710145" y="-291.29464285714283"/>
+        </scene>
+        <!--GoogleAPI View Controller-->
         <scene sceneID="yR6-PZ-QAW">
             <objects>
-                <viewController id="8rb-9G-QwB" sceneMemberID="viewController">
+                <viewController id="8rb-9G-QwB" customClass="GoogleAPIViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OHC-fU-QDt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="17b-tD-dCA">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="17b-tD-dCA" firstAttribute="leading" secondItem="PjH-OA-YRa" secondAttribute="leading" id="AUv-hr-jvF"/>
+                            <constraint firstItem="PjH-OA-YRa" firstAttribute="trailing" secondItem="17b-tD-dCA" secondAttribute="trailing" id="gjH-Wx-LE7"/>
+                            <constraint firstItem="PjH-OA-YRa" firstAttribute="bottom" secondItem="17b-tD-dCA" secondAttribute="bottom" id="pcB-Kp-szQ"/>
+                            <constraint firstItem="17b-tD-dCA" firstAttribute="top" secondItem="PjH-OA-YRa" secondAttribute="top" id="wQg-hO-uDT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PjH-OA-YRa"/>
                     </view>
                     <navigationItem key="navigationItem" id="GOG-tE-QAL"/>
+                    <connections>
+                        <outlet property="tableViewGoogle" destination="17b-tD-dCA" id="cNA-Zj-Ue6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvw-RB-hpn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2045" y="619"/>
+            <point key="canvasLocation" x="1778" y="619"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9Kq-mD-S1S">
@@ -60,6 +138,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gpn-iK-b8X" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5eb-j7-Vt0">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -70,13 +149,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69C-uj-14B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.579710144927539" y="138.61607142857142"/>
+            <point key="canvasLocation" x="216" y="137"/>
         </scene>
         <!--Qiita-->
         <scene sceneID="Jk5-Qp-vLV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0jQ-Ep-nw0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Qiita" id="6Ya-H1-Qs0"/>
+                    <tabBarItem key="tabBarItem" title="Qiita" image="pencil.tip" catalog="system" id="6Ya-H1-Qs0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xQO-Sm-RPJ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -89,13 +168,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVl-iP-vnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="-290"/>
+            <point key="canvasLocation" x="1013" y="-291"/>
         </scene>
-        <!--リス画像-->
+        <!--Google-->
         <scene sceneID="Lz6-bS-go9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zlc-p2-n9N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="リス画像" id="jBh-aX-lk6"/>
+                    <tabBarItem key="tabBarItem" title="Google" image="magnifyingglass" catalog="system" id="jBh-aX-lk6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qCd-Bg-2Cy">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -108,7 +187,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEZ-nC-6yy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="619"/>
+            <point key="canvasLocation" x="1012" y="619"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="pencil.tip" catalog="system" width="48" height="64"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qQh-fF-6ka"/>
+    </inferredMetricsTieBreakers>
 </document>

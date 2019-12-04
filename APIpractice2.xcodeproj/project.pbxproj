@@ -18,6 +18,12 @@
 		591344A723960E0B001F9862 /* APIpractice2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344A623960E0B001F9862 /* APIpractice2UITests.swift */; };
 		591344B62396294C001F9862 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344B42396294C001F9862 /* TableViewCell.swift */; };
 		591344B72396294C001F9862 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591344B52396294C001F9862 /* TableViewCell.xib */; };
+		59F34B9323975DD500CEAD1C /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9223975DD500CEAD1C /* ArticleViewController.swift */; };
+		59F34B9623979D2500CEAD1C /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9423979D2500CEAD1C /* TableViewCell2.swift */; };
+		59F34B9723979D2500CEAD1C /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9523979D2500CEAD1C /* TableViewCell2.xib */; };
+		59F34B992397C4C000CEAD1C /* GoogleAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B982397C4C000CEAD1C /* GoogleAPIViewController.swift */; };
+		59F34B9C2397C52C00CEAD1C /* CellGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9A2397C52C00CEAD1C /* CellGoogle.swift */; };
+		59F34B9D2397C52C00CEAD1C /* CellGoogle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9B2397C52C00CEAD1C /* CellGoogle.xib */; };
 		9F5D9ED176692A06773FF760 /* Pods_APIpractice2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */; };
 		BC9DBC9353A091DE5C3DB87A /* Pods_APIpractice2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C5FD1A503DC609049284F5 /* Pods_APIpractice2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +63,12 @@
 		591344A823960E0B001F9862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		591344B42396294C001F9862 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		591344B52396294C001F9862 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		59F34B9223975DD500CEAD1C /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		59F34B9423979D2500CEAD1C /* TableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
+		59F34B9523979D2500CEAD1C /* TableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
+		59F34B982397C4C000CEAD1C /* GoogleAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIViewController.swift; sourceTree = "<group>"; };
+		59F34B9A2397C52C00CEAD1C /* CellGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellGoogle.swift; sourceTree = "<group>"; };
+		59F34B9B2397C52C00CEAD1C /* CellGoogle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellGoogle.xib; sourceTree = "<group>"; };
 		5B3C278E45770C8D6CAB2448 /* Pods-APIpractice2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2.release.xcconfig"; path = "Target Support Files/Pods-APIpractice2/Pods-APIpractice2.release.xcconfig"; sourceTree = "<group>"; };
 		6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APIpractice2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		877AE336248A912BFD1026DC /* Pods-APIpractice2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2Tests.debug.xcconfig"; path = "Target Support Files/Pods-APIpractice2Tests/Pods-APIpractice2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,9 +135,15 @@
 				5913448423960E0B001F9862 /* AppDelegate.swift */,
 				5913448623960E0B001F9862 /* SceneDelegate.swift */,
 				5913448823960E0B001F9862 /* ViewController.swift */,
+				5913448A23960E0B001F9862 /* Main.storyboard */,
 				591344B42396294C001F9862 /* TableViewCell.swift */,
 				591344B52396294C001F9862 /* TableViewCell.xib */,
-				5913448A23960E0B001F9862 /* Main.storyboard */,
+				59F34B9423979D2500CEAD1C /* TableViewCell2.swift */,
+				59F34B9523979D2500CEAD1C /* TableViewCell2.xib */,
+				59F34B9223975DD500CEAD1C /* ArticleViewController.swift */,
+				59F34B982397C4C000CEAD1C /* GoogleAPIViewController.swift */,
+				59F34B9A2397C52C00CEAD1C /* CellGoogle.swift */,
+				59F34B9B2397C52C00CEAD1C /* CellGoogle.xib */,
 				5913448D23960E0B001F9862 /* Assets.xcassets */,
 				5913448F23960E0B001F9862 /* LaunchScreen.storyboard */,
 				5913449223960E0B001F9862 /* Info.plist */,
@@ -282,6 +300,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F34B9D2397C52C00CEAD1C /* CellGoogle.xib in Resources */,
+				59F34B9723979D2500CEAD1C /* TableViewCell2.xib in Resources */,
 				5913449123960E0B001F9862 /* LaunchScreen.storyboard in Resources */,
 				591344B72396294C001F9862 /* TableViewCell.xib in Resources */,
 				5913448E23960E0B001F9862 /* Assets.xcassets in Resources */,
@@ -396,8 +416,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F34B9C2397C52C00CEAD1C /* CellGoogle.swift in Sources */,
+				59F34B9623979D2500CEAD1C /* TableViewCell2.swift in Sources */,
 				5913448923960E0B001F9862 /* ViewController.swift in Sources */,
 				591344B62396294C001F9862 /* TableViewCell.swift in Sources */,
+				59F34B9323975DD500CEAD1C /* ArticleViewController.swift in Sources */,
+				59F34B992397C4C000CEAD1C /* GoogleAPIViewController.swift in Sources */,
 				5913448523960E0B001F9862 /* AppDelegate.swift in Sources */,
 				5913448723960E0B001F9862 /* SceneDelegate.swift in Sources */,
 			);
