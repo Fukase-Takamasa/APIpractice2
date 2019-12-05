@@ -43,6 +43,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         provider.request(.getArticle) { (result) in
             switch result {
             case let .success(moyaResponse):
+                print("（Qiita）moyaResponseの中身:\(moyaResponse)")
                 do {
                     let data = try! JSONDecoder().decode([QiitaData].self, from: moyaResponse.data)
                     self.qiitaData = data
@@ -54,7 +55,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(error.localizedDescription)
                 break
             }
-            self.tableView.reloadData()
+            //通信後のMoyaのBlock内なのでメインスレッドでreloadさせる
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 

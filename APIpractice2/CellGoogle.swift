@@ -15,9 +15,9 @@ class CellGoogle: UITableViewCell {
     @IBOutlet weak var googleImageView: UIImageView!
     
     //取得したタイトルを表示
-    func googleBindData(title: String, url: String) {
+    func googleBindData(title: String, link: String) {
         label.text = title
-        
+        googleImageView.af_setImage(withURL: URL(string: link)!)
     }
     
     
