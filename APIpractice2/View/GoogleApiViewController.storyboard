@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vj8-Mr-cJ7">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--GoogleAPI View Controller-->
+        <scene sceneID="0sk-R3-kpK">
+            <objects>
+                <viewController id="vj8-Mr-cJ7" customClass="GoogleAPIViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ohw-F3-hfX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cER-Vh-Arh">
+                                <rect key="frame" x="0.0" y="136" width="414" height="726"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="検索ワードをここに入力して下さい" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7kW-8r-8q0">
+                                <rect key="frame" x="13" y="96" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ka9-0F-XD5">
+                                <rect key="frame" x="378" y="102" width="20" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="10V-kj-nxC"/>
+                                </constraints>
+                                <state key="normal" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="vj8-Mr-cJ7" eventType="touchUpInside" id="8zm-Vu-jB1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cER-Vh-Arh" firstAttribute="top" secondItem="7kW-8r-8q0" secondAttribute="bottom" constant="6" id="169-st-2Sj"/>
+                            <constraint firstItem="7kW-8r-8q0" firstAttribute="top" secondItem="G80-6t-NRI" secondAttribute="top" constant="8" id="7vG-SS-o8U"/>
+                            <constraint firstItem="ka9-0F-XD5" firstAttribute="centerY" secondItem="7kW-8r-8q0" secondAttribute="centerY" id="BGV-mE-XHN"/>
+                            <constraint firstItem="ka9-0F-XD5" firstAttribute="leading" secondItem="7kW-8r-8q0" secondAttribute="trailing" constant="11" id="H3e-SR-77J"/>
+                            <constraint firstItem="7kW-8r-8q0" firstAttribute="leading" secondItem="G80-6t-NRI" secondAttribute="leading" constant="13" id="OXk-Zn-yjO"/>
+                            <constraint firstItem="G80-6t-NRI" firstAttribute="bottom" secondItem="cER-Vh-Arh" secondAttribute="bottom" id="bPp-wD-zRG"/>
+                            <constraint firstItem="cER-Vh-Arh" firstAttribute="leading" secondItem="G80-6t-NRI" secondAttribute="leading" id="ggo-jY-TPs"/>
+                            <constraint firstItem="G80-6t-NRI" firstAttribute="trailing" secondItem="ka9-0F-XD5" secondAttribute="trailing" constant="16" id="iX2-NG-jJW"/>
+                            <constraint firstItem="G80-6t-NRI" firstAttribute="trailing" secondItem="cER-Vh-Arh" secondAttribute="trailing" id="k8O-lG-z47"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="G80-6t-NRI"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7Gd-lA-KFg"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="7kW-8r-8q0" id="MWe-eq-32k"/>
+                        <outlet property="tableViewGoogle" destination="cER-Vh-Arh" id="sNs-0H-nFm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAA-BR-t36" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686.9565217391305" y="618.75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PR2-dg-xGo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jvQ-A6-hJQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f3c-fT-gIh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vj8-Mr-cJ7" kind="relationship" relationship="rootViewController" id="knd-F0-vW6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0D4-7S-9rs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1776.8115942028987" y="618.75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
+</document>

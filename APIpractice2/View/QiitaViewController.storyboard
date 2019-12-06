@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wuv-jN-DSZ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ahd-x0-XCZ">
+            <objects>
+                <viewController id="wuv-jN-DSZ" customClass="ViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dGW-WU-LZg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ahI-TC-JnF">
+                                <rect key="frame" x="0.0" y="88" width="414" height="642"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sm1-GQ-6rc">
+                                <rect key="frame" x="95" y="772" width="225" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Hs1-aW-tMX"/>
+                                    <constraint firstAttribute="width" constant="225" id="mHD-dV-6Jr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="アドレス不正時のテスト"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88843911919999996" green="0.88843911919999996" blue="0.88843911919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Kf-c6-wKx" firstAttribute="bottom" secondItem="ahI-TC-JnF" secondAttribute="bottom" constant="132" id="IJS-rk-2Zj"/>
+                            <constraint firstItem="ahI-TC-JnF" firstAttribute="leading" secondItem="4Kf-c6-wKx" secondAttribute="leading" id="QpB-rE-Uzz"/>
+                            <constraint firstItem="sm1-GQ-6rc" firstAttribute="leading" secondItem="4Kf-c6-wKx" secondAttribute="leading" constant="95" id="Zfi-Lk-6si"/>
+                            <constraint firstItem="sm1-GQ-6rc" firstAttribute="top" secondItem="ahI-TC-JnF" secondAttribute="bottom" constant="42" id="bMm-o7-QwC"/>
+                            <constraint firstItem="ahI-TC-JnF" firstAttribute="top" secondItem="4Kf-c6-wKx" secondAttribute="top" id="e9W-SA-RhB"/>
+                            <constraint firstItem="4Kf-c6-wKx" firstAttribute="trailing" secondItem="ahI-TC-JnF" secondAttribute="trailing" id="hWk-7v-CL8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Kf-c6-wKx"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NSz-Y3-EAg"/>
+                    <connections>
+                        <outlet property="tableView" destination="ahI-TC-JnF" id="tke-81-dyL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q0x-4T-dFg" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686.9565217391305" y="-291.29464285714283"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rLL-Aj-FJS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vpe-wN-X6Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4vy-ia-x4U">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wuv-jN-DSZ" kind="relationship" relationship="rootViewController" id="pSV-rn-NgG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9KF-Ur-mlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1776.8115942028987" y="-291.29464285714283"/>
+        </scene>
+    </scenes>
+</document>

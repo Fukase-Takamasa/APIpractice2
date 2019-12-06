@@ -13,26 +13,15 @@ import Instantiate
 import InstantiateStandard
 import Foundation
 
-//Google画像検索APIの取得データをパース
-struct GoogleData: Codable {
-    var items:[Items]
-    
-    struct Items: Codable {
-        //タイトル
-        var title: String
-        //画像のURL
-        var link: String
-    }
-}
-
-class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, StoryboardInstantiatable {
     
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableViewGoogle: UITableView!
     var googleData: GoogleData?
     var query: String?
-    var startPageNum = 1
+    var startIndex = 1
+    var pageIndex = 0
 
 
     override func viewDidLoad() {
@@ -52,14 +41,16 @@ class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //テキストボックス内のクエリでMoyaAPI通信
     func FetchGoogleSearchAPI() {
+        //検索ワードをqueryに代入
         query = searchTextField?.text
         //MoyaのAPI通信
         let provider = MoyaProvider<GoogleApi>()
         
+        //クエリがnilの時はAPIをリクエストしないで退出
         guard let query = query else {
             return
         }
-        provider.request(.CustomSearch(query: query, startPage: startPageNum)) { (result) in
+        provider.request(.CustomSearch(query: query, startIndex: startIndex)) { (result) in
             switch result {
             case let .success(moyaResponse):
                 print("（Google）moyaResponseの中身:\(moyaResponse)")
@@ -67,7 +58,8 @@ class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableVie
                     //let data = try moyaResponse.map(GoogleData.self)
                     let data = try JSONDecoder().decode(GoogleData.self, from: moyaResponse.data)
                     self.googleData = data
-                    print("GoogleAPIの取得データ\(self.googleData)")
+                    print("dataの中身:\(data)")
+                    print("GoogleAPIの取得データ:\(self.googleData)")
                 }catch {
                     print("GoogleAPIでエラーが出ました。")
                 }
@@ -98,7 +90,7 @@ class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableVie
             return UITableViewCell()
         }
         
-        let cell: CellGoogle = tableView.dequeueReusableCell(withIdentifier: "CellGoogle") as! CellGoogle
+        let cell: GoogleApiCell = tableView.dequeueReusableCell(withIdentifier: GoogleApiCell.reusableIdentifier) as! GoogleApiCell
         let title = googleData.items[indexPath.row].title
         let link = googleData.items[indexPath.row].link
         cell.googleBindData(title: title, link: link)
@@ -134,54 +126,5 @@ class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableVie
         textField.resignFirstResponder()
         return true
     }
-    
-}
-
-
-//Moyaの設定
-enum GoogleApi {
-    case CustomSearch(query: String, startPage: Int)
-  //case CustomSearch(String)
-}
-
-extension GoogleApi: TargetType {
-    
-    //struct searchQuery {
-        //var searchQuery: String?
-    //}
-    
-    var baseURL: URL {
-        return URL(string: "https://www.googleapis.com")!
-    }
-    
-    var path: String {
-        switch self {
-        case .CustomSearch:
-            return "/customsearch/v1"
-        }
-    }
-    
-    var method: Moya.Method {
-        return .get
-    }
-    
-    var sampleData: Data {
-        return Data()
-    }
-    
-    //指定したクエリで画像検索するパラメータ（APIキーなどは自分のもの）
-
-    var task: Task {
-        switch self {
-      //case .CustomSearch(let query)
-        case .CustomSearch(let query, let startPage):
-            return .requestParameters(parameters: ["key":"AIzaSyDVyxhFCjqj5shwAWzo0EI2nT81pHoMRDw", "cx":"009237515506121379779:giiokppklre", "searchType": "image", "q": query, "start": startPage], encoding: URLEncoding.default)
-        }
-    }
-    
-    var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
-    }
-    
     
 }

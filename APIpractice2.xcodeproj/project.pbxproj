@@ -8,22 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		4A4462ABD201867855092D4C /* Pods_APIpractice2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0736EC17D2D02A5C89749 /* Pods_APIpractice2Tests.framework */; };
+		5903C466239A4B4400841106 /* QiitaArticleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5903C465239A4B4400841106 /* QiitaArticleViewController.storyboard */; };
+		5903C468239A5C4E00841106 /* QiitaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5903C467239A5C4E00841106 /* QiitaViewController.storyboard */; };
+		5903C46A239A5D2100841106 /* GoogleApiViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */; };
+		5903C46C239A5E4600841106 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C46B239A5E4600841106 /* TabBarController.swift */; };
+		5903C46E239A5F0000841106 /* QiitaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C46D239A5F0000841106 /* QiitaApi.swift */; };
+		5903C476239A63EB00841106 /* GoogleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C475239A63EB00841106 /* GoogleApi.swift */; };
+		5903C479239A658E00841106 /* QiitaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C478239A658E00841106 /* QiitaData.swift */; };
+		5903C47B239A65B000841106 /* GoogleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C47A239A65B000841106 /* GoogleData.swift */; };
+		5903C47D239A68D800841106 /* TableViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C47C239A68D800841106 /* TableViewUtil.swift */; };
 		5913448523960E0B001F9862 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913448423960E0B001F9862 /* AppDelegate.swift */; };
 		5913448723960E0B001F9862 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913448623960E0B001F9862 /* SceneDelegate.swift */; };
-		5913448923960E0B001F9862 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913448823960E0B001F9862 /* ViewController.swift */; };
-		5913448C23960E0B001F9862 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5913448A23960E0B001F9862 /* Main.storyboard */; };
+		5913448923960E0B001F9862 /* QiitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913448823960E0B001F9862 /* QiitaViewController.swift */; };
+		5913448C23960E0B001F9862 /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5913448A23960E0B001F9862 /* TabBarController.storyboard */; };
 		5913448E23960E0B001F9862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5913448D23960E0B001F9862 /* Assets.xcassets */; };
 		5913449123960E0B001F9862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5913448F23960E0B001F9862 /* LaunchScreen.storyboard */; };
 		5913449C23960E0B001F9862 /* APIpractice2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913449B23960E0B001F9862 /* APIpractice2Tests.swift */; };
 		591344A723960E0B001F9862 /* APIpractice2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344A623960E0B001F9862 /* APIpractice2UITests.swift */; };
-		591344B62396294C001F9862 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344B42396294C001F9862 /* TableViewCell.swift */; };
-		591344B72396294C001F9862 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591344B52396294C001F9862 /* TableViewCell.xib */; };
-		59F34B9323975DD500CEAD1C /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9223975DD500CEAD1C /* ArticleViewController.swift */; };
-		59F34B9623979D2500CEAD1C /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9423979D2500CEAD1C /* TableViewCell2.swift */; };
-		59F34B9723979D2500CEAD1C /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9523979D2500CEAD1C /* TableViewCell2.xib */; };
-		59F34B992397C4C000CEAD1C /* GoogleAPIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B982397C4C000CEAD1C /* GoogleAPIViewController.swift */; };
-		59F34B9C2397C52C00CEAD1C /* CellGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9A2397C52C00CEAD1C /* CellGoogle.swift */; };
-		59F34B9D2397C52C00CEAD1C /* CellGoogle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9B2397C52C00CEAD1C /* CellGoogle.xib */; };
+		591344B62396294C001F9862 /* QiitaApiCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344B42396294C001F9862 /* QiitaApiCell1.swift */; };
+		591344B72396294C001F9862 /* QiitaApiCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591344B52396294C001F9862 /* QiitaApiCell1.xib */; };
+		59F34B9323975DD500CEAD1C /* QiitaArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9223975DD500CEAD1C /* QiitaArticleViewController.swift */; };
+		59F34B9623979D2500CEAD1C /* QiitaApiCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9423979D2500CEAD1C /* QiitaApiCell2.swift */; };
+		59F34B9723979D2500CEAD1C /* QiitaApiCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9523979D2500CEAD1C /* QiitaApiCell2.xib */; };
+		59F34B992397C4C000CEAD1C /* GoogleApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B982397C4C000CEAD1C /* GoogleApiViewController.swift */; };
+		59F34B9C2397C52C00CEAD1C /* GoogleApiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9A2397C52C00CEAD1C /* GoogleApiCell.swift */; };
+		59F34B9D2397C52C00CEAD1C /* GoogleApiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */; };
 		9F5D9ED176692A06773FF760 /* Pods_APIpractice2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */; };
 		BC9DBC9353A091DE5C3DB87A /* Pods_APIpractice2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C5FD1A503DC609049284F5 /* Pods_APIpractice2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -47,11 +56,20 @@
 
 /* Begin PBXFileReference section */
 		0E04FBF7FDE23F3220E88428 /* Pods-APIpractice2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2.debug.xcconfig"; path = "Target Support Files/Pods-APIpractice2/Pods-APIpractice2.debug.xcconfig"; sourceTree = "<group>"; };
+		5903C465239A4B4400841106 /* QiitaArticleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QiitaArticleViewController.storyboard; sourceTree = "<group>"; };
+		5903C467239A5C4E00841106 /* QiitaViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QiitaViewController.storyboard; sourceTree = "<group>"; };
+		5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleApiViewController.storyboard; sourceTree = "<group>"; };
+		5903C46B239A5E4600841106 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5903C46D239A5F0000841106 /* QiitaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApi.swift; sourceTree = "<group>"; };
+		5903C475239A63EB00841106 /* GoogleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleApi.swift; sourceTree = "<group>"; };
+		5903C478239A658E00841106 /* QiitaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaData.swift; sourceTree = "<group>"; };
+		5903C47A239A65B000841106 /* GoogleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleData.swift; sourceTree = "<group>"; };
+		5903C47C239A68D800841106 /* TableViewUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewUtil.swift; sourceTree = "<group>"; };
 		5913448123960E0A001F9862 /* APIpractice2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APIpractice2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5913448423960E0B001F9862 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5913448623960E0B001F9862 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5913448823960E0B001F9862 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5913448B23960E0B001F9862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5913448823960E0B001F9862 /* QiitaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaViewController.swift; sourceTree = "<group>"; };
+		5913448B23960E0B001F9862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBarController.storyboard; sourceTree = "<group>"; };
 		5913448D23960E0B001F9862 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5913449023960E0B001F9862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5913449223960E0B001F9862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,14 +79,14 @@
 		591344A223960E0B001F9862 /* APIpractice2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APIpractice2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		591344A623960E0B001F9862 /* APIpractice2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIpractice2UITests.swift; sourceTree = "<group>"; };
 		591344A823960E0B001F9862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		591344B42396294C001F9862 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		591344B52396294C001F9862 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		59F34B9223975DD500CEAD1C /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
-		59F34B9423979D2500CEAD1C /* TableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
-		59F34B9523979D2500CEAD1C /* TableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
-		59F34B982397C4C000CEAD1C /* GoogleAPIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIViewController.swift; sourceTree = "<group>"; };
-		59F34B9A2397C52C00CEAD1C /* CellGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellGoogle.swift; sourceTree = "<group>"; };
-		59F34B9B2397C52C00CEAD1C /* CellGoogle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellGoogle.xib; sourceTree = "<group>"; };
+		591344B42396294C001F9862 /* QiitaApiCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApiCell1.swift; sourceTree = "<group>"; };
+		591344B52396294C001F9862 /* QiitaApiCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaApiCell1.xib; sourceTree = "<group>"; };
+		59F34B9223975DD500CEAD1C /* QiitaArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaArticleViewController.swift; sourceTree = "<group>"; };
+		59F34B9423979D2500CEAD1C /* QiitaApiCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApiCell2.swift; sourceTree = "<group>"; };
+		59F34B9523979D2500CEAD1C /* QiitaApiCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaApiCell2.xib; sourceTree = "<group>"; };
+		59F34B982397C4C000CEAD1C /* GoogleApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleApiViewController.swift; sourceTree = "<group>"; };
+		59F34B9A2397C52C00CEAD1C /* GoogleApiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleApiCell.swift; sourceTree = "<group>"; };
+		59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleApiCell.xib; sourceTree = "<group>"; };
 		5B3C278E45770C8D6CAB2448 /* Pods-APIpractice2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2.release.xcconfig"; path = "Target Support Files/Pods-APIpractice2/Pods-APIpractice2.release.xcconfig"; sourceTree = "<group>"; };
 		6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APIpractice2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		877AE336248A912BFD1026DC /* Pods-APIpractice2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2Tests.debug.xcconfig"; path = "Target Support Files/Pods-APIpractice2Tests/Pods-APIpractice2Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +125,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5903C46F239A601C00841106 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5903C470239A604100841106 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5903C471239A605600841106 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5913448823960E0B001F9862 /* QiitaViewController.swift */,
+				5903C467239A5C4E00841106 /* QiitaViewController.storyboard */,
+				59F34B9223975DD500CEAD1C /* QiitaArticleViewController.swift */,
+				5903C465239A4B4400841106 /* QiitaArticleViewController.storyboard */,
+				591344B42396294C001F9862 /* QiitaApiCell1.swift */,
+				591344B52396294C001F9862 /* QiitaApiCell1.xib */,
+				59F34B9423979D2500CEAD1C /* QiitaApiCell2.swift */,
+				59F34B9523979D2500CEAD1C /* QiitaApiCell2.xib */,
+				59F34B982397C4C000CEAD1C /* GoogleApiViewController.swift */,
+				5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */,
+				59F34B9A2397C52C00CEAD1C /* GoogleApiCell.swift */,
+				59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5903C472239A60EB00841106 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5903C46D239A5F0000841106 /* QiitaApi.swift */,
+				5903C475239A63EB00841106 /* GoogleApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		5903C477239A650900841106 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				5903C478239A658E00841106 /* QiitaData.swift */,
+				5903C47A239A65B000841106 /* GoogleData.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		5913447823960E0A001F9862 = {
 			isa = PBXGroup;
 			children = (
@@ -134,16 +203,14 @@
 			children = (
 				5913448423960E0B001F9862 /* AppDelegate.swift */,
 				5913448623960E0B001F9862 /* SceneDelegate.swift */,
-				5913448823960E0B001F9862 /* ViewController.swift */,
-				5913448A23960E0B001F9862 /* Main.storyboard */,
-				591344B42396294C001F9862 /* TableViewCell.swift */,
-				591344B52396294C001F9862 /* TableViewCell.xib */,
-				59F34B9423979D2500CEAD1C /* TableViewCell2.swift */,
-				59F34B9523979D2500CEAD1C /* TableViewCell2.xib */,
-				59F34B9223975DD500CEAD1C /* ArticleViewController.swift */,
-				59F34B982397C4C000CEAD1C /* GoogleAPIViewController.swift */,
-				59F34B9A2397C52C00CEAD1C /* CellGoogle.swift */,
-				59F34B9B2397C52C00CEAD1C /* CellGoogle.xib */,
+				5903C46B239A5E4600841106 /* TabBarController.swift */,
+				5913448A23960E0B001F9862 /* TabBarController.storyboard */,
+				5903C472239A60EB00841106 /* API */,
+				5903C477239A650900841106 /* Entity */,
+				5903C470239A604100841106 /* ViewModel */,
+				5903C46F239A601C00841106 /* Model */,
+				5903C471239A605600841106 /* View */,
+				5903C47C239A68D800841106 /* TableViewUtil.swift */,
 				5913448D23960E0B001F9862 /* Assets.xcassets */,
 				5913448F23960E0B001F9862 /* LaunchScreen.storyboard */,
 				5913449223960E0B001F9862 /* Info.plist */,
@@ -300,12 +367,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59F34B9D2397C52C00CEAD1C /* CellGoogle.xib in Resources */,
-				59F34B9723979D2500CEAD1C /* TableViewCell2.xib in Resources */,
+				59F34B9D2397C52C00CEAD1C /* GoogleApiCell.xib in Resources */,
+				59F34B9723979D2500CEAD1C /* QiitaApiCell2.xib in Resources */,
 				5913449123960E0B001F9862 /* LaunchScreen.storyboard in Resources */,
-				591344B72396294C001F9862 /* TableViewCell.xib in Resources */,
+				591344B72396294C001F9862 /* QiitaApiCell1.xib in Resources */,
 				5913448E23960E0B001F9862 /* Assets.xcassets in Resources */,
-				5913448C23960E0B001F9862 /* Main.storyboard in Resources */,
+				5913448C23960E0B001F9862 /* TabBarController.storyboard in Resources */,
+				5903C466239A4B4400841106 /* QiitaArticleViewController.storyboard in Resources */,
+				5903C468239A5C4E00841106 /* QiitaViewController.storyboard in Resources */,
+				5903C46A239A5D2100841106 /* GoogleApiViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,12 +486,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59F34B9C2397C52C00CEAD1C /* CellGoogle.swift in Sources */,
-				59F34B9623979D2500CEAD1C /* TableViewCell2.swift in Sources */,
-				5913448923960E0B001F9862 /* ViewController.swift in Sources */,
-				591344B62396294C001F9862 /* TableViewCell.swift in Sources */,
-				59F34B9323975DD500CEAD1C /* ArticleViewController.swift in Sources */,
-				59F34B992397C4C000CEAD1C /* GoogleAPIViewController.swift in Sources */,
+				59F34B9C2397C52C00CEAD1C /* GoogleApiCell.swift in Sources */,
+				5903C47B239A65B000841106 /* GoogleData.swift in Sources */,
+				59F34B9623979D2500CEAD1C /* QiitaApiCell2.swift in Sources */,
+				5913448923960E0B001F9862 /* QiitaViewController.swift in Sources */,
+				5903C46C239A5E4600841106 /* TabBarController.swift in Sources */,
+				5903C479239A658E00841106 /* QiitaData.swift in Sources */,
+				5903C476239A63EB00841106 /* GoogleApi.swift in Sources */,
+				5903C47D239A68D800841106 /* TableViewUtil.swift in Sources */,
+				591344B62396294C001F9862 /* QiitaApiCell1.swift in Sources */,
+				59F34B9323975DD500CEAD1C /* QiitaArticleViewController.swift in Sources */,
+				59F34B992397C4C000CEAD1C /* GoogleApiViewController.swift in Sources */,
+				5903C46E239A5F0000841106 /* QiitaApi.swift in Sources */,
 				5913448523960E0B001F9862 /* AppDelegate.swift in Sources */,
 				5913448723960E0B001F9862 /* SceneDelegate.swift in Sources */,
 			);
@@ -459,12 +535,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5913448A23960E0B001F9862 /* Main.storyboard */ = {
+		5913448A23960E0B001F9862 /* TabBarController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5913448B23960E0B001F9862 /* Base */,
 			);
-			name = Main.storyboard;
+			name = TabBarController.storyboard;
 			sourceTree = "<group>";
 		};
 		5913448F23960E0B001F9862 /* LaunchScreen.storyboard */ = {

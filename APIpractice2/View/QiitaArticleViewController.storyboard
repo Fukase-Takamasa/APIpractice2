@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HV1-F4-WdQ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Article View Controller-->
+        <scene sceneID="16R-Bw-xts">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="HV1-F4-WdQ" customClass="ArticleViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S7p-dT-6K8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xn-jc-3Oa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アドレスが無効な為、 ページを表示できません。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qh-oo-xPy">
+                                <rect key="frame" x="55" y="418" width="304" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="GqK-wH-oUY"/>
+                                    <constraint firstAttribute="width" constant="304" id="SFK-EG-fu1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0xn-jc-3Oa" firstAttribute="top" secondItem="P1g-Fh-nUu" secondAttribute="top" id="7jF-Ac-hVT"/>
+                            <constraint firstItem="P1g-Fh-nUu" firstAttribute="trailing" secondItem="0xn-jc-3Oa" secondAttribute="trailing" id="Cpi-Bh-zhg"/>
+                            <constraint firstItem="2qh-oo-xPy" firstAttribute="centerX" secondItem="S7p-dT-6K8" secondAttribute="centerX" id="TU7-wt-uaN"/>
+                            <constraint firstItem="2qh-oo-xPy" firstAttribute="centerY" secondItem="S7p-dT-6K8" secondAttribute="centerY" id="rl0-iL-sTy"/>
+                            <constraint firstItem="P1g-Fh-nUu" firstAttribute="bottom" secondItem="0xn-jc-3Oa" secondAttribute="bottom" id="wny-9R-SX8"/>
+                            <constraint firstItem="0xn-jc-3Oa" firstAttribute="leading" secondItem="P1g-Fh-nUu" secondAttribute="leading" id="yd4-eZ-3hs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P1g-Fh-nUu"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="P4N-Sf-voa"/>
+                    <connections>
+                        <outlet property="articleWebView" destination="0xn-jc-3Oa" id="gfC-fc-cp1"/>
+                        <outlet property="errorMessageLabel" destination="2qh-oo-xPy" id="83n-NE-7Rg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u2K-Xb-KzJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3440.579710144928" y="-291.29464285714283"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Mjj-35-hAA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ruh-XF-0Nj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AdI-fv-zm9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HV1-F4-WdQ" kind="relationship" relationship="rootViewController" id="hVF-1D-xeh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBX-t6-Ni1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2530.434782608696" y="-291.29464285714283"/>
+        </scene>
+    </scenes>
+</document>
