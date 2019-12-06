@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="9Kq-mD-S1S">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gpn-iK-b8X" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gpn-iK-b8X" customClass="TabBarController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5eb-j7-Vt0">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -39,7 +39,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FVl-iP-vnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="-291"/>
+            <point key="canvasLocation" x="1012" y="-173"/>
         </scene>
         <!--Google-->
         <scene sceneID="Lz6-bS-go9">
@@ -55,7 +55,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEZ-nC-6yy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="619"/>
+            <point key="canvasLocation" x="1012" y="489"/>
         </scene>
     </scenes>
     <resources>
