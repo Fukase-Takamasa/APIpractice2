@@ -12,33 +12,37 @@ import Moya
 import Instantiate
 import InstantiateStandard
 
-//APIで取得した値をCodableでパース
-struct QiitaData: Codable {
-    let title: String
-    let url: String
-}
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class QiitaViewController: UIViewController, StoryboardInstantiatable {
     
     var qiitaData:[QiitaData]?
     var selectCellTitle: String?
     var selectCellUrl: String?
     
     @IBOutlet weak var tableView: UITableView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
-        self.tableView.register(UINib(nibName: "TableViewCell2", bundle:nil),  forCellReuseIdentifier: "TableViewCell2")
-        //self.tableView.estimatedRowHeight = 100
-        //self.tableView.rowHeight = UITableView.automaticDimension
+        //Instantiateを使った書き方
+        TableViewUtil.registerCell(tableView, identifier: QiitaApiCell1.reusableIdentifier)
+        TableViewUtil.registerCell(tableView, identifier: QiitaApiCell2.reusableIdentifier)
+        
         tableView.delegate = self
         tableView.dataSource = self
+        fetchQiitaArticle()
         
-        //MoyaでApi通信
-        //取得してパースした値を最初に作ったqiita（structのインスタンス）に収納
+        //↓通常の書き方
+        //self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        //self.tableView.register(UINib(nibName: "TableViewCell2", bundle:nil),  forCellReuseIdentifier: "TableViewCell2")
+        
+        
+        //self.tableView.estimatedRowHeight = 100
+        //self.tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    
+    //MoyaでApiリクエストし、最新記事を取得
+    //取得してパースした値を最初に作ったqiita（structのインスタンス）に収納
+    private func fetchQiitaArticle() {
         let provider = MoyaProvider<QiitaApi>()
         provider.request(.getArticle) { (result) in
             switch result {
@@ -61,7 +65,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+}
 
+
+
+extension QiitaViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -70,10 +78,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return (qiitaData?.count ?? 0) / 2
     }
-        
+    
+    //各セクションのヘッダー
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionTitles = ["Section0", "Section1"]
         return sectionTitles[section]
+    }
+    
+    //セルの幅
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +100,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         switch indexPath.section {
         case 0:
             //カスタムセル1種目を使用
-            let cell: TableViewCell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+            let cell: QiitaApiCell1 = tableView.dequeueReusableCell(withIdentifier: QiitaApiCell1.reusableIdentifier, for: indexPath) as! QiitaApiCell1
             let title = qiitaData[indexPath.row].title
             //取り出したtitleの値をセルに表示する
             cell.bindData(text: title)
@@ -94,7 +108,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         case 1:
             //カスタムセル2種目を使用
-            let cell: TableViewCell2 = tableView.dequeueReusableCell(withIdentifier: "TableViewCell2", for: indexPath) as! TableViewCell2
+            let cell: QiitaApiCell2 = tableView.dequeueReusableCell(withIdentifier: QiitaApiCell2.reusableIdentifier, for: indexPath) as! QiitaApiCell2
             //セクション1以降の記事を表示
             let title = qiitaData[(indexPath.row + (qiitaData.count / 2))].title
             //取り出したtitleの値をセルに表示する
@@ -120,63 +134,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //遷移先に渡す値を変数にセット
         selectCellTitle = qiitaData[index].title
         selectCellUrl = qiitaData[index].url
-        //遷移
-        performSegue(withIdentifier: "toArticle", sender: nil)
-
+        
+        //遷移先のビューがどれかを取得し、遷移先の変数に値を渡してから遷移。
+        let vc:QiitaArticleViewController = QiitaArticleViewController.instantiate()
+        vc.articleTitle = selectCellTitle
+        vc.articleUrl = selectCellUrl
+        //（segueを使わないNavigationController経由での遷移の書き方。Instantiateも使って"Identifier"ミスを防いでいる）
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    //↑でタップされたセルに関する値を遷移先に渡す
-    override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toArticle" {
-            let vc = segue.destination as! ArticleViewController
-            vc.articleTitle = selectCellTitle
-            vc.articleUrl = selectCellUrl
-        }
-    }
-    
-    //セルの幅を自動調整
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
-    
 }
 
 
-//↓Moyaを使うための準備
-
-enum QiitaApi {
-    case getArticle
-}
-
-extension QiitaApi: TargetType {
-
-    var baseURL: URL {
-        return URL(string: "https://qiita.com")!
-    }
-    
-    var path: String {
-        return "/api/v2/items"
-    }
-    
-    var method: Moya.Method {
-        switch self {
-        case .getArticle:
-            return .get
-        }
-    }
-    
-    var sampleData: Data {
-        return Data()
-    }
-    
-    var task: Task {
-        .requestParameters(parameters: ["per_page" : "10"], encoding: URLEncoding.default)
-    }
-    
-    var headers: [String : String]? {
-        return ["Content-Type" : "application/json"]
-    }
-    
-    
-    
-}

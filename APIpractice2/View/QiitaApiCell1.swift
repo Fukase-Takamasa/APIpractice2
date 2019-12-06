@@ -1,21 +1,22 @@
 //
-//  TableViewCell2.swift
+//  TableViewCell.swift
 //  APIpractice2
 //
-//  Created by 深瀬 貴将 on 2019/12/04.
+//  Created by 深瀬 貴将 on 2019/12/03.
 //  Copyright © 2019 深瀬 貴将. All rights reserved.
 //
 
 import UIKit
+import Instantiate
+import InstantiateStandard
 
-class TableViewCell2: UITableViewCell {
-
-    @IBOutlet weak var label2: UILabel!
+class QiitaApiCell1: UITableViewCell, Reusable {
     
-    func bindData2(text: String) {
-        label2.text = text
+    @IBOutlet weak var label: UILabel!
+
+    func bindData(text: String) {
+        label.text = text
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +28,6 @@ class TableViewCell2: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     
 }

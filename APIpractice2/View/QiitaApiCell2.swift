@@ -1,5 +1,5 @@
 //
-//  CellGoogle.swift
+//  TableViewCell2.swift
 //  APIpractice2
 //
 //  Created by 深瀬 貴将 on 2019/12/04.
@@ -7,21 +7,18 @@
 //
 
 import UIKit
-import AlamofireImage
+import Instantiate
+import InstantiateStandard
 
-class CellGoogle: UITableViewCell {
+class QiitaApiCell2: UITableViewCell, Reusable {
+
+    @IBOutlet weak var label2: UILabel!
     
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var googleImageView: UIImageView!
-    
-    //取得したタイトルを表示
-    func googleBindData(title: String, link: String) {
-        label.text = title
-        googleImageView.af_setImage(withURL: URL(string: link)!)
+    func bindData2(text: String) {
+        label2.text = text
     }
     
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

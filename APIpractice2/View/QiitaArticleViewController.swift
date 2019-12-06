@@ -8,8 +8,10 @@
 
 import UIKit
 import WebKit
+import Instantiate
+import InstantiateStandard
 
-class ArticleViewController: UIViewController {
+class QiitaArticleViewController: UIViewController, StoryboardInstantiatable {
     
     var articleTitle: String?
     var articleUrl: String?
