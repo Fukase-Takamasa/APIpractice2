@@ -29,7 +29,6 @@
                                 <state key="normal" title="アドレス不正時のテスト"/>
                                 <connections>
                                     <action selector="testEnableURLButton:" destination="bga-Zi-SlC" eventType="touchUpInside" id="rPh-EJ-n45"/>
-                                    <segue destination="eXs-Oe-qKC" kind="show" id="6MO-5F-fRV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -47,7 +46,6 @@
                     <navigationItem key="navigationItem" id="uGQ-Yk-Ccg"/>
                     <connections>
                         <outlet property="tableView" destination="y7D-KY-biz" id="19W-Jc-eIw"/>
-                        <segue destination="eXs-Oe-qKC" kind="show" id="G7K-Fm-ZKd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2L9-xq-kMs" sceneMemberID="firstResponder"/>
@@ -106,54 +104,6 @@
             </objects>
             <point key="canvasLocation" x="5477" y="416"/>
         </scene>
-        <!--Qiita Article View Controller-->
-        <scene sceneID="5qP-7o-lQK">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="eXs-Oe-qKC" customClass="QiitaArticleViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JcB-Kv-NQU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwq-OI-UBl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アドレスが無効な為、 ページを表示できません。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvf-mc-2F8">
-                                <rect key="frame" x="55" y="418" width="304" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="f9g-6Q-azS"/>
-                                    <constraint firstAttribute="width" constant="304" id="kMd-b3-mAZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="akC-lt-sKb" firstAttribute="bottom" secondItem="zwq-OI-UBl" secondAttribute="bottom" id="71W-r3-UcB"/>
-                            <constraint firstItem="zvf-mc-2F8" firstAttribute="centerX" secondItem="JcB-Kv-NQU" secondAttribute="centerX" id="Fqo-nI-N6c"/>
-                            <constraint firstItem="zwq-OI-UBl" firstAttribute="leading" secondItem="akC-lt-sKb" secondAttribute="leading" id="K68-LJ-LDN"/>
-                            <constraint firstItem="zwq-OI-UBl" firstAttribute="top" secondItem="akC-lt-sKb" secondAttribute="top" id="Lzz-5H-Flw"/>
-                            <constraint firstItem="akC-lt-sKb" firstAttribute="trailing" secondItem="zwq-OI-UBl" secondAttribute="trailing" id="hrV-rS-md2"/>
-                            <constraint firstItem="zvf-mc-2F8" firstAttribute="centerY" secondItem="JcB-Kv-NQU" secondAttribute="centerY" id="jFK-ag-5IV"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="akC-lt-sKb"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="5L8-oG-TBE"/>
-                    <connections>
-                        <outlet property="articleWebView" destination="zwq-OI-UBl" id="e3n-3y-C0g"/>
-                        <outlet property="errorMessageLabel" destination="zvf-mc-2F8" id="BZg-bC-SDe"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tpl-WV-f2I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6389.8550724637689" y="-291.29464285714283"/>
-        </scene>
         <!--Item-->
         <scene sceneID="3K8-Es-28V">
             <objects>
@@ -198,6 +148,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="j4B-ep-aaT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uKD-cv-pK8">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -214,7 +165,4 @@
     <resources>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="G7K-Fm-ZKd"/>
-    </inferredMetricsTieBreakers>
 </document>
