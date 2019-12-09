@@ -11,7 +11,6 @@
 		5903C466239A4B4400841106 /* QiitaArticleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5903C465239A4B4400841106 /* QiitaArticleViewController.storyboard */; };
 		5903C468239A5C4E00841106 /* QiitaViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5903C467239A5C4E00841106 /* QiitaViewController.storyboard */; };
 		5903C46A239A5D2100841106 /* GoogleApiViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */; };
-		5903C46C239A5E4600841106 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C46B239A5E4600841106 /* TabBarController.swift */; };
 		5903C46E239A5F0000841106 /* QiitaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C46D239A5F0000841106 /* QiitaApi.swift */; };
 		5903C476239A63EB00841106 /* GoogleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C475239A63EB00841106 /* GoogleApi.swift */; };
 		5903C479239A658E00841106 /* QiitaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5903C478239A658E00841106 /* QiitaData.swift */; };
@@ -20,7 +19,6 @@
 		5913448523960E0B001F9862 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913448423960E0B001F9862 /* AppDelegate.swift */; };
 		5913448723960E0B001F9862 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913448623960E0B001F9862 /* SceneDelegate.swift */; };
 		5913448923960E0B001F9862 /* QiitaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913448823960E0B001F9862 /* QiitaViewController.swift */; };
-		5913448C23960E0B001F9862 /* TabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5913448A23960E0B001F9862 /* TabBarController.storyboard */; };
 		5913448E23960E0B001F9862 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5913448D23960E0B001F9862 /* Assets.xcassets */; };
 		5913449123960E0B001F9862 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5913448F23960E0B001F9862 /* LaunchScreen.storyboard */; };
 		5913449C23960E0B001F9862 /* APIpractice2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5913449B23960E0B001F9862 /* APIpractice2Tests.swift */; };
@@ -33,6 +31,8 @@
 		59F34B992397C4C000CEAD1C /* GoogleApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B982397C4C000CEAD1C /* GoogleApiViewController.swift */; };
 		59F34B9C2397C52C00CEAD1C /* GoogleApiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9A2397C52C00CEAD1C /* GoogleApiCell.swift */; };
 		59F34B9D2397C52C00CEAD1C /* GoogleApiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */; };
+		670254CC239B5B3A00C0B0CA /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670254CB239B5B3A00C0B0CA /* Main.swift */; };
+		670254CE239B5B5500C0B0CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670254CD239B5B5500C0B0CA /* Main.storyboard */; };
 		9F5D9ED176692A06773FF760 /* Pods_APIpractice2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */; };
 		BC9DBC9353A091DE5C3DB87A /* Pods_APIpractice2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C5FD1A503DC609049284F5 /* Pods_APIpractice2UITests.framework */; };
 /* End PBXBuildFile section */
@@ -59,7 +59,6 @@
 		5903C465239A4B4400841106 /* QiitaArticleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QiitaArticleViewController.storyboard; sourceTree = "<group>"; };
 		5903C467239A5C4E00841106 /* QiitaViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QiitaViewController.storyboard; sourceTree = "<group>"; };
 		5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleApiViewController.storyboard; sourceTree = "<group>"; };
-		5903C46B239A5E4600841106 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5903C46D239A5F0000841106 /* QiitaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApi.swift; sourceTree = "<group>"; };
 		5903C475239A63EB00841106 /* GoogleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleApi.swift; sourceTree = "<group>"; };
 		5903C478239A658E00841106 /* QiitaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaData.swift; sourceTree = "<group>"; };
@@ -69,7 +68,6 @@
 		5913448423960E0B001F9862 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5913448623960E0B001F9862 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5913448823960E0B001F9862 /* QiitaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaViewController.swift; sourceTree = "<group>"; };
-		5913448B23960E0B001F9862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBarController.storyboard; sourceTree = "<group>"; };
 		5913448D23960E0B001F9862 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5913449023960E0B001F9862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5913449223960E0B001F9862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +87,8 @@
 		59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleApiCell.xib; sourceTree = "<group>"; };
 		5B3C278E45770C8D6CAB2448 /* Pods-APIpractice2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2.release.xcconfig"; path = "Target Support Files/Pods-APIpractice2/Pods-APIpractice2.release.xcconfig"; sourceTree = "<group>"; };
 		6301FF2C98242B5ACB84C3D7 /* Pods_APIpractice2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APIpractice2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		670254CB239B5B3A00C0B0CA /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Main.swift; path = View/Main.swift; sourceTree = "<group>"; };
+		670254CD239B5B5500C0B0CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = View/Main.storyboard; sourceTree = "<group>"; };
 		877AE336248A912BFD1026DC /* Pods-APIpractice2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APIpractice2Tests.debug.xcconfig"; path = "Target Support Files/Pods-APIpractice2Tests/Pods-APIpractice2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		88E0736EC17D2D02A5C89749 /* Pods_APIpractice2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APIpractice2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C5FD1A503DC609049284F5 /* Pods_APIpractice2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_APIpractice2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,8 +203,8 @@
 			children = (
 				5913448423960E0B001F9862 /* AppDelegate.swift */,
 				5913448623960E0B001F9862 /* SceneDelegate.swift */,
-				5903C46B239A5E4600841106 /* TabBarController.swift */,
-				5913448A23960E0B001F9862 /* TabBarController.storyboard */,
+				670254CB239B5B3A00C0B0CA /* Main.swift */,
+				670254CD239B5B5500C0B0CA /* Main.storyboard */,
 				5903C472239A60EB00841106 /* API */,
 				5903C477239A650900841106 /* Entity */,
 				5903C470239A604100841106 /* ViewModel */,
@@ -368,11 +368,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				59F34B9D2397C52C00CEAD1C /* GoogleApiCell.xib in Resources */,
+				670254CE239B5B5500C0B0CA /* Main.storyboard in Resources */,
 				59F34B9723979D2500CEAD1C /* QiitaApiCell2.xib in Resources */,
 				5913449123960E0B001F9862 /* LaunchScreen.storyboard in Resources */,
 				591344B72396294C001F9862 /* QiitaApiCell1.xib in Resources */,
 				5913448E23960E0B001F9862 /* Assets.xcassets in Resources */,
-				5913448C23960E0B001F9862 /* TabBarController.storyboard in Resources */,
 				5903C466239A4B4400841106 /* QiitaArticleViewController.storyboard in Resources */,
 				5903C468239A5C4E00841106 /* QiitaViewController.storyboard in Resources */,
 				5903C46A239A5D2100841106 /* GoogleApiViewController.storyboard in Resources */,
@@ -486,11 +486,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				670254CC239B5B3A00C0B0CA /* Main.swift in Sources */,
 				59F34B9C2397C52C00CEAD1C /* GoogleApiCell.swift in Sources */,
 				5903C47B239A65B000841106 /* GoogleData.swift in Sources */,
 				59F34B9623979D2500CEAD1C /* QiitaApiCell2.swift in Sources */,
 				5913448923960E0B001F9862 /* QiitaViewController.swift in Sources */,
-				5903C46C239A5E4600841106 /* TabBarController.swift in Sources */,
 				5903C479239A658E00841106 /* QiitaData.swift in Sources */,
 				5903C476239A63EB00841106 /* GoogleApi.swift in Sources */,
 				5903C47D239A68D800841106 /* TableViewUtil.swift in Sources */,
@@ -535,14 +535,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5913448A23960E0B001F9862 /* TabBarController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5913448B23960E0B001F9862 /* Base */,
-			);
-			name = TabBarController.storyboard;
-			sourceTree = "<group>";
-		};
 		5913448F23960E0B001F9862 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

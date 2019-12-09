@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j4B-ep-aaT">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Qiita View Controller-->
+        <scene sceneID="s0d-Xh-d4x">
+            <objects>
+                <viewController id="bga-Zi-SlC" customClass="QiitaViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d4S-52-Jxa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y7D-KY-biz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="593"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bNa-ZR-B29">
+                                <rect key="frame" x="95" y="723" width="225" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Xgp-dd-kHr"/>
+                                    <constraint firstAttribute="width" constant="225" id="hxJ-UA-g68"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="アドレス不正時のテスト"/>
+                                <connections>
+                                    <action selector="testEnableURLButton:" destination="bga-Zi-SlC" eventType="touchUpInside" id="rPh-EJ-n45"/>
+                                    <segue destination="eXs-Oe-qKC" kind="show" id="6MO-5F-fRV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.88843911919999996" green="0.88843911919999996" blue="0.88843911919999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bNa-ZR-B29" firstAttribute="top" secondItem="y7D-KY-biz" secondAttribute="bottom" constant="42" id="Fwm-kF-9oC"/>
+                            <constraint firstItem="y7D-KY-biz" firstAttribute="top" secondItem="j2K-WS-Cm6" secondAttribute="top" id="MeH-ig-de4"/>
+                            <constraint firstItem="j2K-WS-Cm6" firstAttribute="trailing" secondItem="y7D-KY-biz" secondAttribute="trailing" id="Xcz-6u-35g"/>
+                            <constraint firstItem="bNa-ZR-B29" firstAttribute="leading" secondItem="j2K-WS-Cm6" secondAttribute="leading" constant="95" id="lUR-4C-QJb"/>
+                            <constraint firstItem="j2K-WS-Cm6" firstAttribute="bottom" secondItem="y7D-KY-biz" secondAttribute="bottom" constant="132" id="p8d-Q1-sR6"/>
+                            <constraint firstItem="y7D-KY-biz" firstAttribute="leading" secondItem="j2K-WS-Cm6" secondAttribute="leading" id="xHr-We-CPW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="j2K-WS-Cm6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uGQ-Yk-Ccg"/>
+                    <connections>
+                        <outlet property="tableView" destination="y7D-KY-biz" id="19W-Jc-eIw"/>
+                        <segue destination="eXs-Oe-qKC" kind="show" id="G7K-Fm-ZKd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2L9-xq-kMs" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5477" y="-291"/>
+        </scene>
+        <!--GoogleAPI View Controller-->
+        <scene sceneID="sJf-Ye-QSq">
+            <objects>
+                <viewController id="96u-cb-aeP" customClass="GoogleAPIViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fsA-lD-R4r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pq4-7t-Bfi">
+                                <rect key="frame" x="0.0" y="136" width="414" height="677"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="検索ワードをここに入力して下さい" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="y61-k2-gz8">
+                                <rect key="frame" x="13" y="96" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPC-hM-AL3">
+                                <rect key="frame" x="378" y="102" width="20" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Dmn-8P-xIP"/>
+                                </constraints>
+                                <state key="normal" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="96u-cb-aeP" eventType="touchUpInside" id="oXC-t5-hJa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mHr-8d-Yyp" firstAttribute="bottom" secondItem="pq4-7t-Bfi" secondAttribute="bottom" id="0IY-63-wR2"/>
+                            <constraint firstItem="mHr-8d-Yyp" firstAttribute="trailing" secondItem="pq4-7t-Bfi" secondAttribute="trailing" id="DQ6-cL-YmB"/>
+                            <constraint firstItem="kPC-hM-AL3" firstAttribute="leading" secondItem="y61-k2-gz8" secondAttribute="trailing" constant="11" id="DQE-yq-INC"/>
+                            <constraint firstItem="pq4-7t-Bfi" firstAttribute="top" secondItem="y61-k2-gz8" secondAttribute="bottom" constant="6" id="MmP-pe-VAc"/>
+                            <constraint firstItem="y61-k2-gz8" firstAttribute="leading" secondItem="mHr-8d-Yyp" secondAttribute="leading" constant="13" id="R9z-6C-aB1"/>
+                            <constraint firstItem="kPC-hM-AL3" firstAttribute="centerY" secondItem="y61-k2-gz8" secondAttribute="centerY" id="Xl1-UB-kTF"/>
+                            <constraint firstItem="y61-k2-gz8" firstAttribute="top" secondItem="mHr-8d-Yyp" secondAttribute="top" constant="8" id="ima-UM-wh1"/>
+                            <constraint firstItem="pq4-7t-Bfi" firstAttribute="leading" secondItem="mHr-8d-Yyp" secondAttribute="leading" id="kbu-NK-gW1"/>
+                            <constraint firstItem="mHr-8d-Yyp" firstAttribute="trailing" secondItem="kPC-hM-AL3" secondAttribute="trailing" constant="16" id="nUV-cM-KSq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mHr-8d-Yyp"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U7a-mZ-hhY"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="y61-k2-gz8" id="Xcn-xa-zeg"/>
+                        <outlet property="tableViewGoogle" destination="pq4-7t-Bfi" id="KcQ-RQ-kSp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z25-Xq-a5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5477" y="416"/>
+        </scene>
+        <!--Qiita Article View Controller-->
+        <scene sceneID="5qP-7o-lQK">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="eXs-Oe-qKC" customClass="QiitaArticleViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JcB-Kv-NQU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwq-OI-UBl">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アドレスが無効な為、 ページを表示できません。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvf-mc-2F8">
+                                <rect key="frame" x="55" y="418" width="304" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="f9g-6Q-azS"/>
+                                    <constraint firstAttribute="width" constant="304" id="kMd-b3-mAZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="akC-lt-sKb" firstAttribute="bottom" secondItem="zwq-OI-UBl" secondAttribute="bottom" id="71W-r3-UcB"/>
+                            <constraint firstItem="zvf-mc-2F8" firstAttribute="centerX" secondItem="JcB-Kv-NQU" secondAttribute="centerX" id="Fqo-nI-N6c"/>
+                            <constraint firstItem="zwq-OI-UBl" firstAttribute="leading" secondItem="akC-lt-sKb" secondAttribute="leading" id="K68-LJ-LDN"/>
+                            <constraint firstItem="zwq-OI-UBl" firstAttribute="top" secondItem="akC-lt-sKb" secondAttribute="top" id="Lzz-5H-Flw"/>
+                            <constraint firstItem="akC-lt-sKb" firstAttribute="trailing" secondItem="zwq-OI-UBl" secondAttribute="trailing" id="hrV-rS-md2"/>
+                            <constraint firstItem="zvf-mc-2F8" firstAttribute="centerY" secondItem="JcB-Kv-NQU" secondAttribute="centerY" id="jFK-ag-5IV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="akC-lt-sKb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5L8-oG-TBE"/>
+                    <connections>
+                        <outlet property="articleWebView" destination="zwq-OI-UBl" id="e3n-3y-C0g"/>
+                        <outlet property="errorMessageLabel" destination="zvf-mc-2F8" id="BZg-bC-SDe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tpl-WV-f2I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6389.8550724637689" y="-291.29464285714283"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="3K8-Es-28V">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u6c-c4-VKy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="iIr-KU-EJw"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AaA-75-IvO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bga-Zi-SlC" kind="relationship" relationship="rootViewController" id="71Z-c4-O6K"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tic-8d-a8X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4505.7971014492759" y="-291.29464285714283"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="jWh-KB-dt4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fNZ-Zx-JfI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="V4C-3D-MJn"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T45-9F-iTv">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="96u-cb-aeP" kind="relationship" relationship="rootViewController" id="9M1-fF-3uG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5B-K6-eeD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4506" y="416"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8F4-R9-LBa">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="j4B-ep-aaT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uKD-cv-pK8">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="u6c-c4-VKy" kind="relationship" relationship="viewControllers" id="ezY-C4-DKo"/>
+                        <segue destination="fNZ-Zx-JfI" kind="relationship" relationship="viewControllers" id="NDr-Rt-LW3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wOO-R0-NTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3517" y="44"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="G7K-Fm-ZKd"/>
+    </inferredMetricsTieBreakers>
+</document>

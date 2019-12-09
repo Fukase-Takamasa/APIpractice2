@@ -17,6 +17,8 @@ class QiitaViewController: UIViewController, StoryboardInstantiatable {
     var qiitaData:[QiitaData]?
     var selectCellTitle: String?
     var selectCellUrl: String?
+    //遷移先のビューがどれかを取得
+    fileprivate let vc:QiitaArticleViewController = QiitaArticleViewController.instantiate()
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -38,6 +40,14 @@ class QiitaViewController: UIViewController, StoryboardInstantiatable {
         //self.tableView.estimatedRowHeight = 100
         //self.tableView.rowHeight = UITableView.automaticDimension
     }
+    
+    //MoyaAPI通信で渡されるURLが無効だったときのテスト（何もURLを渡さないで遷移する）
+    @IBAction func testEnableURLButton(_ sender: Any) {
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+
+    
     
     
     //MoyaでApiリクエストし、最新記事を取得
@@ -131,14 +141,13 @@ extension QiitaViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 1 {
             index += (qiitaData.count / 2)
         }
-        //遷移先に渡す値を変数にセット
-        selectCellTitle = qiitaData[index].title
-        selectCellUrl = qiitaData[index].url
+        print(indexPath.section, indexPath.row)
         
-        //遷移先のビューがどれかを取得し、遷移先の変数に値を渡してから遷移。
-        let vc:QiitaArticleViewController = QiitaArticleViewController.instantiate()
-        vc.articleTitle = selectCellTitle
-        vc.articleUrl = selectCellUrl
+        print(index)
+        
+        //遷移先の変数に値を渡してから遷移。
+        vc.articleTitle = qiitaData[index].title
+        vc.articleUrl = qiitaData[index].url
         //（segueを使わないNavigationController経由での遷移の書き方。Instantiateも使って"Identifier"ミスを防いでいる）
         self.navigationController?.pushViewController(vc, animated: true)
     }
