@@ -79,6 +79,7 @@ class QiitaViewController: UIViewController, StoryboardInstantiatable {
 
 
 
+
 extension QiitaViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

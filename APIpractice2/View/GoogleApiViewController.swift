@@ -13,7 +13,7 @@ import Instantiate
 import InstantiateStandard
 import Foundation
 
-class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, StoryboardInstantiatable {
+class GoogleApiViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, StoryboardInstantiatable {
     
     
     @IBOutlet weak var searchTextField: UITextField!
@@ -26,10 +26,15 @@ class GoogleAPIViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableViewGoogle.register(UINib(nibName: "CellGoogle", bundle: nil), forCellReuseIdentifier: "CellGoogle")
+        //Instantiateを使ったセルの登録
+        TableViewUtil.registerCell(tableViewGoogle, identifier: GoogleApiCell.reusableIdentifier)
         tableViewGoogle.delegate = self
         tableViewGoogle.dataSource = self
         searchTextField?.delegate = self
+        
+        //↓通常の書き方
+        //self.tableViewGoogle.register(UINib(nibName: "CellGoogle", bundle: nil), forCellReuseIdentifier: "CellGoogle")
+
     }
     
 
