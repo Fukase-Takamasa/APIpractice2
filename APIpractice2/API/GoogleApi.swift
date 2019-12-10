@@ -15,10 +15,6 @@ enum GoogleApi {
 
 extension GoogleApi: TargetType {
     
-    //struct searchQuery {
-        //var searchQuery: String?
-    //}
-    
     var baseURL: URL {
         return URL(string: "https://www.googleapis.com")!
     }
