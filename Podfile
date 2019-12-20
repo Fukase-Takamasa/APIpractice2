@@ -13,6 +13,10 @@ target 'APIpractice2' do
   pod 'Instantiate'
   pod 'InstantiateStandard'
   pod 'AlamofireImage'
+  pod 'RealmSwift'
+  pod 'Hero'
+  pod 'IQKeyboardManager'
+  pod 'IBAnimatable'
 
 
   target 'APIpractice2Tests' do
