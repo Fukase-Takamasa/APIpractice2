@@ -13,17 +13,18 @@ import Instantiate
 import InstantiateStandard
 import Foundation
 
-class GoogleApiViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, StoryboardInstantiatable {
+class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
+    let disposeBag = DisposeBag()
     
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var tableViewGoogle: UITableView!
     var googleData: GoogleData?
     var query: String?
     var startIndex = 1
     var pageIndex = 0
-
-
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var tableViewGoogle: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Instantiateを使ったセルの登録
@@ -31,9 +32,6 @@ class GoogleApiViewController: UIViewController, UITableViewDelegate, UITableVie
         tableViewGoogle.delegate = self
         tableViewGoogle.dataSource = self
         searchTextField?.delegate = self
-        
-        //↓通常の書き方
-        //self.tableViewGoogle.register(UINib(nibName: "CellGoogle", bundle: nil), forCellReuseIdentifier: "CellGoogle")
 
     }
     
@@ -41,8 +39,6 @@ class GoogleApiViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func searchButton(_ sender: Any) {
         FetchGoogleSearchAPI()
     }
-    
-    
     
     //テキストボックス内のクエリでMoyaAPI通信
     func FetchGoogleSearchAPI() {
@@ -79,49 +75,48 @@ class GoogleApiViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
+
+}
+
+extension GoogleApiViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
-    
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return googleData?.items.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //安全安ラップ
-        guard let googleData = googleData else {
-            return UITableViewCell()
-        }
-        
-        let cell: GoogleApiCell = tableView.dequeueReusableCell(withIdentifier: GoogleApiCell.reusableIdentifier) as! GoogleApiCell
-        let title = googleData.items[indexPath.row].title
-        let link = googleData.items[indexPath.row].link
-        cell.googleBindData(title: title, link: link)
-        return cell
-    }
-    
-    private var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        self.cellHeightsDictionary[indexPath] = cell.frame.size.height
-    }
-    
-    //func tableView(_ tabbleView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-      //  if let height = self.cellHeightsDictionary[indexPath] {
-        //    return height
-        //}
-        //return UITableView.automaticDimension
-    //}
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
-    }
-    
-    //func tableView(_ tableView: UITableView, estimatedHeightForRowAt: IndexPath) -> CGFloat {
-   //     return 100
-    //}
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return googleData?.items.count ?? 0
+     }
+     
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         
+         //安全安ラップ
+         guard let googleData = googleData else {
+             return UITableViewCell()
+         }
+         
+         let cell: GoogleApiCell = tableView.dequeueReusableCell(withIdentifier: GoogleApiCell.reusableIdentifier) as! GoogleApiCell
+         let title = googleData.items[indexPath.row].title
+         let link = googleData.items[indexPath.row].link
+         cell.googleBindData(title: title, link: link)
+         return cell
+     }
+     
+     //private var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
+     
+     //func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+     //    self.cellHeightsDictionary[indexPath] = cell.frame.size.height
+     //}
+     
+     func tableView(_ tabbleView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+         //if let height = self.cellHeightsDictionary[indexPath] {
+          //   return height
+         //}
+         return UITableView.automaticDimension
+     }
+     
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         return 130
+     }
+}
+
+extension GoogleApiViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -131,5 +126,4 @@ class GoogleApiViewController: UIViewController, UITableViewDelegate, UITableVie
         textField.resignFirstResponder()
         return true
     }
-    
 }
