@@ -206,6 +206,7 @@
 				670254CB239B5B3A00C0B0CA /* Main.swift */,
 				670254CD239B5B5500C0B0CA /* Main.storyboard */,
 				59A5F4F923D825A400039029 /* GoogleSearch */,
+				59926E9E23D82C34009301D2 /* Qiita */,
 				5903C472239A60EB00841106 /* API */,
 				59E7F72E23AC7E8500293B93 /* Repository */,
 				5903C477239A650900841106 /* Entity */,
@@ -236,6 +237,14 @@
 				591344A823960E0B001F9862 /* Info.plist */,
 			);
 			path = APIpractice2UITests;
+			sourceTree = "<group>";
+		};
+		59926E9E23D82C34009301D2 /* Qiita */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Qiita;
+			path = Qiita;
 			sourceTree = "<group>";
 		};
 		59A5F4F923D825A400039029 /* GoogleSearch */ = {
