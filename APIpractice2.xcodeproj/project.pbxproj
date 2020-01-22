@@ -131,20 +131,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5903C46F239A601C00841106 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5903C470239A604100841106 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		5903C471239A605600841106 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +143,8 @@
 				59F34B9423979D2500CEAD1C /* QiitaApiCell2.swift */,
 				59F34B9523979D2500CEAD1C /* QiitaApiCell2.xib */,
 			);
-			path = View;
+			name = View;
+			path = ../View;
 			sourceTree = "<group>";
 		};
 		5903C472239A60EB00841106 /* API */ = {
@@ -165,7 +152,8 @@
 			children = (
 				5903C46D239A5F0000841106 /* QiitaApi.swift */,
 			);
-			path = API;
+			name = API;
+			path = ../API;
 			sourceTree = "<group>";
 		};
 		5903C477239A650900841106 /* Entity */ = {
@@ -173,7 +161,8 @@
 			children = (
 				5903C478239A658E00841106 /* QiitaData.swift */,
 			);
-			path = Entity;
+			name = Entity;
+			path = ../Entity;
 			sourceTree = "<group>";
 		};
 		5913447823960E0A001F9862 = {
@@ -207,12 +196,6 @@
 				670254CD239B5B5500C0B0CA /* Main.storyboard */,
 				59A5F4F923D825A400039029 /* GoogleSearch */,
 				59926E9E23D82C34009301D2 /* Qiita */,
-				5903C472239A60EB00841106 /* API */,
-				59E7F72E23AC7E8500293B93 /* Repository */,
-				5903C477239A650900841106 /* Entity */,
-				5903C46F239A601C00841106 /* Model */,
-				5903C470239A604100841106 /* ViewModel */,
-				5903C471239A605600841106 /* View */,
 				5903C47C239A68D800841106 /* TableViewUtil.swift */,
 				5913448D23960E0B001F9862 /* Assets.xcassets */,
 				5913448F23960E0B001F9862 /* LaunchScreen.storyboard */,
@@ -242,8 +225,10 @@
 		59926E9E23D82C34009301D2 /* Qiita */ = {
 			isa = PBXGroup;
 			children = (
+				5903C472239A60EB00841106 /* API */,
+				5903C477239A650900841106 /* Entity */,
+				5903C471239A605600841106 /* View */,
 			);
-			name = Qiita;
 			path = Qiita;
 			sourceTree = "<group>";
 		};
@@ -309,13 +294,6 @@
 				59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		59E7F72E23AC7E8500293B93 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repository;
 			sourceTree = "<group>";
 		};
 		85128A378B9F3F03CB5ED4DE /* Frameworks */ = {
