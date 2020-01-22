@@ -21,11 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 switch  value {
                 case let (0, nc as UINavigationController):
                     print("case1")
-                    let firstVC = QiitaViewController.instantiate()
+                    let firstVC = GoogleApiViewController.instantiate()
                     nc.setViewControllers([firstVC], animated: false)
                 case let (1, nc as UINavigationController):
                     print("case2")
-                    let secondVC = GoogleApiViewController.instantiate()
+                    let secondVC = FavoriteArticlesViewController.instantiate()
                     nc.setViewControllers([secondVC], animated: false)
                 default:
                     print("default入りました〜")
