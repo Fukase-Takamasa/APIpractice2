@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Foundation
+import Moya
 import RxSwift
 import RxCocoa
-import Moya
+import RxDataSources
 import Instantiate
 import InstantiateStandard
-import Foundation
 
 class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     

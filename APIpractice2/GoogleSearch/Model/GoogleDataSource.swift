@@ -9,8 +9,16 @@
 import Foundation
 import RxDataSources
 
-struct GoogleDS {
-    var items: GoogleData
+struct GoogleDataSource {
+    var items: [GoogleData]
+}
+
+extension GoogleDataSource: SectionModelType {
+    
+    init(original: GoogleDataSource, items: [GoogleData]) {
+        self = original
+        self.items = items
+    }
 }
 
 
