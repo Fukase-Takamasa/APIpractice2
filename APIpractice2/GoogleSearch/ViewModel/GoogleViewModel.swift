@@ -19,7 +19,8 @@ protocol GoogleViewModelOutputs {
 }
 
 protocol GoogleViewModelType {
-    
+    var inputs: GoogleViewModelInputs {get}
+    var outputs: GoogleViewModelOutputs {get}
 }
 
 class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
@@ -27,12 +28,28 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     //let articles: Observable<GoogleData>
     //let error: Observable<Error>
     
+    //input
+    
+    
+    //output
+    
+    
+    //other
+    private let scheduler: SchedulerType
     private let disposeBag = DisposeBag()
     
-    init() {
+    init(scheduler: SchedulerType = ConcurrentMainScheduler.instance) {
         //let _articles = PublishRelay<GoogleData>()
         //let _error = PublishRelay<Error>()
         
+        //other
+        self.scheduler = scheduler
+        
+        //output
+        
+        
+        
+        //input
         
         
         
