@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import Moya
 import Instantiate
 import InstantiateStandard
@@ -35,7 +36,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
 
     }
     
-
     @IBAction func searchButton(_ sender: Any) {
         FetchGoogleSearchAPI()
     }
@@ -44,39 +44,44 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     func FetchGoogleSearchAPI() {
         //検索ワードをqueryに代入
         query = searchTextField?.text
-        //MoyaのAPI通信
-        let provider = MoyaProvider<GoogleApi>()
         
         //クエリがnilの時はAPIをリクエストしないで退出
         guard let query = query else {
             return
         }
-        provider.request(.CustomSearch(query: query, startIndex: startIndex)) { (result) in
-            switch result {
-            case let .success(moyaResponse):
-                print("（Google）moyaResponseの中身:\(moyaResponse)")
-                do {
-                    //let data = try moyaResponse.map(GoogleData.self)
-                    let data = try JSONDecoder().decode(GoogleData.self, from: moyaResponse.data)
-                    self.googleData = data
-                    print("dataの中身:\(data)")
-                    print("GoogleAPIの取得データ:\(self.googleData)")
-                }catch {
-                    print("GoogleAPIでエラーが出ました。")
-                }
-            case let .failure(error) :
-                print("エラーの内容\(error.localizedDescription)")
-                break
-            }
+        
+        let provider = MoyaProvider<GoogleApi>()
+        
+        provider.rx.request(.CustomSearch(query: query, startIndex: startIndex))
+            .filterSuccessfulStatusCodes()
+            .map(googleData.self)
+            .subscribe(onSuccess: { (googleData) in
+                
+            }) { (error) in
+                print(error)
+        }.disposed(by: disposeBag)
+            //let .success(moyaResponse):
+            //    print("（Google）moyaResponseの中身:\(moyaResponse)")
+            //    do {
+            //        //let data = try moyaResponse.map(GoogleData.self)
+            //        let data = try JSONDecoder().decode(GoogleData.self, from: moyaResponse.data)
+            //        self.googleData = data
+            //        print("dataの中身:\(data)")
+            //        print("GoogleAPIの取得データ:\(self.googleData)")
+            //    }catch {
+            //        print("GoogleAPIでエラーが出ました。")
+            //    }
+
             
             //通信後のMoyaのBlock内なのでメインスレッドでreloadさせる
-            DispatchQueue.main.async {
-                self.tableViewGoogle.reloadData()
-            }
-        }
+            //DispatchQueue.main.async {
+            //    self.tableViewGoogle.reloadData()
+            //}
+        //}
     }
 
 }
+
 
 extension GoogleApiViewController: UITableViewDelegate, UITableViewDataSource {
     

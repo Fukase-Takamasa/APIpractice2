@@ -6,6 +6,7 @@ target 'APIpractice2' do
   use_frameworks!
 
   # Pods for APIpractice2
+  pod 'Moya/RxSwift'
   pod 'Moya', '~> 13.0'
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'

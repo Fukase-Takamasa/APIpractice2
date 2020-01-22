@@ -7,6 +7,7 @@
 //
 
 import Moya
+import RxSwift
 
 //Moyaの設定
 enum GoogleApi {
