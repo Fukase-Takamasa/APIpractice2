@@ -26,9 +26,6 @@ protocol GoogleViewModelType {
 
 class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     
-    //let articles: Observable<GoogleData>
-    //let error: Observable<Error>
-    
     //input
     var searchQueryText: AnyObserver<String>
     
@@ -51,9 +48,11 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         
         GoogleRepository.fetchGoogleData()
             .subscribe(onNext: { response in
+                print("VM: fetch()")
                 let dataSource = GoogleDataSource.init(items: response)
                 _articles.accept([dataSource])
             }, onError: { error in
+                print("error")
                 _error.accept(error)
             }).disposed(by: disposeBag)
         

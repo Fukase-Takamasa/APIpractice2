@@ -15,16 +15,14 @@ final class GoogleRepository {
     private static let googleApiProvider = MoyaProvider<GoogleApi>()
     
     private static let disposeBag: DisposeBag = DisposeBag()
-    
-    private static let vc = GoogleApiViewController.instantiate()
-
 }
 
 //vc.queryを、後でViewModelに移行したものを参照に変える
 extension GoogleRepository {
     
     static func fetchGoogleData() -> Observable<[GoogleData]> {
-        return googleApiProvider.rx.request(.CustomSearch(query: vc.query ?? "apple", startIndex: vc.startIndex))
+        print("fetchGoogleData()実行")
+        return googleApiProvider.rx.request(.CustomSearch(query: "squirrel", startIndex: 0))
             .map([GoogleData].self)
             .asObservable()
     }
