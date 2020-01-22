@@ -32,7 +32,7 @@ PODS:
   - RxSwift (5.0.1)
 
 DEPENDENCIES:
-  - AlamofireImage
+  - AlamofireImage (~> 3.5)
   - Hero
   - IBAnimatable
   - Instantiate
@@ -81,6 +81,6 @@ SPEC CHECKSUMS:
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
 
-PODFILE CHECKSUM: 40b3760ce6adc31065af10e57c913db6ae49789d
+PODFILE CHECKSUM: f85692ff43ece0bd942265d1eaba981ce27f1d2a
 
 COCOAPODS: 1.8.3

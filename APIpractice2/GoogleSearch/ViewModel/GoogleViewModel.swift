@@ -24,14 +24,14 @@ protocol GoogleViewModelType {
 
 class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     
-    let articles: Observable<GoogleData>
-    let error: Observable<Error>
+    //let articles: Observable<GoogleData>
+    //let error: Observable<Error>
     
     private let disposeBag = DisposeBag()
     
     init() {
-        let _articles = PublishRelay<GoogleData>()
-        let _error = PublishRelay<Error>()
+        //let _articles = PublishRelay<GoogleData>()
+        //let _error = PublishRelay<Error>()
         
         
         
