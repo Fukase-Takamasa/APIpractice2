@@ -241,17 +241,65 @@
 		59A5F4F923D825A400039029 /* GoogleSearch */ = {
 			isa = PBXGroup;
 			children = (
+				59A5F4FA23D826A500039029 /* API */,
+				59A5F50023D8271B00039029 /* Repository */,
+				59A5F50123D8273D00039029 /* Entity */,
+				59A5F50223D8275400039029 /* Model */,
+				59A5F50323D827D100039029 /* ViewModel */,
+				59A5F50423D827D900039029 /* View */,
+			);
+			path = GoogleSearch;
+			sourceTree = "<group>";
+		};
+		59A5F4FA23D826A500039029 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5903C475239A63EB00841106 /* GoogleApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		59A5F50023D8271B00039029 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				59E7F72F23AC7EB400293B93 /* GoogleRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		59A5F50123D8273D00039029 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				5903C47A239A65B000841106 /* GoogleData.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		59A5F50223D8275400039029 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59A5F50323D827D100039029 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				59E7F72C23AC7CC600293B93 /* GoogleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		59A5F50423D827D900039029 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				59F34B982397C4C000CEAD1C /* GoogleApiViewController.swift */,
 				5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */,
 				59F34B9A2397C52C00CEAD1C /* GoogleApiCell.swift */,
 				59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */,
-				5903C475239A63EB00841106 /* GoogleApi.swift */,
-				59E7F72F23AC7EB400293B93 /* GoogleRepository.swift */,
-				5903C47A239A65B000841106 /* GoogleData.swift */,
-				59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */,
-				59E7F72C23AC7CC600293B93 /* GoogleViewModel.swift */,
 			);
-			path = GoogleSearch;
+			path = View;
 			sourceTree = "<group>";
 		};
 		59E7F72E23AC7E8500293B93 /* Repository */ = {
