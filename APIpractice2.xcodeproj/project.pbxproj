@@ -134,7 +134,6 @@
 		5903C46F239A601C00841106 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,7 +141,6 @@
 		5903C470239A604100841106 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				59E7F72C23AC7CC600293B93 /* GoogleViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -158,10 +156,6 @@
 				591344B52396294C001F9862 /* QiitaApiCell1.xib */,
 				59F34B9423979D2500CEAD1C /* QiitaApiCell2.swift */,
 				59F34B9523979D2500CEAD1C /* QiitaApiCell2.xib */,
-				59F34B982397C4C000CEAD1C /* GoogleApiViewController.swift */,
-				5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */,
-				59F34B9A2397C52C00CEAD1C /* GoogleApiCell.swift */,
-				59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				5903C46D239A5F0000841106 /* QiitaApi.swift */,
-				5903C475239A63EB00841106 /* GoogleApi.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -179,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				5903C478239A658E00841106 /* QiitaData.swift */,
-				5903C47A239A65B000841106 /* GoogleData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -213,6 +205,7 @@
 				5913448623960E0B001F9862 /* SceneDelegate.swift */,
 				670254CB239B5B3A00C0B0CA /* Main.swift */,
 				670254CD239B5B5500C0B0CA /* Main.storyboard */,
+				59A5F4F923D825A400039029 /* GoogleSearch */,
 				5903C472239A60EB00841106 /* API */,
 				59E7F72E23AC7E8500293B93 /* Repository */,
 				5903C477239A650900841106 /* Entity */,
@@ -245,10 +238,25 @@
 			path = APIpractice2UITests;
 			sourceTree = "<group>";
 		};
+		59A5F4F923D825A400039029 /* GoogleSearch */ = {
+			isa = PBXGroup;
+			children = (
+				59F34B982397C4C000CEAD1C /* GoogleApiViewController.swift */,
+				5903C469239A5D2100841106 /* GoogleApiViewController.storyboard */,
+				59F34B9A2397C52C00CEAD1C /* GoogleApiCell.swift */,
+				59F34B9B2397C52C00CEAD1C /* GoogleApiCell.xib */,
+				5903C475239A63EB00841106 /* GoogleApi.swift */,
+				59E7F72F23AC7EB400293B93 /* GoogleRepository.swift */,
+				5903C47A239A65B000841106 /* GoogleData.swift */,
+				59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */,
+				59E7F72C23AC7CC600293B93 /* GoogleViewModel.swift */,
+			);
+			path = GoogleSearch;
+			sourceTree = "<group>";
+		};
 		59E7F72E23AC7E8500293B93 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				59E7F72F23AC7EB400293B93 /* GoogleRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
