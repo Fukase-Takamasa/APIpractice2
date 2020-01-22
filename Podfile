@@ -6,11 +6,10 @@ target 'APIpractice2' do
   use_frameworks!
 
   # Pods for APIpractice2
-  pod 'Moya/RxSwift'
-  pod 'Moya', '~> 13.0'
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
-  pod 'RxDataSources'
+  pod 'Moya/RxSwift', '~> 13.0'
+  pod 'RxSwift', '~> 4.0'
+  pod 'RxCocoa', '~> 4.0'
+  pod 'RxDataSources', '~> 3.1.0'
   pod 'Instantiate'
   pod 'InstantiateStandard'
   pod 'AlamofireImage', '~> 3.5'

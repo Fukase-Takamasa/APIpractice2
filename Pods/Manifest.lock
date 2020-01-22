@@ -2,34 +2,32 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
-  - Differentiator (4.0.1)
+  - Differentiator (3.1.0)
   - Hero (1.5.0)
   - IBAnimatable (6.0.0)
   - Instantiate (4.0.0)
   - InstantiateStandard (4.0.0):
     - Instantiate (~> 4.0)
   - IQKeyboardManager (6.5.5)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
+  - Moya/RxSwift (13.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
   - Realm (4.3.1):
     - Realm/Headers (= 4.3.1)
   - Realm/Headers (4.3.1)
   - RealmSwift (4.3.1):
     - Realm (= 4.3.1)
   - Result (4.1.0)
-  - RxCocoa (5.0.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxDataSources (4.0.1):
-    - Differentiator (~> 4.0)
-    - RxCocoa (~> 5.0)
-    - RxSwift (~> 5.0)
-  - RxRelay (5.0.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.1)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxDataSources (3.1.0):
+    - Differentiator (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.5.0)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.5)
@@ -38,11 +36,11 @@ DEPENDENCIES:
   - Instantiate
   - InstantiateStandard
   - IQKeyboardManager
-  - Moya (~> 13.0)
+  - Moya/RxSwift (~> 13.0)
   - RealmSwift
-  - RxCocoa (~> 5)
-  - RxDataSources
-  - RxSwift (~> 5)
+  - RxCocoa (~> 4.0)
+  - RxDataSources (~> 3.1.0)
+  - RxSwift (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -60,13 +58,12 @@ SPEC REPOS:
     - Result
     - RxCocoa
     - RxDataSources
-    - RxRelay
     - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
-  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   IBAnimatable: d49f9fee0c401b5b08d31b77256b77fb067e0e92
   Instantiate: 62516e7dde448721c1f5815a9ee7e0669d034d52
@@ -76,11 +73,10 @@ SPEC CHECKSUMS:
   Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
   RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: f85692ff43ece0bd942265d1eaba981ce27f1d2a
+PODFILE CHECKSUM: a96194e61b29dd561d9e18bebdeb32c7e8f2885b
 
 COCOAPODS: 1.8.3
