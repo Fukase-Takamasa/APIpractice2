@@ -18,22 +18,42 @@ import InstantiateStandard
 class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     let disposeBag = DisposeBag()
+    let viewModel: GoogleViewModelType = GoogleViewModel()
+    
+    private var dataSource: RxTableViewSectionedReloadDataSource<GoogleDataSource>!
+    
     
     var googleData: GoogleData?
     var query: String?
     var startIndex = 1
     var pageIndex = 0
+    //仮の検索実行フラグ
+    var searchFlag = false
     
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var tableViewGoogle: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Instantiateを使ったセルの登録
-        TableViewUtil.registerCell(tableViewGoogle, identifier: GoogleApiCell.reusableIdentifier)
-        tableViewGoogle.delegate = self
-        tableViewGoogle.dataSource = self
+        
+        dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(
+            configureCell: { dataSource, tableView, indexPath, item in
+                let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
+                let title = item.items[indexPath.row].title
+                let link = item.items[indexPath.row].link
+                cell.googleBindData(title: title, link: link)
+                return cell
+            }
+        )
+        
+        TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         searchTextField?.delegate = self
+        
+        viewModel.outputs.articles
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
 
     }
     
@@ -43,37 +63,39 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     //テキストボックス内のクエリでMoyaAPI通信
     func FetchGoogleSearchAPI() {
-        //検索ワードをqueryに代入
-        query = searchTextField?.text
-        
-        //クエリがnilの時はAPIをリクエストしないで退出
-        guard let query = query else {
-            return
+        if searchFlag {
+            searchFlag = false
+        }else {
+            searchFlag = true
         }
         
-        let provider = MoyaProvider<GoogleApi>()
-        
-        provider.rx.request(.CustomSearch(query: query, startIndex: startIndex))
-            .filterSuccessfulStatusCodes()
-            .map(googleData.self)
-            .subscribe(onSuccess: { (googleData) in
-                
-            }) { (error) in
-                print(error)
-        }.disposed(by: disposeBag)
-            //let .success(moyaResponse):
-            //    print("（Google）moyaResponseの中身:\(moyaResponse)")
-            //    do {
-            //        //let data = try moyaResponse.map(GoogleData.self)
-            //        let data = try JSONDecoder().decode(GoogleData.self, from: moyaResponse.data)
-            //        self.googleData = data
-            //        print("dataの中身:\(data)")
-            //        print("GoogleAPIの取得データ:\(self.googleData)")
-            //    }catch {
-            //        print("GoogleAPIでエラーが出ました。")
-            //    }
+        //MoyaのAPI通信
+        //let provider = MoyaProvider<GoogleApi>()
 
-            
+        //検索ワードをqueryに代入
+        //query = searchTextField?.text
+        
+        //クエリがnilの時はAPIをリクエストしないで退出
+        //guard let query = query else {
+        //    return
+        //}
+        //    provider.request(.CustomSearch(query: query, startIndex: startIndex)) { (result) in
+        //    switch result {
+        //    case let .success(moyaResponse):
+        //        print("（Google）moyaResponseの中身:\(moyaResponse)")
+        //        do {
+        //            //let data = try moyaResponse.map(GoogleData.self)
+        //            let data = try JSONDecoder().decode(GoogleData.self, from: moyaResponse.data)
+        //            self.googleData = data
+        //            print("dataの中身:\(data)")
+        //            print("GoogleAPIの取得データ:\(self.googleData)")
+        //        }catch {
+        //            print("GoogleAPIでエラーが出ました。")
+        //        }
+        //    case let .failure(error) :
+        //        print("エラーの内容\(error.localizedDescription)")
+        //        break
+        //    }
             //通信後のMoyaのBlock内なのでメインスレッドでreloadさせる
             //DispatchQueue.main.async {
             //    self.tableViewGoogle.reloadData()
@@ -84,25 +106,27 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
 }
 
 
-extension GoogleApiViewController: UITableViewDelegate, UITableViewDataSource {
+extension GoogleApiViewController: UITableViewDelegate {
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return googleData?.items.count ?? 0
-     }
+     //func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     //    return googleData?.items.count ?? 0
+     //}
      
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     //func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          
          //安全安ラップ
-         guard let googleData = googleData else {
-             return UITableViewCell()
-         }
+     //    guard let googleData = googleData else {
+     //        return UITableViewCell()
+     //    }
          
-         let cell: GoogleApiCell = tableView.dequeueReusableCell(withIdentifier: GoogleApiCell.reusableIdentifier) as! GoogleApiCell
-         let title = googleData.items[indexPath.row].title
-         let link = googleData.items[indexPath.row].link
-         cell.googleBindData(title: title, link: link)
-         return cell
-     }
+     //    let cell: GoogleApiCell = tableView.dequeueReusableCell(withIdentifier: GoogleApiCell.reusableIdentifier) as! GoogleApiCell
+     //    let title = googleData.items[indexPath.row].title
+     //    let link = googleData.items[indexPath.row].link
+     //    cell.googleBindData(title: title, link: link)
+     //    return cell
+     //}
+    
+    
      
      //private var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
      
