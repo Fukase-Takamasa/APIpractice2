@@ -30,10 +30,6 @@ extension GoogleApi: TargetType {
         return .get
     }
     
-    var sampleData: Data {
-        return Data()
-    }
-    
     //指定したクエリで画像検索するパラメータ（APIキーなどは自分のもの）
     var task: Task {
         switch self {
@@ -45,5 +41,11 @@ extension GoogleApi: TargetType {
     
     var headers: [String : String]? {
         return ["Content-Type": "application/json"]
+    }
+    
+    
+    // テストの時などに、実際にAPIを叩かずにローカルのjsonファイルを読み込める
+    var sampleData: Data {
+        return Data()
     }
 }
