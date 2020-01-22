@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j4B-ep-aaT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j4B-ep-aaT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Qiita-->
+        <!--GoogleSearch-->
         <scene sceneID="3K8-Es-28V">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u6c-c4-VKy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Qiita" image="pencil.tip" catalog="system" id="iIr-KU-EJw"/>
+                    <tabBarItem key="tabBarItem" title="GoogleSearch" image="magnifyingglass" catalog="system" id="iIr-KU-EJw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AaA-75-IvO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -22,11 +22,11 @@
             </objects>
             <point key="canvasLocation" x="4505.7971014492759" y="-291.29464285714283"/>
         </scene>
-        <!--Google-->
+        <!--Favorites-->
         <scene sceneID="jWh-KB-dt4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fNZ-Zx-JfI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Google" image="magnifyingglass" catalog="system" id="V4C-3D-MJn"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="V4C-3D-MJn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T45-9F-iTv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -60,6 +60,6 @@
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
-        <image name="pencil.tip" catalog="system" width="48" height="64"/>
+        <image name="star" catalog="system" width="64" height="58"/>
     </resources>
 </document>
