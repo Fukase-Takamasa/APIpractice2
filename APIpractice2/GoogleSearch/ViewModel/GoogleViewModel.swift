@@ -11,11 +11,12 @@ import RxSwift
 import RxCocoa
 
 protocol GoogleViewModelInputs {
-    
+    var searchQueryText: AnyObserver<String> {get}
 }
 
 protocol GoogleViewModelOutputs {
-    
+    var articles: Observable<[GoogleDataSource]> {get}
+    var error: Observable<Error> {get}
 }
 
 protocol GoogleViewModelType {
@@ -29,32 +30,45 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     //let error: Observable<Error>
     
     //input
-    
+    var searchQueryText: AnyObserver<String>
     
     //output
-    
+    var articles: Observable<[GoogleDataSource]>
+    var error: Observable<Error>
     
     //other
     private let scheduler: SchedulerType
     private let disposeBag = DisposeBag()
     
     init(scheduler: SchedulerType = ConcurrentMainScheduler.instance) {
-        //let _articles = PublishRelay<GoogleData>()
-        //let _error = PublishRelay<Error>()
         
         //other
         self.scheduler = scheduler
         
         //output
+        let _articles = PublishRelay<[GoogleDataSource]>()
+        let _error = PublishRelay<Error>()
         
+        GoogleRepository.fetchGoogleData()
+            .subscribe(onNext: { response in
+                let dataSource = GoogleDataSource.init(items: response)
+                _articles.accept([dataSource])
+            }, onError: { error in
+                _error.accept(error)
+            }).disposed(by: disposeBag)
         
+        articles = _articles.asObservable()
+        error = _error.asObservable()
         
         //input
-        
-        
-        
+        let _searchQueryText = PublishRelay<String>()
+        self.searchQueryText = AnyObserver<String>() { element in
+            guard let text = element.element else {
+                return
+            }
+            _searchQueryText.accept(text)
+        }
     }
-    
     
 }
 
