@@ -48,6 +48,9 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         let _articles = PublishRelay<[GoogleDataSource]>()
         let _error = PublishRelay<Error>()
         
+        articles = _articles.asObservable()
+        error = _error.asObservable()
+        
         //input
         let _searchQueryText = PublishRelay<String>()
         self.searchQueryText = AnyObserver<String>() { element in
@@ -66,6 +69,7 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         }
         
         let _ = _searchButtonTapped.subscribe(onNext: { event in
+            print("tapped")
             GoogleRepository.fetchGoogleData()
                 .subscribe(onNext: { response in
                     print(response)
@@ -77,9 +81,6 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
                     print("VMのonError: \(error)")
                     _error.accept(error)
                 }).disposed(by: self.disposeBag)
-            
-            self.articles = _articles.asObservable()
-            self.error = _error.asObservable()
             }).disposed(by: disposeBag)
     }
     
