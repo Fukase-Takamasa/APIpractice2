@@ -52,10 +52,12 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         //input
         searchTextField.rx.text.orEmpty
-            .bind(to: <#T##(ControlProperty<String>) -> R#>)
+            .bind(to: viewModel.inputs.searchQueryText)
+            .disposed(by: disposeBag)
         
         searchButton.rx.tap
-            .bind(to: <#T##(ControlEvent<Void>) -> R#>)
+            .bind(to: viewModel.inputs.searchButtonTapped)
+            .disposed(by: disposeBag)
         
         //output
         viewModel.outputs.articles
