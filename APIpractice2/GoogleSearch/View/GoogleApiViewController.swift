@@ -20,10 +20,14 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
     
-    private var dataSource: RxTableViewSectionedReloadDataSource<GoogleDataSource>!
+    let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: { dataSource, tableView, indexPath, item in
+        let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
+        let title = item.items[indexPath.row].title
+        let link = item.items[indexPath.row].link
+        cell.googleBindData(title: title, link: link)
+        return cell
+    })
     
-    
-    var googleData: GoogleData?
     var query: String?
     var startIndex = 1
     var pageIndex = 0
@@ -35,17 +39,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(
-            configureCell: { dataSource, tableView, indexPath, item in
-                let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
-                let title = item.items[indexPath.row].title
-                let link = item.items[indexPath.row].link
-                cell.googleBindData(title: title, link: link)
-                return cell
-            }
-        )
-        
+
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         searchTextField?.delegate = self
         
@@ -58,7 +52,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     }
     
     @IBAction func searchButton(_ sender: Any) {
-        FetchGoogleSearchAPI()
+        tableView.reloadData()
     }
     
     //テキストボックス内のクエリでMoyaAPI通信

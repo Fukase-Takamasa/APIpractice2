@@ -48,11 +48,11 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         
         GoogleRepository.fetchGoogleData()
             .subscribe(onNext: { response in
-                print("VM: fetch()")
+                print("VMのonNext: DataSourceのfetch()を呼び出し")
                 let dataSource = GoogleDataSource.init(items: response)
                 _articles.accept([dataSource])
             }, onError: { error in
-                print("error")
+                print("VMのonError: error")
                 _error.accept(error)
             }).disposed(by: disposeBag)
         

@@ -14,11 +14,15 @@ struct GoogleDataSource {
 }
 
 extension GoogleDataSource: SectionModelType {
+    typealias Item = GoogleData
     
-    init(original: GoogleDataSource, items: [GoogleData]) {
+    init(original: Self, items: [Self.Item]) {
         self = original
         self.items = items
     }
+    
 }
+
+
 
 
