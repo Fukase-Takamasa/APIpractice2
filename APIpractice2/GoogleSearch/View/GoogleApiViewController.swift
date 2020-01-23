@@ -35,8 +35,8 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     //    return cell
     //})
     
-    //var query: String?
-    //var startIndex = 1
+    var query: String?
+    var startIndex = 1
     //var pageIndex = 0
     
     @IBOutlet weak var searchTextField: UITextField!
@@ -79,43 +79,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         tableView.reloadData()
     }
     
-    //テキストボックス内のクエリでMoyaAPI通信
-    func FetchGoogleSearchAPI() {
-        
-        //MoyaのAPI通信
-        //let provider = MoyaProvider<GoogleApi>()
-
-        //検索ワードをqueryに代入
-        //query = searchTextField?.text
-        
-        //クエリがnilの時はAPIをリクエストしないで退出
-        //guard let query = query else {
-        //    return
-        //}
-        //    provider.request(.CustomSearch(query: query, startIndex: startIndex)) { (result) in
-        //    switch result {
-        //    case let .success(moyaResponse):
-        //        print("（Google）moyaResponseの中身:\(moyaResponse)")
-        //        do {
-        //            //let data = try moyaResponse.map(GoogleData.self)
-        //            let data = try JSONDecoder().decode(GoogleData.self, from: moyaResponse.data)
-        //            self.googleData = data
-        //            print("dataの中身:\(data)")
-        //            print("GoogleAPIの取得データ:\(self.googleData)")
-        //        }catch {
-        //            print("GoogleAPIでエラーが出ました。")
-        //        }
-        //    case let .failure(error) :
-        //        print("エラーの内容\(error.localizedDescription)")
-        //        break
-        //    }
-            //通信後のMoyaのBlock内なのでメインスレッドでreloadさせる
-            //DispatchQueue.main.async {
-            //    self.tableViewGoogle.reloadData()
-            //}
-        //}
-    }
-
 }
 
 
@@ -152,7 +115,6 @@ extension GoogleApiViewController: UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("リターンキータップ！！！")
-        FetchGoogleSearchAPI()
         textField.resignFirstResponder()
         return true
     }
