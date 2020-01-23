@@ -23,6 +23,13 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     var titles:[String] = []
     var links:[String] = []
     
+    var query: String?
+    var startIndex = 1
+    //var pageIndex = 0
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     //let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: { dataSource, tableView, indexPath, item in
                 
@@ -35,13 +42,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     //    return cell
     //})
     
-    var query: String?
-    var startIndex = 1
-    //var pageIndex = 0
-    
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +50,14 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         tableView.dataSource = self
         searchTextField?.delegate = self
         
+        //input
+        searchTextField.rx.text.orEmpty
+            .bind(to: <#T##(ControlProperty<String>) -> R#>)
+        
+        searchButton.rx.tap
+            .bind(to: <#T##(ControlEvent<Void>) -> R#>)
+        
+        //output
         viewModel.outputs.articles
             .subscribe(onNext: { element in
                 
@@ -73,10 +81,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         //tableView.rx.setDelegate(self).disposed(by: disposeBag)
 
-    }
-    
-    @IBAction func searchButton(_ sender: Any) {
-        tableView.reloadData()
     }
     
 }

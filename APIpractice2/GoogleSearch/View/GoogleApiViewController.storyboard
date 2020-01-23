@@ -30,9 +30,6 @@
                                     <constraint firstAttribute="width" constant="20" id="10V-kj-nxC"/>
                                 </constraints>
                                 <state key="normal" image="magnifyingglass" catalog="system"/>
-                                <connections>
-                                    <action selector="searchButton:" destination="vj8-Mr-cJ7" eventType="touchUpInside" id="8zm-Vu-jB1"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -51,6 +48,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7Gd-lA-KFg"/>
                     <connections>
+                        <outlet property="searchButton" destination="ka9-0F-XD5" id="u05-et-Bgi"/>
                         <outlet property="searchTextField" destination="7kW-8r-8q0" id="MWe-eq-32k"/>
                         <outlet property="tableView" destination="cER-Vh-Arh" id="A4o-hz-UtU"/>
                     </connections>
