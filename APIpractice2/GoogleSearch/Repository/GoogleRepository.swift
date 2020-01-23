@@ -8,33 +8,28 @@
 
 import Moya
 import RxSwift
+import RxCocoa
 
 typealias GoogleAPIResponse = (( _ response: GoogleData?, _ error: Swift.Error?) -> Void)
 
 final class GoogleRepository {
+    
     private static let googleApiProvider = MoyaProvider<GoogleApi>()
     
     private static let disposeBag: DisposeBag = DisposeBag()
 }
 
-//vc.queryを、後でViewModelに移行したものを参照に変える
 extension GoogleRepository {
     
-    static func fetchGoogleData() -> Observable<GoogleData> {
+    static func fetchGoogleData(query: String, startIndex: Int) -> Observable<GoogleData> {
         print("fetchGoogleData()実行")
-        //return googleApiProvider.rx.request(.CustomSearch(query: "squirrel", startIndex: 0))
-        return googleApiProvider.rx.request(.CustomSearch)
+        return googleApiProvider.rx.request(.CustomSearch(query: query, startIndex: startIndex))
             .map { response in
             try JSONDecoder().decode(GoogleData.self, from: response.data)
         }.asObservable()
-        //        let data = try JSONDecoder().decode(GoogleData.self, from: response.data)
-        //    self.googleData = data
-        //    print("dataの中身:\(data)")
-        //    print("GoogleAPIの取得データ:\(self.googleData)")
-            
-       // }.asObservable()
-            
-            //.map([GoogleData].self)
         
+        //return googleApiProvider.rx.request(.CustomSearch)
+        //.map([GoogleData].self)
+    // }.asObservable()
     }
 }
