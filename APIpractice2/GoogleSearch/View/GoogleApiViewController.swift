@@ -28,11 +28,9 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         return cell
     })
     
-    var query: String?
-    var startIndex = 1
-    var pageIndex = 0
-    //仮の検索実行フラグ
-    var searchFlag = false
+    //var query: String?
+    //var startIndex = 1
+    //var pageIndex = 0
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -57,11 +55,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     //テキストボックス内のクエリでMoyaAPI通信
     func FetchGoogleSearchAPI() {
-        if searchFlag {
-            searchFlag = false
-        }else {
-            searchFlag = true
-        }
         
         //MoyaのAPI通信
         //let provider = MoyaProvider<GoogleApi>()
