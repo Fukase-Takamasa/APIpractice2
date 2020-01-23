@@ -20,10 +20,14 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
     
+    
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: { dataSource, tableView, indexPath, item in
+                
         let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
+        print(item)
         let title = item.items[indexPath.row].title
         let link = item.items[indexPath.row].link
+        print(indexPath)
         cell.googleBindData(title: title, link: link)
         return cell
     })
@@ -42,6 +46,12 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         searchTextField?.delegate = self
         
         viewModel.outputs.articles
+            //.subscribe(onNext: { element in
+            //    print("VC: elementの中身:\(element)")
+            //    print(element.count)
+            //    print(element[0].items.count)
+            //    print(element[0].items[0].items[0].title)
+            //}).disposed(by: disposeBag)
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
@@ -95,31 +105,10 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
 
 extension GoogleApiViewController: UITableViewDelegate {
     
-     //func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     //    return googleData?.items.count ?? 0
-     //}
-     
-     //func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         
-         //安全安ラップ
-     //    guard let googleData = googleData else {
-     //        return UITableViewCell()
-     //    }
-         
-     //    let cell: GoogleApiCell = tableView.dequeueReusableCell(withIdentifier: GoogleApiCell.reusableIdentifier) as! GoogleApiCell
-     //    let title = googleData.items[indexPath.row].title
-     //    let link = googleData.items[indexPath.row].link
-     //    cell.googleBindData(title: title, link: link)
-     //    return cell
-     //}
-    
-    
-     
-     //private var cellHeightsDictionary: [IndexPath: CGFloat] = [:]
-     
-     //func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-     //    self.cellHeightsDictionary[indexPath] = cell.frame.size.height
-     //}
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+     }
+
      
      func tableView(_ tabbleView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
          //if let height = self.cellHeightsDictionary[indexPath] {

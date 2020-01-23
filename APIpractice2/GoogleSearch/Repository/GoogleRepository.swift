@@ -20,12 +20,12 @@ final class GoogleRepository {
 //vc.queryを、後でViewModelに移行したものを参照に変える
 extension GoogleRepository {
     
-    static func fetchGoogleData() -> Observable<[GoogleData]> {
+    static func fetchGoogleData() -> Observable<GoogleData> {
         print("fetchGoogleData()実行")
         //return googleApiProvider.rx.request(.CustomSearch(query: "squirrel", startIndex: 0))
         return googleApiProvider.rx.request(.CustomSearch)
             .map { response in
-            try? JSONDecoder().decode(GoogleData.self, from: response.data)
+            try JSONDecoder().decode(GoogleData.self, from: response.data)
         }.asObservable()
         //        let data = try JSONDecoder().decode(GoogleData.self, from: response.data)
         //    self.googleData = data
