@@ -23,12 +23,14 @@ extension GoogleRepository {
     
     static func fetchGoogleData(query: String, startIndex: Int) -> Observable<GoogleData> {
         print("fetchGoogleData()実行")
-        return googleApiProvider.rx.request(.CustomSearch(query: query, startIndex: startIndex))
+        print("query:\(query), startIndex:\(startIndex)")
+        return googleApiProvider.rx.request(.CustomSearch)
+        //return googleApiProvider.rx.request(.CustomSearch(query: query, startIndex: startIndex))
             .map { response in
             try JSONDecoder().decode(GoogleData.self, from: response.data)
         }.asObservable()
         
-        //return googleApiProvider.rx.request(.CustomSearch)
+
         //.map([GoogleData].self)
     // }.asObservable()
     }
