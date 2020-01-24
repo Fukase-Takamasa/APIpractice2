@@ -67,16 +67,19 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.rx.itemSelected
             .subscribe(onNext: { [unowned self] indexPath in
-                print("Cell tapped")
-                print(indexPath)
-                self.viewModel.outputs.articles
-                    .subscribe(onNext: { element in
-                        print("elementの中身\(element)")
-                        print(element[0])
-                        print(element[0].items)
+                print("セルタップ")
+                print("タップされたセルのindex\(indexPath)")
+                
+                
+                
+                //self.viewModel.outputs.articles
+                //    .subscribe(onNext: { element in
+                //        print("elementの中身\(element)")
+                //        print(element[0])
+                //        print(element[0].items)
                         //let vc = ArticleViewController.instantiate()
                         //vc.articleTitle = element
-                    }).disposed(by: self.disposeBag)
+                //    }).disposed(by: self.disposeBag)
             }).disposed(by: disposeBag)
 
     }
