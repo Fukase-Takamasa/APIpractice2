@@ -73,13 +73,14 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
                 self.tableView.reloadData()
                 
                 print("VC: elementの中身:\(element)")
+                print("VC: element[0]の中身:\(element[0])")
                 print(element.count)
                 print(element[0].items.count)
-                print(element[0].items[0].items[0].title)
                 print(element[0].items[0].items.count)
+                print(element[0].items[0].items[0].title)
                 print(self.titles)
                 print(self.links)
-                
+                //tableView.rx.items(dataSource: [element[0]])
             }).disposed(by: disposeBag)
             //.bind(to: tableView.rx.items(dataSource: dataSource))
             //.disposed(by: disposeBag)
