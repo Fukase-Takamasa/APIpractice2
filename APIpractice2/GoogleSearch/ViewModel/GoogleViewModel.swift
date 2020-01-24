@@ -53,45 +53,39 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         
         
         //input
-        let _searchQueryText = PublishRelay<String>()
+        let _searchQueryText = BehaviorRelay<String>(value: "")
         self.searchQueryText = AnyObserver<String>() { element in
             guard let text = element.element else {
                 return
             }
             _searchQueryText.accept(text)
         }
-            
+        
         let _searchButtonTapped = PublishRelay<Void>()
         self.searchButtonTapped = AnyObserver<Void>() { event in
             guard let tapped = event.element else {
                 return
             }
+            print("tapped")
             _searchButtonTapped.accept(tapped)
         }
-        
-        //_searchQueryText.first()
-        
-        //subscribe①button
-        let _ = _searchButtonTapped.subscribe(onNext: { event in
-            print("tapped")
-            
-            //subscribe②text
-            _searchQueryText.subscribe(onNext:{ element in
+
+        _searchButtonTapped
+            .withLatestFrom(_searchQueryText.asObservable())
+            .subscribe(onNext: { element in
                 GoogleRepository.fetchGoogleData(query: element, startIndex: 0)
-                    
-                    //subscribe③fetchGoogleData関数
-                    .subscribe(onNext: { response in
-                        print(response)
-                        print("VMのonNext: DataSourceのfetch()を呼び出し")
-                        let dataSource = GoogleDataSource.init(items: [response])
-                        print(dataSource)
-                        _articles.accept([dataSource])
-                    }, onError: { error in
-                        print("VMのonError: \(error)")
-                        _error.accept(error)
-                    }).disposed(by: self.disposeBag)
-            }).disposed(by: self.disposeBag)
-        })
+                .subscribe(onNext: { response in
+                    print("VM: DataSourceのfetch()を呼び出し")
+                    print("VMのonNext: responseの中身: \(response)")
+                    let dataSource = GoogleDataSource.init(items: [response])
+                    print("VMのonNext: Viewに渡す[dataSource]の中身　: \([dataSource])")
+                    _articles.accept([dataSource])
+                }, onError: { error in
+                    print("VMのonError: \(error)")
+                    _error.accept(error)
+                }).disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
+            
     }
     
 }
