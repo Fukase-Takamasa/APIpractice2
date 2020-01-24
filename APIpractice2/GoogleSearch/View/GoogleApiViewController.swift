@@ -62,7 +62,10 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         //output
         viewModel.outputs.articles
             .subscribe(onNext: { element in
-                
+                if !self.titles.isEmpty || !self.links.isEmpty {
+                    self.titles.removeAll()
+                    self.links.removeAll()
+                }
                 for titleAndLink in element[0].items[0].items {
                     self.titles += [titleAndLink.title]
                     self.links += [titleAndLink.link]
