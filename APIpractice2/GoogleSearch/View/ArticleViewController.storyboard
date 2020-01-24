@@ -14,13 +14,32 @@
                     <view key="view" contentMode="scaleToFill" id="C2m-wJ-75H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOG-mg-LTM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jOG-mg-LTM" firstAttribute="leading" secondItem="KBz-Yw-9Ef" secondAttribute="leading" id="KIU-uU-NsG"/>
+                            <constraint firstItem="KBz-Yw-9Ef" firstAttribute="trailing" secondItem="jOG-mg-LTM" secondAttribute="trailing" id="MOh-17-Qxk"/>
+                            <constraint firstItem="jOG-mg-LTM" firstAttribute="top" secondItem="KBz-Yw-9Ef" secondAttribute="top" id="UXT-kT-Seg"/>
+                            <constraint firstItem="KBz-Yw-9Ef" firstAttribute="bottom" secondItem="jOG-mg-LTM" secondAttribute="bottom" id="nD7-nW-696"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KBz-Yw-9Ef"/>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="jOG-mg-LTM" id="kGs-TI-9Lc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAT-GG-vFg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="111"/>
+            <point key="canvasLocation" x="461" y="78"/>
         </scene>
     </scenes>
 </document>

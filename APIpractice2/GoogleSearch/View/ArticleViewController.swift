@@ -7,17 +7,27 @@
 //
 
 import UIKit
+import WebKit
 import RxSwift
 import RxCocoa
 import Instantiate
 import InstantiateStandard
 
-
 class ArticleViewController: UIViewController, StoryboardInstantiatable {
 
+    let disposeBag = DisposeBag()
+    
+    var articleTitle: String?
+    var articleUrl: String?
+    
+    @IBOutlet weak var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.title = articleTitle
+        let request = URLRequest(url: URL(string: articleUrl ?? "")!)
+        webView.load(request)
     }
     
 }
