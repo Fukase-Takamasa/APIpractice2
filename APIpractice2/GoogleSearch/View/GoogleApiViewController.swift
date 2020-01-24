@@ -108,8 +108,9 @@ extension GoogleApiViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
         let title = self.titles[indexPath.row]
-        let link = self.links[indexPath.row]
-        cell.googleBindData(title: title, link: link)
+        //let link = self.links[indexPath.row]
+        //cell.googleBindData(title: title, link: link)
+        cell.googleBindTitle(title: title)
         return cell
     }
     
