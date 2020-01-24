@@ -16,7 +16,7 @@ class GoogleApiCell: UITableViewCell, Reusable {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var googleImageView: UIImageView!
     
-    //取得したタイトルを表示
+    //取得したタイトルと画像を表示
     func googleBindData(title: String, link: String) {
         label.text = title
         googleImageView.af_setImage(withURL: URL(string: link)!)

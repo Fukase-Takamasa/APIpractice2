@@ -73,6 +73,8 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         _searchButtonTapped
             .withLatestFrom(_searchQueryText.asObservable())
             .subscribe(onNext: { element in
+                //(startIndexは0 → 1~10件の結果を取得, 1 → 11~20を取得できる。最大100件まで。
+                //後にページングなど実装した時に使用する
                 GoogleRepository.fetchGoogleData(query: element, startIndex: 0)
                 .subscribe(onNext: { response in
                     print("VM: DataSourceのfetch()を呼び出し")
