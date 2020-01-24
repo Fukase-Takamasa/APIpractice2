@@ -25,13 +25,8 @@ extension GoogleRepository {
         print("fetchGoogleData()実行")
         print("query:\(query), startIndex:\(startIndex)")
         return googleApiProvider.rx.request(.CustomSearch)
-        //return googleApiProvider.rx.request(.CustomSearch(query: query, startIndex: startIndex))
             .map { response in
             try JSONDecoder().decode(GoogleData.self, from: response.data)
         }.asObservable()
-        
-
-        //.map([GoogleData].self)
-    // }.asObservable()
     }
 }

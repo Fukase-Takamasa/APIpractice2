@@ -10,13 +10,13 @@ import Foundation
 import RxDataSources
 
 struct GoogleDataSource {
-    var items: [GoogleData]
+    var items: [Item]
 }
 
 extension GoogleDataSource: SectionModelType {
-    typealias Item = GoogleData
+    typealias Item = GoogleData.Items
     
-    init(original: Self, items: [Self.Item]) {
+    init(original: Self, items: [Item]) {
         self = original
         self.items = items
     }

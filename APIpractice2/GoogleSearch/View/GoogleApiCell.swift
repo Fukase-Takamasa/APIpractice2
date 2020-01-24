@@ -22,12 +22,10 @@ class GoogleApiCell: UITableViewCell, Reusable {
         googleImageView.af_setImage(withURL: URL(string: link)!)
     }
     
-    //画像なしver
+    //モックサーバー使用時用　画像なしver
     func googleBindTitle(title: String) {
         label.text = title
     }
-    
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

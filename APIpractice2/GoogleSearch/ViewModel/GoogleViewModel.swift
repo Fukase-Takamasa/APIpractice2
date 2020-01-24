@@ -77,7 +77,7 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
                 .subscribe(onNext: { response in
                     print("VM: DataSourceのfetch()を呼び出し")
                     print("VMのonNext: responseの中身: \(response)")
-                    let dataSource = GoogleDataSource.init(items: [response])
+                    let dataSource = GoogleDataSource.init(items: response.items)
                     print("VMのonNext: Viewに渡す[dataSource]の中身　: \([dataSource])")
                     _articles.accept([dataSource])
                 }, onError: { error in
