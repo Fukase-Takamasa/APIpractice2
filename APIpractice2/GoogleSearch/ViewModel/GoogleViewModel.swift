@@ -19,6 +19,7 @@ protocol GoogleViewModelInputs {
 protocol GoogleViewModelOutputs {
     var articles: Observable<[GoogleDataSource]> {get}
     var error: Observable<Error> {get}
+    var articleIndex: Observable<IndexPath> {get}
 }
 
 protocol GoogleViewModelType {
@@ -36,6 +37,7 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     //output
     var articles: Observable<[GoogleDataSource]>
     var error: Observable<Error>
+    var articleIndex: Observable<IndexPath>
     
     //other
     private let scheduler: SchedulerType
@@ -53,6 +55,9 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         let _error = PublishRelay<Error>()
         error = _error.asObservable()
         
+        let _articleIndex = PublishRelay<IndexPath>()
+        articleIndex = _articleIndex.asObservable()
+        
         
         //input
         let _selectedCellIndex = PublishRelay<IndexPath>()
@@ -62,6 +67,10 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
             }
             _selectedCellIndex.accept(index)
         }
+        
+        _selectedCellIndex.subscribe(onNext: { element in
+            _articleIndex.accept(element)
+            }).disposed(by: disposeBag)
         
         let _searchQueryText = BehaviorRelay<String>(value: "")
         self.searchQueryText = AnyObserver<String>() { element in
@@ -83,9 +92,9 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         _searchButtonTapped
             .withLatestFrom(_searchQueryText.asObservable())
             .subscribe(onNext: { element in
-                //(startIndexは0 → 1~10件の結果を取得, 1 → 11~20を取得できる。最大100件まで。
+                //(startIndexは1 → 1~10件の結果を取得, 11 → 11~20を取得できる。最大100件まで。
                 //後にページングなど実装した時に使用する
-                GoogleRepository.fetchGoogleData(query: element, startIndex: 0)
+                GoogleRepository.fetchGoogleData(query: element, startIndex: 1)
                 .subscribe(onNext: { response in
                     print("VM: DataSourceのfetch()を呼び出し")
                     print("VMのonNext: responseの中身: \(response)")

@@ -26,9 +26,21 @@ class ArticleViewController: UIViewController, StoryboardInstantiatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = articleTitle
-        let request = URLRequest(url: URL(string: articleUrl ?? "")!)
-        webView.load(request)
+        //output
+        viewModel.outputs.articles
+            .subscribe(onNext: { element in
+                print("記事画面:element articles: \(element)")
+                self.viewModel.outputs.articleIndex
+                    .subscribe(onNext: { element in
+                        print("記事画面:element articleIndex: \(element)")
+                    }).disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
+        print("あ")
+        
+        
+        //self.navigationItem.title = articleTitle
+        //let request = URLRequest(url: URL(string: articleUrl ?? "")!)
+        //webView.load(request)
     }
     
 }
