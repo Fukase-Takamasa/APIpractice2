@@ -69,7 +69,9 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
             .subscribe(onNext: { [unowned self] indexPath in
                 print("セルタップ")
                 print("タップされたセルのindex\(indexPath)")
-                
+                let vc = ArticleViewController.instantiate()
+                //vc.articleTitle = element
+                self.navigationController?.pushViewController(vc, animated: true)
                 
                 
                 //self.viewModel.outputs.articles

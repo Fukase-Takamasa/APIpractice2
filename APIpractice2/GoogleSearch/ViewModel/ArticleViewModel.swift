@@ -11,11 +11,11 @@ import RxSwift
 import RxCocoa
 
 protocol ArticleViewModelInputs {
-    
+
 }
 
 protocol ArticleViewModelOutputs {
-    <#requirements#>
+    
 }
 
 protocol ArticleViewModelType {
@@ -37,6 +37,7 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
     init(scheduler: SchedulerType = ConcurrentMainScheduler.instance) {
         //other
         self.scheduler = scheduler
+        
         
         //output
         

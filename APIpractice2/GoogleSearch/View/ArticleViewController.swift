@@ -16,9 +16,10 @@ import InstantiateStandard
 class ArticleViewController: UIViewController, StoryboardInstantiatable {
 
     let disposeBag = DisposeBag()
+    let viewModel: GoogleViewModelType = GoogleViewModel()
     
-    var articleTitle: String?
-    var articleUrl: String?
+    //var articleTitle: String?
+    //var articleUrl: String?
     
     @IBOutlet weak var webView: WKWebView!
     

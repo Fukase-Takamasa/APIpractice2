@@ -13,6 +13,7 @@ import RxCocoa
 protocol GoogleViewModelInputs {
     var searchQueryText: AnyObserver<String> {get}
     var searchButtonTapped: AnyObserver<Void> {get}
+    var selectedCellIndex: AnyObserver<IndexPath> {get}
 }
 
 protocol GoogleViewModelOutputs {
@@ -30,6 +31,7 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     //input
     var searchQueryText: AnyObserver<String>
     var searchButtonTapped: AnyObserver<Void>
+    var selectedCellIndex: AnyObserver<IndexPath>
     
     //output
     var articles: Observable<[GoogleDataSource]>
@@ -53,6 +55,14 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         
         
         //input
+        let _selectedCellIndex = PublishRelay<IndexPath>()
+        self.selectedCellIndex = AnyObserver<IndexPath>() { element in
+            guard let index = element.element else {
+                return
+            }
+            _selectedCellIndex.accept(index)
+        }
+        
         let _searchQueryText = BehaviorRelay<String>(value: "")
         self.searchQueryText = AnyObserver<String>() { element in
             guard let text = element.element else {
