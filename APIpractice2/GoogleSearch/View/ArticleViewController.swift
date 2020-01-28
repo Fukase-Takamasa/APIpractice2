@@ -30,12 +30,13 @@ class ArticleViewController: UIViewController, StoryboardInstantiatable {
         viewModel.outputs.articles
             .subscribe(onNext: { element in
                 print("記事画面:element articles: \(element)")
-                self.viewModel.outputs.articleIndex
-                    .subscribe(onNext: { element in
-                        print("記事画面:element articleIndex: \(element)")
-                    }).disposed(by: self.disposeBag)
+                
             }).disposed(by: disposeBag)
-        print("あ")
+        
+        viewModel.outputs.articleIndex
+        .subscribe(onNext: { element in
+            print("記事画面:element articleIndex: \(element)")
+        }).disposed(by: self.disposeBag)
         
         
         //self.navigationItem.title = articleTitle

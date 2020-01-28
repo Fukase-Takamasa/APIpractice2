@@ -28,8 +28,8 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     let title = item.title
     let link = item.link
     print(indexPath)
-    cell.googleBindData(title: title, link: link)
-    //cell.googleBindTitle(title: title)
+    //cell.googleBindData(title: title, link: link)
+    cell.googleBindTitle(title: title)
     print("セルを生成")
     return cell
     })
