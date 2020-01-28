@@ -10,11 +10,17 @@ import UIKit
 import Instantiate
 import InstantiateStandard
 import AlamofireImage
+import RxSwift
+import RxCocoa
 
 class GoogleApiCell: UITableViewCell, Reusable {
     
+    let viewModel: FavoriteArticleViewModelType = FavoriteArticleViewModel()
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var googleImageView: UIImageView!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     
     //取得したタイトルと画像を表示
     func googleBindData(title: String, imageUrl: String) {
@@ -30,6 +36,9 @@ class GoogleApiCell: UITableViewCell, Reusable {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //other
+        favoriteButton.rx.tap
+            .bind(to: viewModel.)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
