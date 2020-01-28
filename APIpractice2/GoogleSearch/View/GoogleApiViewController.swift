@@ -70,7 +70,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
                 let vc = ArticleViewController.instantiate()
                 print("modelの中身: \(model)")
                 vc.articleTitle = model.title
-                vc.articleUrl = model.link
+                vc.articleUrl = model.formattedUrl
                 self?.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
 

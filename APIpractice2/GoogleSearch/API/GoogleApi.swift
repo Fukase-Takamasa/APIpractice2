@@ -13,7 +13,6 @@ import Moya
 enum GoogleApi {
     case CustomSearch(query: String, startIndex: Int)
     //case CustomSearch
-
 }
 
 extension GoogleApi: TargetType {
@@ -36,11 +35,16 @@ extension GoogleApi: TargetType {
         return .get
     }
     
-    //指定したクエリで画像検索するパラメータ（APIキーなどは自分のもの）
     var task: Task {
         switch self {
+        //指定したクエリで画像検索するパラメータ（APIキーなどは自分のもの）
         case .CustomSearch(let query, let startIndex):
             return .requestParameters(parameters: ["key":"AIzaSyDVyxhFCjqj5shwAWzo0EI2nT81pHoMRDw", "cx":"009237515506121379779:giiokppklre", "searchType": "image", "q": query, "start": startIndex], encoding: URLEncoding.default)
+            
+        //画像ではなく通常の検索
+        //case .CustomSearch(let query, let startIndex):
+        //return .requestParameters(parameters: ["key":"AIzaSyDVyxhFCjqj5shwAWzo0EI2nT81pHoMRDw", "cx":"009237515506121379779:giiokppklre", "q": query, "start": startIndex], encoding: URLEncoding.default)
+        
         //case .CustomSearch:
             //return .requestPlain
         }
