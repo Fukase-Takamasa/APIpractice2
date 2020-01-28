@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Google Api View Controller-->
+        <!--GoogleSearch-->
         <scene sceneID="0sk-R3-kpK">
             <objects>
                 <viewController id="vj8-Mr-cJ7" customClass="GoogleApiViewController" customModule="APIpractice2" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cER-Vh-Arh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="cER-Vh-Arh">
                                 <rect key="frame" x="0.0" y="136" width="414" height="726"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
@@ -32,7 +32,7 @@
                                 <state key="normal" image="magnifyingglass" catalog="system"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.88703382074860604" green="1" blue="0.94739981621061786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cER-Vh-Arh" firstAttribute="top" secondItem="7kW-8r-8q0" secondAttribute="bottom" constant="6" id="169-st-2Sj"/>
                             <constraint firstItem="7kW-8r-8q0" firstAttribute="top" secondItem="G80-6t-NRI" secondAttribute="top" constant="8" id="7vG-SS-o8U"/>
@@ -46,7 +46,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G80-6t-NRI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7Gd-lA-KFg"/>
+                    <navigationItem key="navigationItem" title="GoogleSearch" id="7Gd-lA-KFg"/>
                     <connections>
                         <outlet property="searchButton" destination="ka9-0F-XD5" id="u05-et-Bgi"/>
                         <outlet property="searchTextField" destination="7kW-8r-8q0" id="MWe-eq-32k"/>
