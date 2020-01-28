@@ -73,31 +73,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
                 vc.articleUrl = model.link
                 self?.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
-        
-        //tableView.rx.itemSelected
-        //    .subscribe(onNext: { [unowned self] indexPath in
-       //         let articleViewModel: ArticleViewModelType = ArticleViewModel()
-       //         articleViewModel.inputs.selectedCellIndex
-       //         .onNext(indexPath)
-        //        let vc = ArticleViewController.instantiate()
-       //         print("遷移します")
-       //         self.navigationController?.pushViewController(vc, animated: true)
-                
-                //.bind(to: viewModel.inputs.selectedCellIndex)
-                //.disposed(by: disposeBag)
-                //print("セルタップ")
-                //print("タップされたセルのindex\(indexPath)")
-                
-                
-                //self.viewModel.outputs.articles
-                //    .subscribe(onNext: { element in
-                //        print("elementの中身\(element)")
-                //        print(element[0])
-                //        print(element[0].items)
-                        //let vc = ArticleViewController.instantiate()
-                        //vc.articleTitle = element
-                //    }).disposed(by: self.disposeBag)
-         //   }).disposed(by: disposeBag)
 
     }
 }

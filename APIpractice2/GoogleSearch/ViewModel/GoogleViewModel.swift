@@ -13,13 +13,11 @@ import RxCocoa
 protocol GoogleViewModelInputs {
     var searchQueryText: AnyObserver<String> {get}
     var searchButtonTapped: AnyObserver<Void> {get}
-    var selectedCellIndex: AnyObserver<IndexPath> {get}
 }
 
 protocol GoogleViewModelOutputs {
     var articles: Observable<[GoogleDataSource]> {get}
     var error: Observable<Error> {get}
-    var articleIndex: Observable<IndexPath> {get}
 }
 
 protocol GoogleViewModelType {
@@ -32,12 +30,10 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     //input
     var searchQueryText: AnyObserver<String>
     var searchButtonTapped: AnyObserver<Void>
-    var selectedCellIndex: AnyObserver<IndexPath>
     
     //output
     var articles: Observable<[GoogleDataSource]>
     var error: Observable<Error>
-    var articleIndex: Observable<IndexPath>
     
     //other
     private let scheduler: SchedulerType
@@ -55,26 +51,8 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         let _error = PublishRelay<Error>()
         error = _error.asObservable()
         
-        let _articleIndex = BehaviorRelay<IndexPath>(value: [0, 0])
-        articleIndex = _articleIndex.asObservable()
         
-        
-        //input
-        let _selectedCellIndex = PublishRelay<IndexPath>()
-        self.selectedCellIndex = AnyObserver<IndexPath>() { element in
-            guard let index = element.element else {
-                print("selectedCellIndexがnilなのでreturnします")
-                return
-            }
-            print("selectedCellIndex:　\(index)")
-            _selectedCellIndex.accept(index)
-        }
-        
-        _selectedCellIndex.subscribe(onNext: { element in
-            print("articleIndex: \(element)")
-            _articleIndex.accept(element)
-            }).disposed(by: disposeBag)
-        
+        //input        
         let _searchQueryText = BehaviorRelay<String>(value: "")
         self.searchQueryText = AnyObserver<String>() { element in
             guard let text = element.element else {

@@ -11,11 +11,9 @@ import RxSwift
 import RxCocoa
 
 protocol ArticleViewModelInputs {
-    var selectedCellIndex: AnyObserver<IndexPath> {get}
 }
 
 protocol ArticleViewModelOutputs {
-    var articleIndex: Observable<IndexPath> {get}
 }
 
 protocol ArticleViewModelType {
@@ -26,10 +24,8 @@ protocol ArticleViewModelType {
 class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
     
     //input
-    var selectedCellIndex: AnyObserver<IndexPath>
     
     //output
-    var articleIndex: Observable<IndexPath>
     
     //other
     private let scheduler: SchedulerType
@@ -41,24 +37,8 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
         
         
         //output
-        let _articleIndex = PublishRelay<IndexPath>()
-        self.articleIndex = _articleIndex.asObservable()
         
         //input
-        let _selectedCellIndex = PublishRelay<IndexPath>()
-        self.selectedCellIndex = AnyObserver<IndexPath>() { element in
-            guard let index = element.element else {
-                print("selectedCellIndexがnilなのでreturnします")
-                return
-            }
-            print("selectedCellIndex:　\(index)")
-            _selectedCellIndex.accept(index)
-        }
-        
-        _selectedCellIndex.subscribe(onNext: { element in
-            print("articleIndex: \(element)")
-            _articleIndex.accept(element)
-            }).disposed(by: disposeBag)
         
         
     }
