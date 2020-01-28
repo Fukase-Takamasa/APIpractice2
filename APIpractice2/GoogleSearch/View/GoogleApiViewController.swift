@@ -26,9 +26,9 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     as! GoogleApiCell
     print(item)
     let title = item.title
-    let imageUrl = item.imageURL
+    let imageUrl = item.link
     print(indexPath)
-    cell.googleBindData(title: title, link: imageUrl)
+    cell.googleBindData(title: title, imageUrl: imageUrl)
     //cell.googleBindTitle(title: title)
     print("セルを生成")
     return cell
@@ -70,7 +70,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
                 let vc = ArticleViewController.instantiate()
                 print("modelの中身: \(model)")
                 vc.articleTitle = model.title
-                vc.articleUrl = model.formattedUrl
+                vc.articleUrl = model.image.contextLink
                 self?.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
 
