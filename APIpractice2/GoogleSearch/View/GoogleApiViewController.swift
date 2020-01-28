@@ -65,13 +65,28 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         //other
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
-        tableView.rx.itemSelected
-            .subscribe(onNext: { [unowned self] indexPath in
-                print("セルタップ")
-                print("タップされたセルのindex\(indexPath)")
+        tableView.rx.modelSelected((GoogleDataSource.Item.self))
+            .subscribe(onNext: { [weak self] model in
                 let vc = ArticleViewController.instantiate()
-                //vc.articleTitle = element
-                self.navigationController?.pushViewController(vc, animated: true)
+                print("modelの中身: \(model)")
+                vc.articleTitle = model.title
+                vc.articleUrl = model.link
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }).disposed(by: disposeBag)
+        
+        //tableView.rx.itemSelected
+        //    .subscribe(onNext: { [unowned self] indexPath in
+       //         let articleViewModel: ArticleViewModelType = ArticleViewModel()
+       //         articleViewModel.inputs.selectedCellIndex
+       //         .onNext(indexPath)
+        //        let vc = ArticleViewController.instantiate()
+       //         print("遷移します")
+       //         self.navigationController?.pushViewController(vc, animated: true)
+                
+                //.bind(to: viewModel.inputs.selectedCellIndex)
+                //.disposed(by: disposeBag)
+                //print("セルタップ")
+                //print("タップされたセルのindex\(indexPath)")
                 
                 
                 //self.viewModel.outputs.articles
@@ -82,7 +97,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
                         //let vc = ArticleViewController.instantiate()
                         //vc.articleTitle = element
                 //    }).disposed(by: self.disposeBag)
-            }).disposed(by: disposeBag)
+         //   }).disposed(by: disposeBag)
 
     }
 }

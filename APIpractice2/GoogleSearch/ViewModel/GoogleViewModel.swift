@@ -55,7 +55,7 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         let _error = PublishRelay<Error>()
         error = _error.asObservable()
         
-        let _articleIndex = PublishRelay<IndexPath>()
+        let _articleIndex = BehaviorRelay<IndexPath>(value: [0, 0])
         articleIndex = _articleIndex.asObservable()
         
         
@@ -63,12 +63,15 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         let _selectedCellIndex = PublishRelay<IndexPath>()
         self.selectedCellIndex = AnyObserver<IndexPath>() { element in
             guard let index = element.element else {
+                print("selectedCellIndexがnilなのでreturnします")
                 return
             }
+            print("selectedCellIndex:　\(index)")
             _selectedCellIndex.accept(index)
         }
         
         _selectedCellIndex.subscribe(onNext: { element in
+            print("articleIndex: \(element)")
             _articleIndex.accept(element)
             }).disposed(by: disposeBag)
         

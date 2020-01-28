@@ -16,10 +16,11 @@ import InstantiateStandard
 class ArticleViewController: UIViewController, StoryboardInstantiatable {
 
     let disposeBag = DisposeBag()
-    let viewModel: GoogleViewModelType = GoogleViewModel()
+    //let viewModel: ArticleViewModelType = ArticleViewModel()
+    //let viewModel: GoogleViewModelType = GoogleViewModel()
     
-    //var articleTitle: String?
-    //var articleUrl: String?
+    var articleTitle: String?
+    var articleUrl: String?
     
     @IBOutlet weak var webView: WKWebView!
     
@@ -27,19 +28,18 @@ class ArticleViewController: UIViewController, StoryboardInstantiatable {
         super.viewDidLoad()
         
         //output
-        viewModel.outputs.articles
-            .subscribe(onNext: { element in
-                print("記事画面:element articles: \(element)")
-                
-            }).disposed(by: disposeBag)
+        //viewModel.outputs.articles
+        //    .subscribe(onNext: { element in
+        //        print("記事画面:element articles: \(element)")
+        //    }).disposed(by: disposeBag)
         
-        viewModel.outputs.articleIndex
-        .subscribe(onNext: { element in
-            print("記事画面:element articleIndex: \(element)")
-        }).disposed(by: self.disposeBag)
+        //viewModel.outputs.articleIndex
+        //.subscribe(onNext: { element in
+        //    print("記事画面:element articleIndex: \(element)")
+        //}).disposed(by: self.disposeBag)
         
         
-        //self.navigationItem.title = articleTitle
+        self.navigationItem.title = articleTitle
         //let request = URLRequest(url: URL(string: articleUrl ?? "")!)
         //webView.load(request)
     }
