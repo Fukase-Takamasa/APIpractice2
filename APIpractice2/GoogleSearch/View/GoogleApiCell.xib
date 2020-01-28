@@ -16,27 +16,46 @@
                 <rect key="frame" x="0.0" y="0.0" width="504" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FeF-y8-wEq">
-                        <rect key="frame" x="0.0" y="0.0" width="125" height="124"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nck-2P-QLM" userLabel="BaseView">
+                        <rect key="frame" x="8" y="4" width="488" height="116"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FeF-y8-wEq">
+                                <rect key="frame" x="0.0" y="0.0" width="116" height="116"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="FeF-y8-wEq" secondAttribute="height" multiplier="1:1" id="1eL-E8-g0T"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddn-mm-NOM">
+                                <rect key="frame" x="124" y="0.0" width="356" height="116"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="125" id="DO7-QH-Udo"/>
+                            <constraint firstItem="FeF-y8-wEq" firstAttribute="leading" secondItem="nck-2P-QLM" secondAttribute="leading" id="7v8-WI-1Vb"/>
+                            <constraint firstAttribute="bottom" secondItem="FeF-y8-wEq" secondAttribute="bottom" id="CZ4-Cx-Ka3"/>
+                            <constraint firstItem="ddn-mm-NOM" firstAttribute="top" secondItem="nck-2P-QLM" secondAttribute="top" id="EQX-ZF-MYk"/>
+                            <constraint firstItem="ddn-mm-NOM" firstAttribute="leading" secondItem="FeF-y8-wEq" secondAttribute="trailing" constant="8" id="XpB-Lj-KKB"/>
+                            <constraint firstAttribute="bottom" secondItem="ddn-mm-NOM" secondAttribute="bottom" id="YHP-96-vjB"/>
+                            <constraint firstAttribute="trailing" secondItem="ddn-mm-NOM" secondAttribute="trailing" constant="8" id="ZXV-cQ-De0"/>
+                            <constraint firstItem="FeF-y8-wEq" firstAttribute="top" secondItem="nck-2P-QLM" secondAttribute="top" id="bUc-FA-b4U"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddn-mm-NOM">
-                        <rect key="frame" x="135" y="10" width="359" height="104"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="15"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" red="0.94280088704249576" green="0.94280088704249576" blue="0.94280088704249576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="ddn-mm-NOM" secondAttribute="bottom" constant="10" id="1Ud-EV-OaF"/>
-                    <constraint firstItem="FeF-y8-wEq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2M9-wx-bQ7"/>
-                    <constraint firstItem="ddn-mm-NOM" firstAttribute="leading" secondItem="FeF-y8-wEq" secondAttribute="trailing" constant="10" id="BDl-6i-H6X"/>
-                    <constraint firstItem="FeF-y8-wEq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GhW-nX-NDa"/>
-                    <constraint firstAttribute="trailing" secondItem="ddn-mm-NOM" secondAttribute="trailing" constant="10" id="Pdw-ds-PWq"/>
-                    <constraint firstAttribute="bottom" secondItem="FeF-y8-wEq" secondAttribute="bottom" id="lzC-Aq-rUe"/>
-                    <constraint firstItem="ddn-mm-NOM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="vyG-cg-i6J"/>
+                    <constraint firstItem="nck-2P-QLM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ct4-Ga-exJ"/>
+                    <constraint firstAttribute="trailing" secondItem="nck-2P-QLM" secondAttribute="trailing" constant="8" id="saF-fv-IzZ"/>
+                    <constraint firstAttribute="bottom" secondItem="nck-2P-QLM" secondAttribute="bottom" constant="4" id="tce-p5-hkI"/>
+                    <constraint firstItem="nck-2P-QLM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="wKB-hO-F6w"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

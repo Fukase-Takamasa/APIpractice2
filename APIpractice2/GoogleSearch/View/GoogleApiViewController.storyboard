@@ -17,7 +17,10 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="cER-Vh-Arh">
                                 <rect key="frame" x="0.0" y="136" width="414" height="726"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.94280088699999998" green="0.94280088699999998" blue="0.94280088699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="検索ワードをここに入力して下さい" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="7kW-8r-8q0">
                                 <rect key="frame" x="13" y="96" width="354" height="34"/>
@@ -32,7 +35,7 @@
                                 <state key="normal" image="magnifyingglass" catalog="system"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.88703382074860604" green="1" blue="0.94739981621061786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94280088699999998" green="0.94280088699999998" blue="0.94280088699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cER-Vh-Arh" firstAttribute="top" secondItem="7kW-8r-8q0" secondAttribute="bottom" constant="6" id="169-st-2Sj"/>
                             <constraint firstItem="7kW-8r-8q0" firstAttribute="top" secondItem="G80-6t-NRI" secondAttribute="top" constant="8" id="7vG-SS-o8U"/>
