@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="width" secondItem="FeF-y8-wEq" secondAttribute="height" multiplier="1:1" id="1eL-E8-g0T"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="30"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="50"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddn-mm-NOM">
