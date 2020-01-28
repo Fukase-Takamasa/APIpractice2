@@ -12,10 +12,16 @@ class FavoriteArticleList {
     var favoriteArticle: [FavoriteArticle] = []
     
     class FavoriteArticle {
-        var title: String = ""
+        var title: String
         //画像URL
-        var link: String = ""
+        var link: String
         //記事のURL
-        var contextLink: String = ""
+        var contextLink: String
+        
+        init(title: String, link: String, contextLink: String) {
+            self.title = title
+            self.link = link
+            self.contextLink = contextLink
+        }
     }
 }

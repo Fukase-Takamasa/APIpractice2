@@ -13,6 +13,8 @@ import Instantiate
 import InstantiateStandard
 
 class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable {
+    
+    var dataSource = FavoriteArticleList().favoriteArticle
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,6 +22,15 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
+        
+        addFavoriteArticle(title: "お気に入り1", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/15/Douglas_Squirrel_DSC3742vvc.jpg", articleUrl: "https://en.wikipedia.org/wiki/Douglas_squirrel")
+    }
+    
+    func addFavoriteArticle(title: String, imageUrl: String, articleUrl: String) {
+        let newArticle = FavoriteArticleList.FavoriteArticle(title: title, link: imageUrl, contextLink: articleUrl)
+        dataSource += [newArticle]
     }
     
 
@@ -27,12 +38,23 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
 
 extension FavoriteArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
+        let title = dataSource[indexPath.row].title
+        let imageUrl = dataSource[indexPath.row].link
+        cell.googleBindData(title: title, imageUrl: imageUrl)
+        return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ArticleViewController.instantiate()
+        vc.articleTitle = dataSource[indexPath.row].title
+        vc.articleUrl = dataSource[indexPath.row].contextLink
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }
