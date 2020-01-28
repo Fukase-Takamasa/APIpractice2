@@ -15,7 +15,6 @@ target 'APIpractice2' do
   pod 'AlamofireImage', '~> 3.5'
   pod 'RealmSwift'
   pod 'Hero'
-  pod 'IQKeyboardManager'
   pod 'IBAnimatable'
 
 

@@ -8,7 +8,6 @@ PODS:
   - Instantiate (4.0.0)
   - InstantiateStandard (4.0.0):
     - Instantiate (~> 4.0)
-  - IQKeyboardManager (6.5.5)
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
@@ -35,7 +34,6 @@ DEPENDENCIES:
   - IBAnimatable
   - Instantiate
   - InstantiateStandard
-  - IQKeyboardManager
   - Moya/RxSwift (~> 13.0)
   - RealmSwift
   - RxCocoa (~> 4.0)
@@ -51,7 +49,6 @@ SPEC REPOS:
     - IBAnimatable
     - Instantiate
     - InstantiateStandard
-    - IQKeyboardManager
     - Moya
     - Realm
     - RealmSwift
@@ -68,7 +65,6 @@ SPEC CHECKSUMS:
   IBAnimatable: d49f9fee0c401b5b08d31b77256b77fb067e0e92
   Instantiate: 62516e7dde448721c1f5815a9ee7e0669d034d52
   InstantiateStandard: 18ab1417ba787113350c71a5b2251f0b4448be67
-  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Realm: 31dc40934081ef740f60feedc46d88473cbfeb40
   RealmSwift: b5199e9a41f67b99f51acf6874a6166f5fbe93d1
@@ -77,6 +73,6 @@ SPEC CHECKSUMS:
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
 
-PODFILE CHECKSUM: a96194e61b29dd561d9e18bebdeb32c7e8f2885b
+PODFILE CHECKSUM: 19470e858adb51eae218f01a8eb9735b6ef28551
 
 COCOAPODS: 1.8.3
