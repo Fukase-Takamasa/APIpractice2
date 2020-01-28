@@ -14,7 +14,19 @@
                     <view key="view" contentMode="scaleToFill" id="Xg0-f5-5sl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GF0-5D-QrX">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.94280088699999998" green="0.94280088699999998" blue="0.94280088699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94280088699999998" green="0.94280088699999998" blue="0.94280088699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GF0-5D-QrX" firstAttribute="leading" secondItem="qRc-kM-7qQ" secondAttribute="leading" id="2Zu-UZ-VjE"/>
+                            <constraint firstItem="GF0-5D-QrX" firstAttribute="top" secondItem="qRc-kM-7qQ" secondAttribute="top" id="4l1-Yh-LuL"/>
+                            <constraint firstItem="qRc-kM-7qQ" firstAttribute="bottom" secondItem="GF0-5D-QrX" secondAttribute="bottom" id="BtI-Jq-NMe"/>
+                            <constraint firstItem="qRc-kM-7qQ" firstAttribute="trailing" secondItem="GF0-5D-QrX" secondAttribute="trailing" id="JDa-Uz-XVY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qRc-kM-7qQ"/>
                     </view>
                 </viewController>

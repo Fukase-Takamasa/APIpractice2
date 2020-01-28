@@ -24,7 +24,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.94280088699999998" green="0.94280088699999998" blue="0.94280088699999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jOG-mg-LTM" firstAttribute="leading" secondItem="KBz-Yw-9Ef" secondAttribute="leading" id="KIU-uU-NsG"/>
                             <constraint firstItem="KBz-Yw-9Ef" firstAttribute="trailing" secondItem="jOG-mg-LTM" secondAttribute="trailing" id="MOh-17-Qxk"/>
