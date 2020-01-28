@@ -26,8 +26,8 @@ class ArticleViewController: UIViewController, StoryboardInstantiatable {
         super.viewDidLoad()
         
         self.navigationItem.title = articleTitle
-        //let request = URLRequest(url: URL(string: articleUrl ?? "")!)
-        //webView.load(request)
+        let request = URLRequest(url: URL(string: articleUrl ?? "")!)
+        webView.load(request)
     }
     
 }
