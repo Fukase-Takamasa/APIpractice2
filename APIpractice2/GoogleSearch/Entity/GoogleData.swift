@@ -20,18 +20,8 @@ struct Items: Codable {
     var link: String
     //画像のURL
     var image: Url
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case link = "imageURL"
-        case image = "URL"
-    }
 }
 
 struct Url: Codable {
     var contextLink: String
-    
-    enum CodingKeys: String, CodingKey {
-        case contextLink = "articleURL"
-    }
 }
