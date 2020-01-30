@@ -70,7 +70,13 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.rx.modelSelected((GoogleDataSource.Item.self))
             .subscribe(onNext: { [weak self] model in
-                
+                self?.historyViewModel.inputs.cellModelData
+                .onNext(model)
+                let vc = ArticleViewController.instantiate()
+                print("modelの中身: \(model)")
+                vc.articleTitle = model.title
+                vc.articleUrl = model.image.contextLink
+                self?.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
         
         

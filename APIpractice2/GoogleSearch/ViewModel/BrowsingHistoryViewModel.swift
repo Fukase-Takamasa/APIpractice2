@@ -15,7 +15,7 @@ protocol BrowsingHistoryViewModelInputs {
 }
 
 protocol BrowsingHistoryViewModelOutputs {
-    var browsedArticles: Observable<[BrowsingHistoryDataSource]> {get}
+    var browsedArticles: Observable<[BrowsingHistoryDataSource.Element]> {get}
 }
 
 protocol BrowsingHistoryViewModelType {
@@ -29,7 +29,7 @@ class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryV
     var cellModelData: AnyObserver<GoogleDataSource.Item>
     
     //output
-    var browsedArticles: Observable<[BrowsingHistoryDataSource]>
+    var browsedArticles: Observable<[BrowsingHistoryDataSource.Element]>
 
     //other
     private let scheduler: SchedulerType
@@ -40,7 +40,7 @@ class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryV
         self.scheduler = scheduler
         
         //output
-        let _browsedArticles = PublishRelay<[BrowsingHistoryDataSource]>()
+        let _browsedArticles = PublishRelay<[BrowsingHistoryDataSource.Element]>()
         browsedArticles = _browsedArticles.asObservable()
         
         //input
@@ -49,12 +49,14 @@ class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryV
             guard let data = element.element else {
                 return
             }
+            print("VM:cellModelDataの中身: \(data)")
             _cellModelData.accept(data)
         }
         
         _cellModelData.subscribe(onNext: { element in
             let dataSource = BrowsingHistoryDataSource.init(items: [element])
-            _browsedArticles.accept([dataSource])
+            print("dataSourceの中身: \([dataSource.items])")
+            _browsedArticles.accept([dataSource.items])
             }).disposed(by: disposeBag)
     }
 }
