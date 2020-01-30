@@ -73,10 +73,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
             .subscribe(onNext: { [weak self] model in
                 self?.addBrowsingHistory(title: model.title, imageUrl: model.link, articleUrl: model.image.contextLink)
                 print("VC:閲覧履歴に追加しました。")
-                print(self?.browsingHistoryVC.dataSource.count)
-                if !(self?.browsingHistoryVC.dataSource.isEmpty ?? true) {
-                    print(self?.browsingHistoryVC.dataSource.last!.title)
-                }
+                print("browsingHistoryVC.dataSource.itemsの中身: \(self?.browsingHistoryVC.dataSource.items)")
                 let vc = ArticleViewController.instantiate()
                 print("modelの中身: \(model)")
                 vc.articleTitle = model.title
@@ -92,8 +89,14 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     }
     
     func addBrowsingHistory(title: String, imageUrl: String, articleUrl: String) {
-        let newArticle = BrowsingHistoryData.BrowsedArticle(title: title, link: imageUrl, contextLink: articleUrl)
-        browsingHistoryVC.dataSource += [newArticle]
+        let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
+        browsingHistoryVC.dataSource.items += [newArticle]
+        print("browsingHistoryVC.dataSource.itemsの中身: \(browsingHistoryVC.dataSource.items)")
+    }
+    
+    func addBrowsingHistory2(title: String, imageUrl: String, articleUrl: String) {
+        let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
+        BrowsingHistoryDataSource(items: [newArticle])
     }
     
 }

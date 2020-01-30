@@ -18,6 +18,13 @@ class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, Stor
 
     @IBOutlet weak var tableView: UITableView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        self.tableView.reloadData()
+        print("リロードしました")
+        print("browsingHistoryDataSource.itemsの中身: \(self.dataSource.items)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
