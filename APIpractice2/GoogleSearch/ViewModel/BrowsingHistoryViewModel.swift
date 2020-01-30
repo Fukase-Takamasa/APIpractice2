@@ -11,10 +11,11 @@ import RxSwift
 import RxCocoa
 
 protocol BrowsingHistoryViewModelInputs {
-    
+    var cellModelData: AnyObserver<GoogleDataSource.Item> {get}
 }
 
 protocol BrowsingHistoryViewModelOutputs {
+    var browsedArticles: Observable<[BrowsingHistoryDataSource]> {get}
 }
 
 protocol BrowsingHistoryViewModelType {
@@ -25,9 +26,11 @@ protocol BrowsingHistoryViewModelType {
 class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryViewModelOutputs {
     
     //input
+    var cellModelData: AnyObserver<GoogleDataSource.Item>
     
     //output
-    
+    var browsedArticles: Observable<[BrowsingHistoryDataSource]>
+
     //other
     private let scheduler: SchedulerType
     private let disposeBag = DisposeBag()
@@ -36,12 +39,23 @@ class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryV
         //other
         self.scheduler = scheduler
         
-        
         //output
+        let _browsedArticles = PublishRelay<[BrowsingHistoryDataSource]>()
+        browsedArticles = _browsedArticles.asObservable()
         
         //input
+        let _cellModelData = PublishRelay<GoogleDataSource.Item>()
+        self.cellModelData = AnyObserver<GoogleDataSource.Item>() { element in
+            guard let data = element.element else {
+                return
+            }
+            _cellModelData.accept(data)
+        }
         
-        
+        _cellModelData.subscribe(onNext: { element in
+            let dataSource = BrowsingHistoryDataSource.init(items: [element])
+            _browsedArticles.accept([dataSource])
+            }).disposed(by: disposeBag)
     }
 }
 

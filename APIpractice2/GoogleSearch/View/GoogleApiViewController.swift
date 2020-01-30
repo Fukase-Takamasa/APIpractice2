@@ -19,6 +19,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
+    let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
     
     let browsingHistoryVC = BrowsingHistoryViewController.instantiate()
     
@@ -70,16 +71,19 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
         tableView.rx.modelSelected((GoogleDataSource.Item.self))
-            .subscribe(onNext: { [weak self] model in
-                self?.addBrowsingHistory(title: model.title, imageUrl: model.link, articleUrl: model.image.contextLink)
-                print("VC:閲覧履歴に追加しました。")
-                print("browsingHistoryVC.dataSource.itemsの中身: \(self?.browsingHistoryVC.dataSource.items)")
-                let vc = ArticleViewController.instantiate()
-                print("modelの中身: \(model)")
-                vc.articleTitle = model.title
-                vc.articleUrl = model.image.contextLink
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }).disposed(by: disposeBag)
+            .bind(to: historyViewModel.inputs.cellModelData)
+            .disposed(by: disposeBag)
+        
+         //   .subscribe(onNext: { [weak self] model in
+         //       self?.addBrowsingHistory(title: model.title, imageUrl: model.link, articleUrl: model.image.contextLink)
+         //       print("VC:閲覧履歴に追加しました。")
+         //       print("browsingHistoryVC.dataSource.itemsの中身: \(self?.browsingHistoryVC.dataSource.items)")
+         //       let vc = ArticleViewController.instantiate()
+         //       print("modelの中身: \(model)")
+         //       vc.articleTitle = model.title
+         //       vc.articleUrl = model.image.contextLink
+         //       self?.navigationController?.pushViewController(vc, animated: true)
+         //   }).disposed(by: disposeBag)
 
     }
     
@@ -88,16 +92,16 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         favoriteArticleList += [newArticle]
     }
     
-    func addBrowsingHistory(title: String, imageUrl: String, articleUrl: String) {
-        let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
-        browsingHistoryVC.dataSource.items += [newArticle]
-        print("browsingHistoryVC.dataSource.itemsの中身: \(browsingHistoryVC.dataSource.items)")
-    }
+    //func addBrowsingHistory(title: String, imageUrl: String, articleUrl: String) {
+    //    let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
+    //    browsingHistoryVC.dataSource.items += [newArticle]
+    //    print("browsingHistoryVC.dataSource.itemsの中身: \(browsingHistoryVC.dataSource.items)")
+    //}
     
-    func addBrowsingHistory2(title: String, imageUrl: String, articleUrl: String) {
-        let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
-        BrowsingHistoryDataSource(items: [newArticle])
-    }
+    //func addBrowsingHistory2(title: String, imageUrl: String, articleUrl: String) {
+    //    let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
+    //    BrowsingHistoryDataSource(items: [newArticle])
+    //}
     
 }
 

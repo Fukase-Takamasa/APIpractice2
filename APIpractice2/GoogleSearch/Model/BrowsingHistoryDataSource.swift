@@ -10,11 +10,11 @@ import UIKit
 import Foundation
 
 class BrowsingHistoryDataSource: NSObject {
-    typealias Element = [BrowsingHistoryData]
+    typealias Item = GoogleData.Items
     
-    var items: Element
+    var items: [Item]
     
-    init(items: Element) {
+    init(items: [Item]) {
         self.items = items
     }
     

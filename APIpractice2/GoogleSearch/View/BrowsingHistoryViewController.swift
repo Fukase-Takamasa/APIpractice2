@@ -14,6 +14,8 @@ import InstantiateStandard
 
 class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, StoryboardInstantiatable {
 
+    let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
+    
     var dataSource: BrowsingHistoryDataSource = BrowsingHistoryDataSource(items: [])
 
     @IBOutlet weak var tableView: UITableView!
@@ -31,6 +33,12 @@ class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, Stor
         tableView.dataSource = dataSource
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
+        
+        //output
+        historyViewModel.outputs.browsedArticles
+            .subscribe(onNext: { element in
+                
+            })
         
         print("カウント:\(dataSource.items.count)")
         if !dataSource.items.isEmpty {
@@ -60,7 +68,7 @@ extension BrowsingHistoryViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ArticleViewController.instantiate()
         vc.articleTitle = dataSource.items[indexPath.row].title
-        vc.articleUrl = dataSource.items[indexPath.row].contextLink
+        vc.articleUrl = dataSource.items[indexPath.row].image.contextLink
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
