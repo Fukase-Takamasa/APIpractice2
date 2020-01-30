@@ -51,14 +51,32 @@
                     <connections>
                         <segue destination="u6c-c4-VKy" kind="relationship" relationship="viewControllers" id="ezY-C4-DKo"/>
                         <segue destination="fNZ-Zx-JfI" kind="relationship" relationship="viewControllers" id="NDr-Rt-LW3"/>
+                        <segue destination="eHq-2H-Dx0" kind="relationship" relationship="viewControllers" id="shZ-2P-XcF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wOO-R0-NTp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3517" y="44"/>
+            <point key="canvasLocation" x="3667" y="556"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="PrH-KB-DVP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eHq-2H-Dx0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" image="clock" catalog="system" id="ag6-oU-Qaj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Chx-TT-NmT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5l-Tn-AAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4506" y="1134"/>
         </scene>
     </scenes>
     <resources>
+        <image name="clock" catalog="system" width="64" height="60"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="star" catalog="system" width="64" height="58"/>
     </resources>

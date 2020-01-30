@@ -25,7 +25,9 @@
 		591344A723960E0B001F9862 /* APIpractice2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344A623960E0B001F9862 /* APIpractice2UITests.swift */; };
 		591344B62396294C001F9862 /* QiitaApiCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591344B42396294C001F9862 /* QiitaApiCell1.swift */; };
 		591344B72396294C001F9862 /* QiitaApiCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591344B52396294C001F9862 /* QiitaApiCell1.xib */; };
-		597CBFCF23E282FA00A51144 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CBFCE23E282FA00A51144 /* File.swift */; };
+		597CBFCF23E282FA00A51144 /* BrowsingHistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CBFCE23E282FA00A51144 /* BrowsingHistoryData.swift */; };
+		597CBFD123E2857600A51144 /* BrowsingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CBFD023E2857600A51144 /* BrowsingHistoryViewController.swift */; };
+		597CBFD323E2858A00A51144 /* BrowsingHistoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597CBFD223E2858A00A51144 /* BrowsingHistoryViewController.storyboard */; };
 		5984D73223DED304000108D7 /* FavoriteArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5984D73123DED304000108D7 /* FavoriteArticleViewModel.swift */; };
 		59893A0623DB017E00C4FA73 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59893A0523DB017E00C4FA73 /* ArticleViewController.swift */; };
 		59893A0823DB019400C4FA73 /* ArticleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59893A0723DB019400C4FA73 /* ArticleViewController.storyboard */; };
@@ -89,7 +91,9 @@
 		591344A823960E0B001F9862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		591344B42396294C001F9862 /* QiitaApiCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApiCell1.swift; sourceTree = "<group>"; };
 		591344B52396294C001F9862 /* QiitaApiCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaApiCell1.xib; sourceTree = "<group>"; };
-		597CBFCE23E282FA00A51144 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		597CBFCE23E282FA00A51144 /* BrowsingHistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsingHistoryData.swift; sourceTree = "<group>"; };
+		597CBFD023E2857600A51144 /* BrowsingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsingHistoryViewController.swift; sourceTree = "<group>"; };
+		597CBFD223E2858A00A51144 /* BrowsingHistoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BrowsingHistoryViewController.storyboard; sourceTree = "<group>"; };
 		5984D73123DED304000108D7 /* FavoriteArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArticleViewModel.swift; sourceTree = "<group>"; };
 		59893A0523DB017E00C4FA73 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		59893A0723DB019400C4FA73 /* ArticleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArticleViewController.storyboard; sourceTree = "<group>"; };
@@ -280,7 +284,7 @@
 			children = (
 				5903C47A239A65B000841106 /* GoogleData.swift */,
 				59C2D1AF23E043FF00515C9D /* FavoriteArticlesData.swift */,
-				597CBFCE23E282FA00A51144 /* File.swift */,
+				597CBFCE23E282FA00A51144 /* BrowsingHistoryData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -313,6 +317,8 @@
 				59893A0723DB019400C4FA73 /* ArticleViewController.storyboard */,
 				59926E9F23D82F39009301D2 /* FavoriteArticlesViewController.swift */,
 				59926EA123D82F5D009301D2 /* FavoriteArticlesViewController.storyboard */,
+				597CBFD023E2857600A51144 /* BrowsingHistoryViewController.swift */,
+				597CBFD223E2858A00A51144 /* BrowsingHistoryViewController.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59926EA223D82F5D009301D2 /* FavoriteArticlesViewController.storyboard in Resources */,
+				597CBFD323E2858A00A51144 /* BrowsingHistoryViewController.storyboard in Resources */,
 				59F34B9D2397C52C00CEAD1C /* GoogleApiCell.xib in Resources */,
 				670254CE239B5B5500C0B0CA /* Main.storyboard in Resources */,
 				59F34B9723979D2500CEAD1C /* QiitaApiCell2.xib in Resources */,
@@ -571,6 +578,7 @@
 			files = (
 				670254CC239B5B3A00C0B0CA /* Main.swift in Sources */,
 				59F34B9C2397C52C00CEAD1C /* GoogleApiCell.swift in Sources */,
+				597CBFD123E2857600A51144 /* BrowsingHistoryViewController.swift in Sources */,
 				59C2D1B023E043FF00515C9D /* FavoriteArticlesData.swift in Sources */,
 				5903C47B239A65B000841106 /* GoogleData.swift in Sources */,
 				59F34B9623979D2500CEAD1C /* QiitaApiCell2.swift in Sources */,
@@ -578,7 +586,7 @@
 				5903C479239A658E00841106 /* QiitaData.swift in Sources */,
 				59E7F72D23AC7CC600293B93 /* GoogleViewModel.swift in Sources */,
 				5903C476239A63EB00841106 /* GoogleApi.swift in Sources */,
-				597CBFCF23E282FA00A51144 /* File.swift in Sources */,
+				597CBFCF23E282FA00A51144 /* BrowsingHistoryData.swift in Sources */,
 				5903C47D239A68D800841106 /* TableViewUtil.swift in Sources */,
 				591344B62396294C001F9862 /* QiitaApiCell1.swift in Sources */,
 				59F34B9323975DD500CEAD1C /* QiitaArticleViewController.swift in Sources */,

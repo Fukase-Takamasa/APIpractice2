@@ -14,7 +14,7 @@ import InstantiateStandard
 
 class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable {
     
-    var dataSource = FavoriteArticleList().favoriteArticle
+    var dataSource = FavoriteArticlesData().favoriteArticle
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,7 +31,7 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
     }
     
     func addFavoriteArticle(title: String, imageUrl: String, articleUrl: String) {
-        let newArticle = FavoriteArticleList.FavoriteArticle(title: title, link: imageUrl, contextLink: articleUrl)
+        let newArticle = FavoriteArticlesData.FavoriteArticle(title: title, link: imageUrl, contextLink: articleUrl)
         dataSource += [newArticle]
     }
     

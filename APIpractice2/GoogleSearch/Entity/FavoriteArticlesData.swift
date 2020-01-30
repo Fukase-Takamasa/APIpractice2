@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FavoriteArticleList {
+class FavoriteArticlesData {
     var favoriteArticle: [FavoriteArticle] = [] {
         didSet {
             let vc = FavoriteArticlesViewController.instantiate()

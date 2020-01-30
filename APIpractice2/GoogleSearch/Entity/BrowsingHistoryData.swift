@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BrowsingHistory {
+class BrowsingHistoryData {
     var browsingHistory: [BrowsedArticle] = [] {
         didSet {
             
