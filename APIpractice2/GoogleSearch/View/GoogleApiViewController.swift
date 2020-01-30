@@ -20,6 +20,8 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
     
+    var favoriteArticleList = FavoriteArticleList().favoriteArticle
+    
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: {
     dataSource, tableView, indexPath, item in
     let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath)
@@ -67,6 +69,10 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.rx.modelSelected((GoogleDataSource.Item.self))
             .subscribe(onNext: { [weak self] model in
+                print("カウント:\(self?.favoriteArticleList.count)")
+                self?.addFavoriteArticle(title: model.title, imageUrl: model.link, articleUrl: model.image.contextLink)
+                print("カウント:\(self?.favoriteArticleList.count)")
+                print("カウント:\(self?.favoriteArticleList[0].title)")
                 let vc = ArticleViewController.instantiate()
                 print("modelの中身: \(model)")
                 vc.articleTitle = model.title
@@ -75,6 +81,12 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
             }).disposed(by: disposeBag)
 
     }
+    
+    func addFavoriteArticle(title: String, imageUrl: String, articleUrl: String) {
+        let newArticle = FavoriteArticleList.FavoriteArticle(title: title, link: imageUrl, contextLink: articleUrl)
+        favoriteArticleList += [newArticle]
+    }
+    
 }
 
 

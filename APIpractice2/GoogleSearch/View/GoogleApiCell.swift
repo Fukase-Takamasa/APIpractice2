@@ -37,8 +37,8 @@ class GoogleApiCell: UITableViewCell, Reusable {
         super.awakeFromNib()
         // Initialization code
         //other
-        favoriteButton.rx.tap
-            .bind(to: viewModel.)
+        //favoriteButton.rx.tap
+        //    .bind(to: viewModel.)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

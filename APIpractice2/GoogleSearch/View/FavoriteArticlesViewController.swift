@@ -26,6 +26,8 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         
         addFavoriteArticle(title: "お気に入り1", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/15/Douglas_Squirrel_DSC3742vvc.jpg", articleUrl: "https://en.wikipedia.org/wiki/Douglas_squirrel")
+        print(dataSource.count)
+        print(dataSource[0].title)
     }
     
     func addFavoriteArticle(title: String, imageUrl: String, articleUrl: String) {
