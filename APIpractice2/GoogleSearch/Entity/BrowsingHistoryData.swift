@@ -11,7 +11,8 @@ import Foundation
 class BrowsingHistoryData {
     var browsingHistory: [BrowsedArticle] = [] {
         didSet {
-            
+            let vc = BrowsingHistoryViewController.instantiate()
+            vc.tableView.reloadData()
         }
     }
     
