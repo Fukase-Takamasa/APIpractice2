@@ -12,23 +12,27 @@ import RxCocoa
 import Instantiate
 import InstantiateStandard
 
-class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable {
-    let dataSource = BrowsingHistoryData().browsingHistory
+class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, StoryboardInstantiatable {
+
+    var dataSource: BrowsingHistoryDataSource = BrowsingHistoryDataSource(items: [])
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        tableView.dataSource = self
+        tableView.dataSource = dataSource
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         
+        print("カウント:\(dataSource.items.count)")
+        if !dataSource.items.isEmpty {
+            print("配列の最後尾要素のタイトル:\(dataSource.items.last!.title)")
+        }
     }
-    
 }
 
-extension BrowsingHistoryViewController: UITableViewDelegate, UITableViewDataSource {
+extension BrowsingHistoryViewController {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -46,22 +50,10 @@ extension BrowsingHistoryViewController: UITableViewDelegate, UITableViewDataSou
         return 0.1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataSource.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
-        let title = dataSource[indexPath.row].title
-        let imageUrl = dataSource[indexPath.row].link
-        cell.googleBindData(title: title, imageUrl: imageUrl)
-        return cell
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ArticleViewController.instantiate()
-        vc.articleTitle = dataSource[indexPath.row].title
-        vc.articleUrl = dataSource[indexPath.row].contextLink
+        vc.articleTitle = dataSource.items[indexPath.row].title
+        vc.articleUrl = dataSource.items[indexPath.row].contextLink
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

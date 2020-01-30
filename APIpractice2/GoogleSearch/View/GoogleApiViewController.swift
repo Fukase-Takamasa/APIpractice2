@@ -20,7 +20,8 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
     
-    var browsingHistory = BrowsingHistoryData().browsingHistory
+    let browsingHistoryVC = BrowsingHistoryViewController.instantiate()
+    
     var favoriteArticleList = FavoriteArticlesData().favoriteArticle
     
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: {
@@ -72,6 +73,10 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
             .subscribe(onNext: { [weak self] model in
                 self?.addBrowsingHistory(title: model.title, imageUrl: model.link, articleUrl: model.image.contextLink)
                 print("VC:閲覧履歴に追加しました。")
+                print(self?.browsingHistoryVC.dataSource.count)
+                if !(self?.browsingHistoryVC.dataSource.isEmpty ?? true) {
+                    print(self?.browsingHistoryVC.dataSource.last!.title)
+                }
                 let vc = ArticleViewController.instantiate()
                 print("modelの中身: \(model)")
                 vc.articleTitle = model.title
@@ -88,7 +93,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     func addBrowsingHistory(title: String, imageUrl: String, articleUrl: String) {
         let newArticle = BrowsingHistoryData.BrowsedArticle(title: title, link: imageUrl, contextLink: articleUrl)
-        browsingHistory += [newArticle]
+        browsingHistoryVC.dataSource += [newArticle]
     }
     
 }

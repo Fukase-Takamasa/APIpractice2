@@ -11,6 +11,7 @@ import Foundation
 class FavoriteArticlesData {
     var favoriteArticle: [FavoriteArticle] = [] {
         didSet {
+            print("data:閲覧履歴が追加されました。")
             let vc = FavoriteArticlesViewController.instantiate()
             vc.tableView.reloadData()
         }

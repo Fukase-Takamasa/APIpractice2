@@ -6,26 +6,18 @@
 //  Copyright © 2020 深瀬 貴将. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
-class BrowsingHistoryData {
-    var browsingHistory: [BrowsedArticle] = [] {
-        didSet {
-            print("data:閲覧履歴が追加されました。")
-            let vc = BrowsingHistoryViewController.instantiate()
-            vc.tableView.reloadData()
-        }
-    }
-    
-    class BrowsedArticle {
+struct BrowsingHistoryData {
         var title: String
         var link: String
         var contextLink: String
-        
-        init(title: String, link: String, contextLink: String) {
-            self.title = title
-            self.link = link
-            self.contextLink = contextLink
-        }
+    
+    init(title: String, link: String, contextLink: String) {
+        self.title = title
+        self.link = link
+        self.contextLink = contextLink
     }
 }
+
