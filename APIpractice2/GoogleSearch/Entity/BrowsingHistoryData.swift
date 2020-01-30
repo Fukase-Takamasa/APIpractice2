@@ -11,6 +11,7 @@ import Foundation
 class BrowsingHistoryData {
     var browsingHistory: [BrowsedArticle] = [] {
         didSet {
+            print("data:閲覧履歴が追加されました。")
             let vc = BrowsingHistoryViewController.instantiate()
             vc.tableView.reloadData()
         }

@@ -24,7 +24,6 @@ class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable 
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         
-        
     }
     
 }

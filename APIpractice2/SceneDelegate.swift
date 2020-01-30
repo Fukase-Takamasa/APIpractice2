@@ -27,6 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     print("case2")
                     let secondVC = FavoriteArticlesViewController.instantiate()
                     nc.setViewControllers([secondVC], animated: false)
+                case let (2, nc as UINavigationController):
+                    print("case3")
+                    let thirdVC = BrowsingHistoryViewController.instantiate()
+                    nc.setViewControllers([thirdVC], animated: false)
                 default:
                     print("default入りました〜")
                 }
