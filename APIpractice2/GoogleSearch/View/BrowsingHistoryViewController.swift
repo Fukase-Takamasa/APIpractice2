@@ -14,6 +14,7 @@ import InstantiateStandard
 
 class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, StoryboardInstantiatable {
 
+    let disposeBag = DisposeBag()
     let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
     
     var dataSource: BrowsingHistoryDataSource = BrowsingHistoryDataSource(items: [])
@@ -24,6 +25,7 @@ class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, Stor
         super.viewDidAppear(true)
         self.tableView.reloadData()
         print("リロードしました")
+        print("カウント:\(dataSource.items.count)")
         print("browsingHistoryDataSource.itemsの中身: \(self.dataSource.items)")
     }
     
@@ -37,13 +39,9 @@ class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, Stor
         //output
         historyViewModel.outputs.browsedArticles
             .subscribe(onNext: { element in
-                
-            })
+                print("subscribeしたelementの中身: \(element)")
+            }).disposed(by: disposeBag)
         
-        print("カウント:\(dataSource.items.count)")
-        if !dataSource.items.isEmpty {
-            print("配列の最後尾要素のタイトル:\(dataSource.items.last!.title)")
-        }
     }
 }
 
@@ -66,10 +64,10 @@ extension BrowsingHistoryViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ArticleViewController.instantiate()
-        vc.articleTitle = dataSource.items[indexPath.row].title
-        vc.articleUrl = dataSource.items[indexPath.row].image.contextLink
-        self.navigationController?.pushViewController(vc, animated: true)
+        //let vc = ArticleViewController.instantiate()
+        //vc.articleTitle = dataSource.items[indexPath.row].title
+        //vc.articleUrl = dataSource.items[indexPath.row].image.contextLink
+        //self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

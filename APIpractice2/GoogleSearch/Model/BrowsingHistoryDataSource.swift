@@ -10,11 +10,11 @@ import UIKit
 import Foundation
 
 class BrowsingHistoryDataSource: NSObject {
-    typealias Item = GoogleData.Items
+    typealias Element = [GoogleDataSource.Item]
     
-    var items: [Item]
+    var items: Element
     
-    init(items: [Item]) {
+    init(items: Element) {
         self.items = items
     }
     
@@ -28,9 +28,9 @@ extension BrowsingHistoryDataSource: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
-        let title = items[indexPath.row].title
-        let imageUrl = items[indexPath.row].link
-        cell.googleBindData(title: title, imageUrl: imageUrl)
+        //let title = items[indexPath.row]
+        //let imageUrl = items[indexPath.row].link
+        //cell.googleBindData(title: title, imageUrl: imageUrl)
         return cell
     }
     

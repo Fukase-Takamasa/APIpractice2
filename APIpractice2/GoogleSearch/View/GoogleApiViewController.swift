@@ -20,9 +20,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
     let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
-    
-    let browsingHistoryVC = BrowsingHistoryViewController.instantiate()
-    
+        
     var favoriteArticleList = FavoriteArticlesData().favoriteArticle
     
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: {
@@ -71,8 +69,15 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
         tableView.rx.modelSelected((GoogleDataSource.Item.self))
-            .bind(to: historyViewModel.inputs.cellModelData)
-            .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] model in
+                
+            }).disposed(by: disposeBag)
+        
+        
+            //.bind(to: historyViewModel.inputs.cellModelData)
+            //.disposed(by: disposeBag)
+    
+        
         
          //   .subscribe(onNext: { [weak self] model in
          //       self?.addBrowsingHistory(title: model.title, imageUrl: model.link, articleUrl: model.image.contextLink)

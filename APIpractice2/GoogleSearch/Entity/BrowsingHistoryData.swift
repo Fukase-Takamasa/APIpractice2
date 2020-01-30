@@ -9,10 +9,7 @@
 import UIKit
 import Foundation
 
-struct browsingHistoryData {
-    var items:[Items]
-    
-    struct Items: Codable {
+struct BrowsingHistoryData {
         //タイトル
         var title: String
         //画像のURL（リクエストパラメータでsearchTypeをimageに指定していると"link"に記事URLではなく画像のURLが返ってくる。
@@ -23,7 +20,6 @@ struct browsingHistoryData {
         struct Url: Codable {
             var contextLink: String
         }
-    }
 }
 
 //struct BrowsingHistoryData {
