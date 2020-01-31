@@ -39,6 +39,7 @@
 		59DA61B7239FAC4E0064367E /* GoogleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */; };
 		59E7F72D23AC7CC600293B93 /* GoogleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E7F72C23AC7CC600293B93 /* GoogleViewModel.swift */; };
 		59E7F73023AC7EB400293B93 /* GoogleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E7F72F23AC7EB400293B93 /* GoogleRepository.swift */; };
+		59EAA35323E410530046D379 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EAA35223E410530046D379 /* RealmModel.swift */; };
 		59F34B9323975DD500CEAD1C /* QiitaArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9223975DD500CEAD1C /* QiitaArticleViewController.swift */; };
 		59F34B9623979D2500CEAD1C /* QiitaApiCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F34B9423979D2500CEAD1C /* QiitaApiCell2.swift */; };
 		59F34B9723979D2500CEAD1C /* QiitaApiCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F34B9523979D2500CEAD1C /* QiitaApiCell2.xib */; };
@@ -107,6 +108,7 @@
 		59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDataSource.swift; sourceTree = "<group>"; };
 		59E7F72C23AC7CC600293B93 /* GoogleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleViewModel.swift; sourceTree = "<group>"; };
 		59E7F72F23AC7EB400293B93 /* GoogleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleRepository.swift; sourceTree = "<group>"; };
+		59EAA35223E410530046D379 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		59F34B9223975DD500CEAD1C /* QiitaArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaArticleViewController.swift; sourceTree = "<group>"; };
 		59F34B9423979D2500CEAD1C /* QiitaApiCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApiCell2.swift; sourceTree = "<group>"; };
 		59F34B9523979D2500CEAD1C /* QiitaApiCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaApiCell2.xib; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */,
 				597CBFD423E2AA4F00A51144 /* BrowsingHistoryDataSource.swift */,
+				59EAA35223E410530046D379 /* RealmModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				59E7F72D23AC7CC600293B93 /* GoogleViewModel.swift in Sources */,
 				5903C476239A63EB00841106 /* GoogleApi.swift in Sources */,
 				597CBFCF23E282FA00A51144 /* BrowsingHistoryData.swift in Sources */,
+				59EAA35323E410530046D379 /* RealmModel.swift in Sources */,
 				5903C47D239A68D800841106 /* TableViewUtil.swift in Sources */,
 				597CBFD723E2D45200A51144 /* BrowsingHistoryViewModel.swift in Sources */,
 				591344B62396294C001F9862 /* QiitaApiCell1.swift in Sources */,
