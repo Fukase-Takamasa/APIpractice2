@@ -55,20 +55,24 @@ class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryV
         }
         
         _cellModelData.subscribe(onNext: { element in
+            
+            //Realmに保存する処理
             RealmFunction.addBrowsedArticleToRealm(title: element.title, imageUrl: element.link, articleUrl: element.image.contextLink)
-            do {
-                let realm = try Realm()
-                _browsedArticles.accept(realm.objects(BrowsingHistory.self))
-                print("realm.objectsの中身: \(realm.objects(BrowsingHistory.self))")
-                print("RealmFunction: データを取得してacceptしました")
-            }catch {
-                print("RealmFunction: データを取得できませんでした")
-            }
+            
+            //Realmに保存されているデータを取得する処理
+            //do {
+            //    let realm = try Realm()
+                //_browsedArticles.accept(realm.objects(BrowsingHistory.self))
+           //     print("realm.objectsの中身: \(realm.objects(BrowsingHistory.self))")
+           //     print("RealmFunction: データを取得してacceptしました")
+           // }catch {
+           //     print("RealmFunction: データを取得できませんでした")
+           // }
             
             
             //↓で取得したURLの使い方
             //RealmBrowser開いて、open file→　command + shift + Gでパス入力フォームを表示してから、 取得したURLのfile://より後ろだけを貼り付け。
-            print("Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
+           // print("Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
             }).disposed(by: disposeBag)
     }
 }

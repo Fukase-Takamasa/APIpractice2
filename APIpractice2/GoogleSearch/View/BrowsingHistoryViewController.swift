@@ -37,12 +37,26 @@ class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable 
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         
+        //Realmに保存されているデータを取得する処理
+         do {
+             let realm = try Realm()
+             browsingHistoryList = realm.objects(BrowsingHistory.self)
+             print("realm.objectsの中身: \(realm.objects(BrowsingHistory.self))")
+         }catch {
+             print("RealmFunction: データを取得できませんでした")
+         }
+         
+         
+         //↓で取得したURLの使い方
+         //RealmBrowser開いて、open file→　command + shift + Gでパス入力フォームを表示してから、 取得したURLのfile://より後ろだけを貼り付け。
+         print("Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
+        
         //output
-        historyViewModel.outputs.browsedArticles
-            .subscribe(onNext: { element in
-                print("subscribeしたelementの中身: \(element)")
-            }).disposed(by: disposeBag)
-        print("viewDidLoadです")
+        //historyViewModel.outputs.browsedArticles
+        //    .subscribe(onNext: { element in
+        //        print("subscribeしたelementの中身: \(element)")
+        //    }).disposed(by: disposeBag)
+        //print("viewDidLoadです")
     }
 }
 
