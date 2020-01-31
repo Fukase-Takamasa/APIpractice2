@@ -16,8 +16,6 @@ target 'APIpractice2' do
   pod 'RealmSwift'
   pod 'Hero'
   pod 'IBAnimatable'
-  pod 'RealmSwift'
-
 
   target 'APIpractice2Tests' do
     inherit! :search_paths
