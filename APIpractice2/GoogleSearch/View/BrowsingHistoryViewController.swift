@@ -9,15 +9,18 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
 import Instantiate
 import InstantiateStandard
 
-class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, StoryboardInstantiatable {
+class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable {
 
     let disposeBag = DisposeBag()
     let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
     
-    var dataSource: BrowsingHistoryDataSource = BrowsingHistoryDataSource(items: [])
+    //var dataSource: BrowsingHistoryDataSource = BrowsingHistoryDataSource(items: [])
+    
+    var browsingHistoryList: Results<BrowsingHistory>?
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,14 +28,12 @@ class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, Stor
         super.viewDidAppear(true)
         self.tableView.reloadData()
         print("リロードしました")
-        print("カウント:\(dataSource.items.count)")
-        print("browsingHistoryDataSource.itemsの中身: \(self.dataSource.items)")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        tableView.dataSource = dataSource
+        tableView.dataSource = self
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         
@@ -41,11 +42,11 @@ class BrowsingHistoryViewController: UIViewController, UITableViewDelegate, Stor
             .subscribe(onNext: { element in
                 print("subscribeしたelementの中身: \(element)")
             }).disposed(by: disposeBag)
-        
+        print("viewDidLoadです")
     }
 }
 
-extension BrowsingHistoryViewController {
+extension BrowsingHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -63,11 +64,29 @@ extension BrowsingHistoryViewController {
         return 0.1
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return browsingHistoryList?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
+        guard let browsingHistoryList = browsingHistoryList else {
+            return UITableViewCell()
+        }
+        let title = browsingHistoryList[indexPath.row].title
+        let imageUrl = browsingHistoryList[indexPath.row].imageUrl
+        cell.googleBindData(title: title, imageUrl: imageUrl)
+        return cell
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let vc = ArticleViewController.instantiate()
-        //vc.articleTitle = dataSource.items[indexPath.row].title
-        //vc.articleUrl = dataSource.items[indexPath.row].image.contextLink
-        //self.navigationController?.pushViewController(vc, animated: true)
+        let vc = ArticleViewController.instantiate()
+        guard let browsingHistoryList = browsingHistoryList else {
+            return
+        }
+        vc.articleTitle = browsingHistoryList[indexPath.row].title
+        vc.articleUrl = browsingHistoryList[indexPath.row].articleUrl
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

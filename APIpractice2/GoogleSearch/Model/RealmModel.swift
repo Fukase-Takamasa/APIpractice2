@@ -22,8 +22,25 @@ class BrowsingHistory: Object {
 }
 
 open class RealmFunction {
-    static func addArticleToRealm(title: String, imageUrl: String, articleUrl: String, realmModel: Object) -> Bool {
-        let realmModel = realmModel()
+    
+    static func addFavoriteArticleToRealm(title: String, imageUrl: String, articleUrl: String) {
+        let realmModel = FavoriteArticles()
+        realmModel.title = title
+        realmModel.imageUrl = imageUrl
+        realmModel.articleUrl = articleUrl
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.add(realmModel)
+                print("RealmFunction: addしました")
+            }
+        } catch {
+            print("RealmFunction: addできませんでした")
+        }
+    }
+    
+    static func addBrowsedArticleToRealm(title: String, imageUrl: String, articleUrl: String) {
+        let realmModel = BrowsingHistory()
         realmModel.title = title
         realmModel.imageUrl = imageUrl
         realmModel.articleUrl = articleUrl
@@ -33,22 +50,9 @@ open class RealmFunction {
             try realm.write {
                 realm.add(realmModel)
                 print("RealmFunction: addしました")
-                return true
             }
         } catch {
             print("RealmFunction: addできませんでした")
-            return false
-        }
-    }
-    
-    static func getArticlesFromRealm(realmModel: Object) -> Results<Object> {
-        do {
-            let realm = try Realm()
-            return try realm.objects(realmModel.self)
-            print("RealmFunction: データを取得してreturnしました")
-        }catch {
-            print("RealmFunction: データを取得できませんでした")
-            return Results<Object>
         }
     }
 }
