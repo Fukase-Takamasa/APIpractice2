@@ -15,6 +15,7 @@ import RxCocoa
 
 class GoogleApiCell: UITableViewCell, Reusable {
     
+    let disposeBag = DisposeBag()
     let viewModel: FavoriteArticleViewModelType = FavoriteArticleViewModel()
     
     @IBOutlet weak var label: UILabel!
@@ -36,9 +37,12 @@ class GoogleApiCell: UITableViewCell, Reusable {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //other
-        //favoriteButton.rx.tap
-        //    .bind(to: viewModel.)
+        //input
+        favoriteButton.rx.tap.subscribe{ _ in
+            print("button.tag: \(self.favoriteButton.tag)")
+            self.viewModel.inputs
+        }.disposed(by: disposeBag)
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

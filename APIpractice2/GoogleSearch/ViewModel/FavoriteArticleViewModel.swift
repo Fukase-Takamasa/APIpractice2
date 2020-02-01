@@ -22,6 +22,8 @@ protocol FavoriteArticleViewModelType {
     var outputs: FavoriteArticleViewModelOutputs {get}
 }
 
+
+
 class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleViewModelOutputs {
     
     //input

@@ -33,6 +33,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     print(indexPath)
     cell.googleBindData(title: title, imageUrl: imageUrl)
     //cell.googleBindTitle(title: title)
+    cell.favoriteButton.tag = indexPath.row
     print("セルを生成")
     return cell
     })
