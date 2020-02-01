@@ -40,7 +40,7 @@ class GoogleApiCell: UITableViewCell, Reusable {
         //input
         favoriteButton.rx.tap.subscribe{ _ in
             print("button.tag: \(self.favoriteButton.tag)")
-            self.viewModel.inputs
+            //self.viewModel.inputs
         }.disposed(by: disposeBag)
         
     }

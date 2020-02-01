@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol FavoriteArticleViewModelInputs {
-    
+    var tappedButtonIndex: AnyObserver<Int> {get}
 }
 
 protocol FavoriteArticleViewModelOutputs {
@@ -27,6 +27,7 @@ protocol FavoriteArticleViewModelType {
 class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleViewModelOutputs {
     
     //input
+    var tappedButtonIndex: AnyObserver<Int>
     
     //output
     
@@ -38,10 +39,18 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         //other
         self.scheduler = scheduler
         
-        
         //output
         
         //input
+        let _tappedButtonIndex = PublishRelay<Int>()
+        self.tappedButtonIndex = AnyObserver<Int>() { element in
+            guard let index = element.element else {
+                return
+            }
+            _tappedButtonIndex.accept(index)
+        }
+        
+        
         
         
     }
