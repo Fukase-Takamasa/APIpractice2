@@ -21,9 +21,9 @@ class BrowsingHistory: Object {
     @objc dynamic var articleUrl = ""
 }
 
-open class RealmFunction {
+open class RealmModel {
     
-    static func addFavoriteArticleToRealm(title: String, imageUrl: String, articleUrl: String) {
+    static func addFavoriteArticle(title: String, imageUrl: String, articleUrl: String) {
         let realmModel = FavoriteArticles()
         realmModel.title = title
         realmModel.imageUrl = imageUrl
@@ -39,7 +39,7 @@ open class RealmFunction {
         }
     }
     
-    static func addBrowsedArticleToRealm(title: String, imageUrl: String, articleUrl: String) {
+    static func addBrowsedArticle(title: String, imageUrl: String, articleUrl: String) {
         let realmModel = BrowsingHistory()
         realmModel.title = title
         realmModel.imageUrl = imageUrl

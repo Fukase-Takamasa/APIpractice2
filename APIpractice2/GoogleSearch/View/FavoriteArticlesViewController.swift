@@ -14,8 +14,6 @@ import InstantiateStandard
 
 class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable {
     
-    var dataSource = FavoriteArticlesData().favoriteArticle
-
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -24,23 +22,11 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         tableView.dataSource = self
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
-        
-        addFavoriteArticle(title: "お気に入り1", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/15/Douglas_Squirrel_DSC3742vvc.jpg", articleUrl: "https://en.wikipedia.org/wiki/Douglas_squirrel")
-        print(dataSource.count)
-        print(dataSource.last!.title)
-        
-        addFavoriteArticle(title: "お気に入り2", imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/15/Douglas_Squirrel_DSC3742vvc.jpg", articleUrl: "https://en.wikipedia.org/wiki/Douglas_squirrel")
-        print(dataSource.count)
-        print(dataSource.last!.title)
     }
     
-    func addFavoriteArticle(title: String, imageUrl: String, articleUrl: String) {
-        let newArticle = FavoriteArticlesData.FavoriteArticle(title: title, link: imageUrl, contextLink: articleUrl)
-        dataSource += [newArticle]
-    }
-    
-
 }
+
+
 
 extension FavoriteArticlesViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -61,22 +47,22 @@ extension FavoriteArticlesViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dataSource.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
-        let title = dataSource[indexPath.row].title
-        let imageUrl = dataSource[indexPath.row].link
-        cell.googleBindData(title: title, imageUrl: imageUrl)
+//        let title = dataSource[indexPath.row].title
+//        let imageUrl = dataSource[indexPath.row].link
+//        cell.googleBindData(title: title, imageUrl: imageUrl)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ArticleViewController.instantiate()
-        vc.articleTitle = dataSource[indexPath.row].title
-        vc.articleUrl = dataSource[indexPath.row].contextLink
+//        vc.articleTitle = dataSource[indexPath.row].title
+//        vc.articleUrl = dataSource[indexPath.row].contextLink
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

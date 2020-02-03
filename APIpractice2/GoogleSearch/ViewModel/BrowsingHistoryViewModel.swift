@@ -57,7 +57,7 @@ class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryV
         _cellModelData.subscribe(onNext: { element in
             
             //Realmに保存する処理
-            RealmFunction.addBrowsedArticleToRealm(title: element.title, imageUrl: element.link, articleUrl: element.image.contextLink)
+            RealmModel.addBrowsedArticle(title: element.title, imageUrl: element.link, articleUrl: element.image.contextLink)
             
             //Realmに保存されているデータを取得する処理
             //do {

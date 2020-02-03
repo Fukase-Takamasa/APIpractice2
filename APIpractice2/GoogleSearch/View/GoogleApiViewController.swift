@@ -20,9 +20,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
     let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
-        
-    var favoriteArticleList = FavoriteArticlesData().favoriteArticle
-    
+            
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: {
     dataSource, tableView, indexPath, item in
     let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath)
@@ -98,23 +96,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
          //   }).disposed(by: disposeBag)
 
     }
-    
-    func addFavoriteArticle(title: String, imageUrl: String, articleUrl: String) {
-        let newArticle = FavoriteArticlesData.FavoriteArticle(title: title, link: imageUrl, contextLink: articleUrl)
-        favoriteArticleList += [newArticle]
-    }
-    
-    //func addBrowsingHistory(title: String, imageUrl: String, articleUrl: String) {
-    //    let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
-    //    browsingHistoryVC.dataSource.items += [newArticle]
-    //    print("browsingHistoryVC.dataSource.itemsの中身: \(browsingHistoryVC.dataSource.items)")
-    //}
-    
-    //func addBrowsingHistory2(title: String, imageUrl: String, articleUrl: String) {
-    //    let newArticle = BrowsingHistoryData(title: title, link: imageUrl, contextLink: articleUrl)
-    //    BrowsingHistoryDataSource(items: [newArticle])
-    //}
-    
+
 }
 
 
