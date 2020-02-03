@@ -9,10 +9,13 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 protocol GoogleViewModelInputs {
     var searchQueryText: AnyObserver<String> {get}
     var searchButtonTapped: AnyObserver<Void> {get}
+    var tappedCellButtonIndex: AnyObserver<Int> {get}
+    var cellModelData: AnyObserver<GoogleDataSource.Item> {get}
 }
 
 protocol GoogleViewModelOutputs {
@@ -30,6 +33,8 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     //input
     var searchQueryText: AnyObserver<String>
     var searchButtonTapped: AnyObserver<Void>
+    var tappedCellButtonIndex: AnyObserver<Int>
+    var cellModelData: AnyObserver<GoogleDataSource.Item>
     
     //output
     var articles: Observable<[GoogleDataSource]>
@@ -52,7 +57,33 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         error = _error.asObservable()
         
         
-        //input        
+        //input
+        let _tappedCellButtonIndex = PublishRelay<Int>()
+        self.tappedCellButtonIndex = AnyObserver<Int>() { element in
+            guard let index = element.element else {
+                return
+            }
+            _tappedCellButtonIndex.accept(index)
+        }
+        
+        _tappedCellButtonIndex.subscribe(onNext: {event in
+            
+            }).disposed(by: disposeBag)
+        
+        let _cellModelData = PublishRelay<GoogleDataSource.Item>()
+        self.cellModelData = AnyObserver<GoogleDataSource.Item>() { element in
+            guard let data = element.element else {
+                return
+            }
+            print("VM:cellModelDataの中身: \(data)")
+            _cellModelData.accept(data)
+        }
+        _cellModelData.subscribe(onNext: { element in
+            //Realmに保存する処理
+            
+            
+            }).disposed(by: disposeBag)
+        
         let _searchQueryText = BehaviorRelay<String>(value: "")
         self.searchQueryText = AnyObserver<String>() { element in
             guard let text = element.element else {
