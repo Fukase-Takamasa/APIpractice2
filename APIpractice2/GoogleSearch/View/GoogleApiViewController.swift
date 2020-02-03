@@ -31,7 +31,11 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     print(indexPath)
     cell.googleBindData(title: title, imageUrl: imageUrl)
     //cell.googleBindTitle(title: title)
-    cell.favoriteButton.tag = indexPath.row
+    //cell.favoriteButton.tag = indexPath.row
+    cell.favoriteButton.rx.tap.subscribe{ _ in
+        
+        print("cellButtonTapped")
+    }.disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
     print("セルを生成")
     return cell
     })
@@ -58,6 +62,9 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         searchButton.rx.tap
             .bind(to: viewModel.inputs.searchButtonTapped)
             .disposed(by: disposeBag)
+        
+        //ここでカスタムセル上のボタンtapも通知したい
+        
         
         //output
         viewModel.outputs.articles
