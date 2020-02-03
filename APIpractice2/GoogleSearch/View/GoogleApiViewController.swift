@@ -23,19 +23,22 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
             
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: {
     dataSource, tableView, indexPath, item in
-    let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath)
-    as! GoogleApiCell
-    print(item)
-    let title = item.title
-    let imageUrl = item.link
-    print(indexPath)
-    cell.googleBindData(title: title, imageUrl: imageUrl)
-    //cell.googleBindTitle(title: title)
-    //cell.favoriteButton.tag = indexPath.row
-    cell.favoriteButton.rx.tap.subscribe{ _ in
-        
-        print("cellButtonTapped")
-    }.disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
+        let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath)
+            as! GoogleApiCell
+        print(item)
+        let title = item.title
+        let imageUrl = item.link
+        print(indexPath)
+        cell.googleBindData(title: title, imageUrl: imageUrl)
+        //cell.googleBindTitle(title: title)
+        cell.favoriteButton.tag = indexPath.row
+        cell.cellModelData["title"] = item.title
+        cell.cellModelData["imageUrl"] = item.link
+        cell.cellModelData["articleUrl"] = item.image.contextLink
+        //    cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
+        //        print("VC: cellButtonTappedIndex: \(indexPath.row)")
+        //    }).disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
+
     print("セルを生成")
     return cell
     })
@@ -65,12 +68,11 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         //ここでカスタムセル上のボタンtapも通知したい
         
-        
         //output
         viewModel.outputs.articles
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
+            
         //other
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
@@ -84,23 +86,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
                 vc.articleUrl = model.image.contextLink
                 self?.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
-        
-        
-            //.bind(to: historyViewModel.inputs.cellModelData)
-            //.disposed(by: disposeBag)
-    
-        
-        
-         //   .subscribe(onNext: { [weak self] model in
-         //       self?.addBrowsingHistory(title: model.title, imageUrl: model.link, articleUrl: model.image.contextLink)
-         //       print("VC:閲覧履歴に追加しました。")
-         //       print("browsingHistoryVC.dataSource.itemsの中身: \(self?.browsingHistoryVC.dataSource.items)")
-         //       let vc = ArticleViewController.instantiate()
-         //       print("modelの中身: \(model)")
-         //       vc.articleTitle = model.title
-         //       vc.articleUrl = model.image.contextLink
-         //       self?.navigationController?.pushViewController(vc, animated: true)
-         //   }).disposed(by: disposeBag)
 
     }
 
