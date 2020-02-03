@@ -34,24 +34,28 @@ class GoogleApiCell: UITableViewCell, Reusable {
     func googleBindTitle(title: String) {
         label.text = title
     }
+    
+    override func prepareForReuse() {
+        self.disposeBag = DisposeBag() //ここで毎回生成
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        self.disposeBag = DisposeBag() //ここで毎回生成
         
         //input
-        favoriteButton.rx.tap.subscribe{ _ in
-            print("Cell: button.tag: \(self.favoriteButton.tag)")
-            let index = self.favoriteButton.tag
-            self.viewModel.inputs.tappedButtonIndex
-            .onNext(index)
-            self.viewModel.inputs.cellModelData
-                .onNext(self.cellModelData)
-            //self.viewModel.inputs.cellModelData
-            //.onNext(cellModelData)
-        }.disposed(by: disposeBag)
+//        favoriteButton.rx.tap.subscribe{ _ in
+//            print("Cell: button.tag: \(self.favoriteButton.tag)")
+//            let index = self.favoriteButton.tag
+//            self.viewModel.inputs.tappedButtonIndex
+//            .onNext(index)
+//            self.viewModel.inputs.cellModelData
+//                .onNext(self.cellModelData)
+//            //self.viewModel.inputs.cellModelData
+//            //.onNext(cellModelData)
+//
+//        }.disposed(by: disposeBag)
         
     }
 

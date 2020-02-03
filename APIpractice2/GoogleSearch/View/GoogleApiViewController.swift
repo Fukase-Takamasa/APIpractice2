@@ -35,9 +35,9 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         cell.cellModelData["title"] = item.title
         cell.cellModelData["imageUrl"] = item.link
         cell.cellModelData["articleUrl"] = item.image.contextLink
-        //    cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
-        //        print("VC: cellButtonTappedIndex: \(indexPath.row)")
-        //    }).disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
+            cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
+                print("VC: cellButtonTappedIndex: \(indexPath.row)")
+            }).disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
 
     print("セルを生成")
     return cell
