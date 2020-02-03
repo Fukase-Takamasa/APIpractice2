@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RealmSwift
 
 protocol FavoriteArticleViewModelInputs {
     var tappedButtonIndex: AnyObserver<Int> {get}
@@ -16,6 +17,7 @@ protocol FavoriteArticleViewModelInputs {
 }
 
 protocol FavoriteArticleViewModelOutputs {
+    var favoriteArticles: Observable<Results<FavoriteArticles>> {get}
 }
 
 protocol FavoriteArticleViewModelType {
@@ -32,6 +34,7 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
     var cellModelData: AnyObserver<[String: String]>
     
     //output
+    var favoriteArticles: Observable<Results<FavoriteArticles>>
     
     //other
     private let scheduler: SchedulerType
@@ -42,6 +45,8 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         self.scheduler = scheduler
         
         //output
+        let _favoriteArticles = PublishRelay<Results<FavoriteArticles>>()
+        self.favoriteArticles = _favoriteArticles.asObservable()
         
         //input
         let _tappedButtonIndex = PublishRelay<Int>()
