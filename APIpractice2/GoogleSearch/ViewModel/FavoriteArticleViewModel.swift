@@ -12,6 +12,7 @@ import RxCocoa
 
 protocol FavoriteArticleViewModelInputs {
     var tappedButtonIndex: AnyObserver<Int> {get}
+    var cellModelData: AnyObserver<[String: String]> {get}
 }
 
 protocol FavoriteArticleViewModelOutputs {
@@ -28,6 +29,7 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
     
     //input
     var tappedButtonIndex: AnyObserver<Int>
+    var cellModelData: AnyObserver<[String: String]>
     
     //output
     
@@ -47,10 +49,23 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
             guard let index = element.element else {
                 return
             }
+            print("FavoVM: tappedButtonIndex: \(index)")
             _tappedButtonIndex.accept(index)
         }
         
-        
+        let _cellModelData = PublishRelay<[String: String]>()
+        self.cellModelData = AnyObserver<[String: String]>() { element in
+            guard let data = element.element else {
+                return
+            }
+            print("FavoVM: cellModelData: \(data)")
+            _cellModelData.accept(data)
+        }
+        _cellModelData.subscribe(onNext: { element in
+            
+            //Realmに保存処理
+            RealmModel.addFavoriteArticle(title: element["title"] ?? "値なし", imageUrl: element["imageUrl"] ?? "", articleUrl: element["articleUrl"] ?? "")
+            }).disposed(by: disposeBag)
         
         
     }

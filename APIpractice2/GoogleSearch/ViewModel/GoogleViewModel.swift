@@ -67,7 +67,7 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         }
         
         _tappedCellButtonIndex.subscribe(onNext: {event in
-            
+            print("VM: tappedCellBUttonIndex: \(event)")
             }).disposed(by: disposeBag)
         
         let _cellModelData = PublishRelay<GoogleDataSource.Item>()
