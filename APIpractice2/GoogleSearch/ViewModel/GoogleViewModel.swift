@@ -75,12 +75,12 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
             guard let data = element.element else {
                 return
             }
-            print("VM:cellModelDataの中身: \(data)")
+            print("一覧VM:cellModelDataの中身: \(data)")
             _cellModelData.accept(data)
         }
         _cellModelData.subscribe(onNext: { element in
             //Realmに保存する処理
-            
+            print("一覧VM: cellModelDataが流れてきました")
             
             }).disposed(by: disposeBag)
         

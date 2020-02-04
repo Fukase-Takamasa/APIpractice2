@@ -37,10 +37,14 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         cell.cellModelData["title"] = item.title
         cell.cellModelData["imageUrl"] = item.link
         cell.cellModelData["articleUrl"] = item.image.contextLink
-            cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
-                print("VC: cellButtonTappedIndex: \(indexPath.row)")
-                print(item)
-            }).disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
+        cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
+            let viewModel: GoogleViewModelType = GoogleViewModel()
+            viewModel.inputs.cellModelData
+                .onNext(item)
+            print("VC: cellButtonTappedIndex: \(indexPath.row)")
+            print(item)
+            
+        }).disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
 
     print("セルを生成")
     return cell
@@ -81,7 +85,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.rx.modelSelected((GoogleDataSource.Item.self))
             .subscribe(onNext: { [weak self] model in
-                self?.historyViewModel.inputs.cellModelData
+                self?.viewModel.inputs.cellModelData
                 .onNext(model)
                 let vc = ArticleViewController.instantiate()
                 print("modelの中身: \(model)")

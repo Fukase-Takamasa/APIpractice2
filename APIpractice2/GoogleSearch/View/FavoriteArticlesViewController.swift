@@ -16,14 +16,13 @@ import InstantiateStandard
 class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable {
     
     let disposeBag = DisposeBag()
-    let dataModel: GoogleDataModel = GoogleDataModel.sharedDataList
+    
     var favoriteArticlesList: Results<FavoriteArticles>?
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
         
-        print(dataModel.dataList)
                 //Realmに保存されているデータを取得する処理
 //         do {
 //             let realm = try Realm()
@@ -72,7 +71,7 @@ extension FavoriteArticlesViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.dataList.count
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
