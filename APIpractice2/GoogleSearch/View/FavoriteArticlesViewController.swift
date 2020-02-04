@@ -43,17 +43,20 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         
         //output
+        
+        
 //        Observable.just(())
 //            .withLatestFrom(viewModel.outputs.favoriteArticles)
-        viewModel.outputs.favoriteArticles
-            .subscribe(onNext: { element in
-                print("FavoVC: favoriteArticlesをsubscribe")
-                for data in element {
-                    self.favoriteArticlesList? += [data]
-                }
-            }).disposed(by: disposeBag)
         
-        print("FavoVC: favoriteArticlesListの中身: \(self.favoriteArticlesList)")
+//        viewModel.outputs.favoriteArticles
+//            .subscribe(onNext: { element in
+//                print("FavoVC: favoriteArticlesをsubscribe")
+//                for data in element {
+//                    self.favoriteArticlesList? += [data]
+//                }
+//            }).disposed(by: disposeBag)
+//
+//        print("FavoVC: favoriteArticlesListの中身: \(self.favoriteArticlesList)")
     }
     
 }

@@ -14,7 +14,6 @@ import RealmSwift
 protocol GoogleViewModelInputs {
     var searchQueryText: AnyObserver<String> {get}
     var searchButtonTapped: AnyObserver<Void> {get}
-    var tappedCellButtonIndex: AnyObserver<Int> {get}
     var favoriteCellModelData: AnyObserver<GoogleDataSource.Item> {get}
     var historyCellModelData: AnyObserver<GoogleDataSource.Item> {get}
 
@@ -35,7 +34,6 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     //input
     var searchQueryText: AnyObserver<String>
     var searchButtonTapped: AnyObserver<Void>
-    var tappedCellButtonIndex: AnyObserver<Int>
     var favoriteCellModelData: AnyObserver<GoogleDataSource.Item>
     var historyCellModelData: AnyObserver<GoogleDataSource.Item>
     
@@ -61,20 +59,6 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
         
         
         //input
-        let _tappedCellButtonIndex = PublishRelay<Int>()
-        self.tappedCellButtonIndex = AnyObserver<Int>() { element in
-            guard let index = element.element else {
-                return
-            }
-            _tappedCellButtonIndex.accept(index)
-        }
-        
-        _tappedCellButtonIndex.subscribe(onNext: {event in
-            print("VM: tappedCellBUttonIndex: \(event)")
-            }).disposed(by: disposeBag)
-        
-        
-        
         let _favoriteCellModelData = PublishRelay<GoogleDataSource.Item>()
         self.favoriteCellModelData = AnyObserver<GoogleDataSource.Item>() { element in
             guard let data = element.element else {
