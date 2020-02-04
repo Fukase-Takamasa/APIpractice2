@@ -12,8 +12,7 @@ import RxCocoa
 import RealmSwift
 
 protocol FavoriteArticleViewModelInputs {
-    var tappedButtonIndex: AnyObserver<Int> {get}
-    var cellModelData: AnyObserver<[String: String]> {get}
+    var viewWillAppearTrigger: AnyObserver<[Any]> {get}
 }
 
 protocol FavoriteArticleViewModelOutputs {
@@ -30,8 +29,7 @@ protocol FavoriteArticleViewModelType {
 class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleViewModelOutputs {
     
     //input
-    var tappedButtonIndex: AnyObserver<Int>
-    var cellModelData: AnyObserver<[String: String]>
+    var viewWillAppearTrigger: AnyObserver<[Any]>
     
     //output
     var favoriteArticles: Observable<Results<FavoriteArticles>>
@@ -49,29 +47,32 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         self.favoriteArticles = _favoriteArticles.asObservable()
         
         //input
-        let _tappedButtonIndex = PublishRelay<Int>()
-        self.tappedButtonIndex = AnyObserver<Int>() { element in
-            guard let index = element.element else {
+        let _viewWillAppearTrigger = PublishRelay<[Any]>()
+        self.viewWillAppearTrigger = AnyObserver<[Any]>() { event in
+            guard let event = event.element else {
                 return
             }
-            print("FavoVM: tappedButtonIndex: \(index)")
-            _tappedButtonIndex.accept(index)
+            _viewWillAppearTrigger.accept(event)
         }
         
-        let _cellModelData = PublishRelay<[String: String]>()
-        self.cellModelData = AnyObserver<[String: String]>() { element in
-            guard let data = element.element else {
-                return
-            }
-            print("FavoVM: cellModelData: \(data)")
-            _cellModelData.accept(data)
-        }
-        _cellModelData.subscribe(onNext: { element in
-            
-            //Realmに保存処理
-            RealmModel.addFavoriteArticle(title: element["title"] ?? "値なし", imageUrl: element["imageUrl"] ?? "", articleUrl: element["articleUrl"] ?? "")
+        _viewWillAppearTrigger.subscribe(onNext: { event in
+            print("FavoVM: viewWillAppearTrigger")
             }).disposed(by: disposeBag)
         
+        //Realmに保存されているデータを取得する処理
+        //do {
+        //    let realm = try Realm()
+        //_browsedArticles.accept(realm.objects(BrowsingHistory.self))
+        //     print("realm.objectsの中身: \(realm.objects(BrowsingHistory.self))")
+        //     print("RealmFunction: データを取得してacceptしました")
+        // }catch {
+        //     print("RealmFunction: データを取得できませんでした")
+        // }
+        
+        
+        //         //↓で取得したURLの使い方
+        //         //RealmBrowser開いて、open file→　command + shift + Gでパス入力フォームを表示してから、 取得したURLのfile://より後ろだけを貼り付け。
+        //         print("Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
         
     }
 }
