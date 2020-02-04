@@ -16,7 +16,7 @@ protocol FavoriteArticleViewModelInputs {
 }
 
 protocol FavoriteArticleViewModelOutputs {
-    var favoriteArticles: Observable<Results<FavoriteArticles>> {get}
+    var favoriteArticles: Observable<[RealmDataSource.Item]> {get}
 }
 
 protocol FavoriteArticleViewModelType {
@@ -32,7 +32,7 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
 //    var viewWillAppearTrigger: AnyObserver<[Any]>
     
     //output
-    var favoriteArticles: Observable<Results<FavoriteArticles>>
+    var favoriteArticles: Observable<[RealmDataSource.Item]>
     
     //other
     private let scheduler: SchedulerType
@@ -43,7 +43,7 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         self.scheduler = scheduler
         
         //output
-        let _favoriteArticles = PublishRelay<Results<FavoriteArticles>>()
+        let _favoriteArticles = PublishRelay<[RealmDataSource.Item]>()
         self.favoriteArticles = _favoriteArticles.asObservable()
         
         //input
@@ -63,8 +63,11 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         //Realmに保存されているデータを取得する処理
         do {
             let realm = try Realm()
-        _favoriteArticles.accept(realm.objects(FavoriteArticles.self))
+            
+            let dataSource = RealmDataSource.init(items: [realm.objects(FavoriteArticles.self)])
+            _favoriteArticles.accept(dataSource.items)
              print("FavoVM: realm.objectsの中身: \(realm.objects(FavoriteArticles.self))")
+            print("RealmDataSourceのacceptする中身: \(dataSource)")
              print("FavoVM: RealmFunction: データを取得してacceptしました")
          }catch {
              print("FavoVM: RealmFunction: データを取得できませんでした")
