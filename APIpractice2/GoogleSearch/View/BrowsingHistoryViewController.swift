@@ -17,9 +17,7 @@ class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable 
 
     let disposeBag = DisposeBag()
     let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
-    
-    //var dataSource: BrowsingHistoryDataSource = BrowsingHistoryDataSource(items: [])
-    
+        
     var browsingHistoryList: Results<BrowsingHistory>?
 
     @IBOutlet weak var tableView: UITableView!

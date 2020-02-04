@@ -31,6 +31,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         print(indexPath)
         cell.googleBindData(title: title, imageUrl: imageUrl)
         //cell.googleBindTitle(title: title)
+        cell.favoriteButton.isHidden = false
         cell.favoriteButton.tag = indexPath.row
         cell.cellModelData["title"] = item.title
         cell.cellModelData["imageUrl"] = item.link
@@ -70,9 +71,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         searchButton.rx.tap
             .bind(to: viewModel.inputs.searchButtonTapped)
             .disposed(by: disposeBag)
-        
-        //ここでカスタムセル上のボタンtapも通知したい
-        
+                
         //output
         viewModel.outputs.articles
             .bind(to: tableView.rx.items(dataSource: dataSource))

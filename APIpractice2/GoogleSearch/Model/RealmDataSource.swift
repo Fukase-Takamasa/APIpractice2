@@ -15,7 +15,7 @@ struct RealmDataSource {
 }
 
 extension RealmDataSource: SectionModelType {
-    typealias Item = Results<FavoriteArticles>
+    typealias Item = FavoriteArticles
     
     init(original: Self, items: [Item]) {
         self = original

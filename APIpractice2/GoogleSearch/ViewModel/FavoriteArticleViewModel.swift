@@ -12,11 +12,11 @@ import RxCocoa
 import RealmSwift
 
 protocol FavoriteArticleViewModelInputs {
-//    var viewWillAppearTrigger: AnyObserver<[Any]> {get}
+    var viewWillAppearTrigger: AnyObserver<[Any]> {get}
 }
 
 protocol FavoriteArticleViewModelOutputs {
-    var favoriteArticles: Observable<[RealmDataSource.Item]> {get}
+    var favoriteArticles: Observable<[RealmDataSource]> {get}
 }
 
 protocol FavoriteArticleViewModelType {
@@ -29,10 +29,10 @@ protocol FavoriteArticleViewModelType {
 class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleViewModelOutputs {
     
     //input
-//    var viewWillAppearTrigger: AnyObserver<[Any]>
+    var viewWillAppearTrigger: AnyObserver<[Any]>
     
     //output
-    var favoriteArticles: Observable<[RealmDataSource.Item]>
+    var favoriteArticles: Observable<[RealmDataSource]>
     
     //other
     private let scheduler: SchedulerType
@@ -43,40 +43,41 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         self.scheduler = scheduler
         
         //output
-        let _favoriteArticles = PublishRelay<[RealmDataSource.Item]>()
+        let _favoriteArticles = PublishRelay<[RealmDataSource]>()
         self.favoriteArticles = _favoriteArticles.asObservable()
         
         //input
-//        let _viewWillAppearTrigger = PublishRelay<[Any]>()
-//        self.viewWillAppearTrigger = AnyObserver<[Any]>() { event in
-//            guard let event = event.element else {
-//                return
-//            }
-//            _viewWillAppearTrigger.accept(event)
-//        }
-//
-//        _viewWillAppearTrigger.subscribe(onNext: { event in
-//            print("FavoVM: viewWillAppearTrigger")
-//            }).disposed(by: disposeBag)
+        let _viewWillAppearTrigger = PublishRelay<[Any]>()
+        self.viewWillAppearTrigger = AnyObserver<[Any]>() { event in
+            guard let event = event.element else {
+                return
+            }
+            _viewWillAppearTrigger.accept(event)
+        }
         
-        
-        //Realmに保存されているデータを取得する処理
-        do {
-            let realm = try Realm()
+        _viewWillAppearTrigger.subscribe(onNext: { event in
+            print("FavoVM: viewWillAppearTrigger")
             
-            let dataSource = RealmDataSource.init(items: [realm.objects(FavoriteArticles.self)])
-            _favoriteArticles.accept(dataSource.items)
-             print("FavoVM: realm.objectsの中身: \(realm.objects(FavoriteArticles.self))")
-            print("RealmDataSourceのacceptする中身: \(dataSource)")
-             print("FavoVM: RealmFunction: データを取得してacceptしました")
-         }catch {
-             print("FavoVM: RealmFunction: データを取得できませんでした")
-         }
-        
-        //         //↓で取得したURLの使い方
-        //         //RealmBrowser開いて、open file→　command + shift + Gでパス入力フォームを表示してから、 取得したURLのfile://より後ろだけを貼り付け。
-                 print("FavoVM: Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
-        
+            //Realmに保存されているデータを取得する処理
+            do {
+                let realm = try Realm()
+                
+                let data = realm.objects(FavoriteArticles.self)
+                let dataArray = Array(data)
+                
+                let dataSource = RealmDataSource.init(items: dataArray)
+                _favoriteArticles.accept([dataSource])
+                print("FavoVM: realm.objectsの中身: \(realm.objects(FavoriteArticles.self))")
+                print("RealmDataSourceのacceptする中身: \([dataSource])")
+                print("FavoVM: RealmFunction: データを取得してacceptしました")
+            }catch {
+                print("FavoVM: RealmFunction: データを取得できませんでした")
+            }
+            //↓で取得したURLの使い方
+            //RealmBrowser開いて、open file→　command + shift + Gでパス入力フォームを表示してから、 取得したURLのfile://より後ろだけを貼り付け。
+            print("FavoVM: Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
+            
+        }).disposed(by: disposeBag)
     }
 }
 
