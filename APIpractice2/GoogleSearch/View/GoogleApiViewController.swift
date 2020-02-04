@@ -19,8 +19,6 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
-
-    let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
             
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: {
         (dataSource: TableViewSectionedDataSource<GoogleDataSource>, tableView: UITableView, indexPath: IndexPath, item: GoogleData.Items) in
@@ -39,7 +37,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         cell.cellModelData["articleUrl"] = item.image.contextLink
         cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
             let viewModel: GoogleViewModelType = GoogleViewModel()
-            viewModel.inputs.cellModelData
+            viewModel.inputs.favoriteCellModelData
                 .onNext(item)
             print("VC: cellButtonTappedIndex: \(indexPath.row)")
             print(item)
@@ -85,7 +83,7 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         
         tableView.rx.modelSelected((GoogleDataSource.Item.self))
             .subscribe(onNext: { [weak self] model in
-                self?.viewModel.inputs.cellModelData
+                self?.viewModel.inputs.historyCellModelData
                 .onNext(model)
                 let vc = ArticleViewController.instantiate()
                 print("modelの中身: \(model)")

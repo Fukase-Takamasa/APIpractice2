@@ -16,7 +16,6 @@ import RxCocoa
 class GoogleApiCell: UITableViewCell, Reusable {
     
     var cellModelData: [String: String] = [:]
-    let viewModel: FavoriteArticleViewModelType = FavoriteArticleViewModel()
     var disposeBag = DisposeBag()
     
     @IBOutlet weak var label: UILabel!

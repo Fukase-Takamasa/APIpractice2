@@ -15,7 +15,9 @@ protocol GoogleViewModelInputs {
     var searchQueryText: AnyObserver<String> {get}
     var searchButtonTapped: AnyObserver<Void> {get}
     var tappedCellButtonIndex: AnyObserver<Int> {get}
-    var cellModelData: AnyObserver<GoogleDataSource.Item> {get}
+    var favoriteCellModelData: AnyObserver<GoogleDataSource.Item> {get}
+    var historyCellModelData: AnyObserver<GoogleDataSource.Item> {get}
+
 }
 
 protocol GoogleViewModelOutputs {
@@ -34,7 +36,8 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
     var searchQueryText: AnyObserver<String>
     var searchButtonTapped: AnyObserver<Void>
     var tappedCellButtonIndex: AnyObserver<Int>
-    var cellModelData: AnyObserver<GoogleDataSource.Item>
+    var favoriteCellModelData: AnyObserver<GoogleDataSource.Item>
+    var historyCellModelData: AnyObserver<GoogleDataSource.Item>
     
     //output
     var articles: Observable<[GoogleDataSource]>
@@ -70,19 +73,43 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
             print("VM: tappedCellBUttonIndex: \(event)")
             }).disposed(by: disposeBag)
         
-        let _cellModelData = PublishRelay<GoogleDataSource.Item>()
-        self.cellModelData = AnyObserver<GoogleDataSource.Item>() { element in
+        
+        
+        let _favoriteCellModelData = PublishRelay<GoogleDataSource.Item>()
+        self.favoriteCellModelData = AnyObserver<GoogleDataSource.Item>() { element in
             guard let data = element.element else {
                 return
             }
-            print("一覧VM:cellModelDataの中身: \(data)")
-            _cellModelData.accept(data)
+            print("一覧VM:お気に入りdataの中身: \(data)")
+            _favoriteCellModelData.accept(data)
         }
-        _cellModelData.subscribe(onNext: { element in
-            //Realmに保存する処理
-            print("一覧VM: cellModelDataが流れてきました")
+        _favoriteCellModelData.subscribe(onNext: { element in
+            //お気に入り記事をRealmに保存する処理
+            RealmModel.addFavoriteArticle(title: element.title, imageUrl: element.link, articleUrl: element.image.contextLink)
+            print("一覧VM: お気に入りdataを保存しました")
             
             }).disposed(by: disposeBag)
+        
+        
+        
+        
+        let _historyCellModelData = PublishRelay<GoogleDataSource.Item>()
+        self.historyCellModelData = AnyObserver<GoogleDataSource.Item>() { element in
+            guard let data = element.element else {
+                return
+            }
+            print("一覧VM:履歴dataの中身: \(data)")
+            _historyCellModelData.accept(data)
+        }
+        _historyCellModelData.subscribe(onNext: { element in
+            //閲覧した記事をRealmに保存する処理
+            RealmModel.addBrowsedArticle(title: element.title, imageUrl: element.link, articleUrl: element.image.contextLink)
+            print("一覧VM: 履歴dataを保存しました")
+            
+            }).disposed(by: disposeBag)
+        
+        
+        
         
         let _searchQueryText = BehaviorRelay<String>(value: "")
         self.searchQueryText = AnyObserver<String>() { element in
@@ -97,7 +124,7 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
             guard let tapped = event.element else {
                 return
             }
-            print("tapped")
+            print("searchButtonTapped")
             _searchButtonTapped.accept(tapped)
         }
 
@@ -108,13 +135,13 @@ class GoogleViewModel: GoogleViewModelInputs, GoogleViewModelOutputs {
                 //後にページングなど実装した時に使用する
                 GoogleRepository.fetchGoogleData(query: element, startIndex: 1)
                 .subscribe(onNext: { response in
-                    print("VM: DataSourceのfetch()を呼び出し")
-                    print("VMのonNext: responseの中身: \(response)")
+                    print("一覧VM: DataSourceのfetch()を呼び出し")
+                    print("一覧VMのonNext: responseの中身: \(response)")
                     let dataSource = GoogleDataSource.init(items: response.items)
-                    print("VMのonNext: Viewに渡す[dataSource]の中身　: \([dataSource])")
+                    print("一覧VMのonNext: Viewに渡す[dataSource]の中身　: \([dataSource])")
                     _articles.accept([dataSource])
                 }, onError: { error in
-                    print("VMのonError: \(error)")
+                    print("一覧VMのonError: \(error)")
                     _error.accept(error)
                 }).disposed(by: self.disposeBag)
             }).disposed(by: disposeBag)

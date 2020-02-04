@@ -26,31 +26,13 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
     
     override func viewWillAppear(_ animated: Bool) {
         //input
-        rx.sentMessage(#selector(viewWillAppear(_:)))
-            .subscribe(onNext: { element in
-                
-            })
-            
+//        rx.sentMessage(#selector(viewWillAppear(_:)))
 //            .bind(to: viewModel.inputs.viewWillAppearTrigger)
 //            .disposed(by: disposeBag)
-        
         
         //            .subscribe(onNext: { event in
         //                viewModel.inputs.viewWillAppearTrigger
         //            })
-        
-            
-        
-        //output
-//        Observable.just(())
-//            .withLatestFrom(viewModel.outputs.favoriteArticles)
-//            .subscribe(onNext: { element in
-//                for data in element {
-//                    self.favoriteArticlesList? += [data]
-//                }
-//            }).disposed(by: disposeBag)
-        
-            
     }
     
     override func viewDidLoad() {
@@ -59,6 +41,19 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         tableView.dataSource = self
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
+        
+        //output
+//        Observable.just(())
+//            .withLatestFrom(viewModel.outputs.favoriteArticles)
+        viewModel.outputs.favoriteArticles
+            .subscribe(onNext: { element in
+                print("FavoVC: favoriteArticlesをsubscribe")
+                for data in element {
+                    self.favoriteArticlesList? += [data]
+                }
+            }).disposed(by: disposeBag)
+        
+        print("FavoVC: favoriteArticlesListの中身: \(self.favoriteArticlesList)")
     }
     
 }
@@ -84,7 +79,7 @@ extension FavoriteArticlesViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteArticlesList?.count ?? 10
+        return favoriteArticlesList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -12,7 +12,7 @@ import RxCocoa
 import RealmSwift
 
 protocol FavoriteArticleViewModelInputs {
-    var viewWillAppearTrigger: AnyObserver<[Any]> {get}
+//    var viewWillAppearTrigger: AnyObserver<[Any]> {get}
 }
 
 protocol FavoriteArticleViewModelOutputs {
@@ -29,7 +29,7 @@ protocol FavoriteArticleViewModelType {
 class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleViewModelOutputs {
     
     //input
-    var viewWillAppearTrigger: AnyObserver<[Any]>
+//    var viewWillAppearTrigger: AnyObserver<[Any]>
     
     //output
     var favoriteArticles: Observable<Results<FavoriteArticles>>
@@ -47,32 +47,32 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         self.favoriteArticles = _favoriteArticles.asObservable()
         
         //input
-        let _viewWillAppearTrigger = PublishRelay<[Any]>()
-        self.viewWillAppearTrigger = AnyObserver<[Any]>() { event in
-            guard let event = event.element else {
-                return
-            }
-            _viewWillAppearTrigger.accept(event)
-        }
+//        let _viewWillAppearTrigger = PublishRelay<[Any]>()
+//        self.viewWillAppearTrigger = AnyObserver<[Any]>() { event in
+//            guard let event = event.element else {
+//                return
+//            }
+//            _viewWillAppearTrigger.accept(event)
+//        }
+//
+//        _viewWillAppearTrigger.subscribe(onNext: { event in
+//            print("FavoVM: viewWillAppearTrigger")
+//            }).disposed(by: disposeBag)
         
-        _viewWillAppearTrigger.subscribe(onNext: { event in
-            print("FavoVM: viewWillAppearTrigger")
-            }).disposed(by: disposeBag)
         
         //Realmに保存されているデータを取得する処理
-        //do {
-        //    let realm = try Realm()
-        //_browsedArticles.accept(realm.objects(BrowsingHistory.self))
-        //     print("realm.objectsの中身: \(realm.objects(BrowsingHistory.self))")
-        //     print("RealmFunction: データを取得してacceptしました")
-        // }catch {
-        //     print("RealmFunction: データを取得できませんでした")
-        // }
-        
+        do {
+            let realm = try Realm()
+        _favoriteArticles.accept(realm.objects(FavoriteArticles.self))
+             print("FavoVM: realm.objectsの中身: \(realm.objects(FavoriteArticles.self))")
+             print("FavoVM: RealmFunction: データを取得してacceptしました")
+         }catch {
+             print("FavoVM: RealmFunction: データを取得できませんでした")
+         }
         
         //         //↓で取得したURLの使い方
         //         //RealmBrowser開いて、open file→　command + shift + Gでパス入力フォームを表示してから、 取得したURLのfile://より後ろだけを貼り付け。
-        //         print("Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
+                 print("FavoVM: Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
         
     }
 }
