@@ -19,10 +19,14 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
     
     let disposeBag = DisposeBag()
     let viewModel: GoogleViewModelType = GoogleViewModel()
+    let dataModel: GoogleDataModel = GoogleDataModel.sharedDataList
+
     let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
             
     let dataSource = RxTableViewSectionedReloadDataSource<GoogleDataSource>(configureCell: {
-    dataSource, tableView, indexPath, item in
+        (dataSource: TableViewSectionedDataSource<GoogleDataSource>, tableView: UITableView, indexPath: IndexPath, item: GoogleData.Items) in
+        //dataModel.dataList += [item]
+        
         let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath)
             as! GoogleApiCell
         print(item)
@@ -37,12 +41,13 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         cell.cellModelData["articleUrl"] = item.image.contextLink
             cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
                 print("VC: cellButtonTappedIndex: \(indexPath.row)")
+                print(item)
             }).disposed(by: cell.disposeBag) //セルで生成したdisposeBagを使う
 
     print("セルを生成")
     return cell
     })
-    
+        
     //var startIndex = 1
     //var pageIndex = 0
     
@@ -72,6 +77,13 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         viewModel.outputs.articles
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+        
+        //APIで取得したデータを一覧VC以外でも扱いやすくしたくて作ったclassへのbind
+        //（使わなくなった）
+//        viewModel.outputs.articles
+//            .bind(to: dataModel.dataReceiver)
+//            .disposed(by: disposeBag)
             
         //other
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
