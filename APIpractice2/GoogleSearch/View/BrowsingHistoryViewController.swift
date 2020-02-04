@@ -27,7 +27,6 @@ class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.tableView.reloadData()
-        print("リロードしました")
     }
     
     override func viewDidLoad() {
@@ -41,7 +40,7 @@ class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable 
          do {
              let realm = try Realm()
              browsingHistoryList = realm.objects(BrowsingHistory.self)
-             print("realm.objectsの中身: \(realm.objects(BrowsingHistory.self))")
+             print("履歴VC: realm.objects.BrowsingHistoryの中身: \(realm.objects(BrowsingHistory.self))")
          }catch {
              print("RealmFunction: データを取得できませんでした")
          }
