@@ -23,10 +23,13 @@ class GoogleApiCell: UITableViewCell, Reusable {
     @IBOutlet weak var favoriteButton: UIButton!
     
     
-    //取得したタイトルと画像を表示
+    //取得したタイトルと画像を表示（画像読み込み中はno_image画像を表示）
     func googleBindData(title: String, imageUrl: String) {
         label.text = title
-        googleImageView.af_setImage(withURL: URL(string: imageUrl)!)
+        guard let imageUrl = URL(string: imageUrl), let placeholder = UIImage(named: "no_image") else {
+            return
+        }
+        googleImageView.af_setImage(withURL: imageUrl, placeholderImage: placeholder)
     }
     
     //モックサーバー使用時用　画像なしver
