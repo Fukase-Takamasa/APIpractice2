@@ -15,13 +15,11 @@ import RxCocoa
 
 class GoogleApiCell: UITableViewCell, Reusable {
     
-    var cellModelData: [String: String] = [:]
     var disposeBag = DisposeBag()
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var googleImageView: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
-    
     
     //取得したタイトルと画像を表示（画像読み込み中はno_image画像を表示）
     func googleBindData(title: String, imageUrl: String) {
@@ -38,32 +36,16 @@ class GoogleApiCell: UITableViewCell, Reusable {
     }
     
     override func prepareForReuse() {
-        self.disposeBag = DisposeBag() //ここで毎回生成
+        self.disposeBag = DisposeBag() //セルの再利用前に毎回生成
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
-        //input
-//        favoriteButton.rx.tap.subscribe{ _ in
-//            print("Cell: button.tag: \(self.favoriteButton.tag)")
-//            let index = self.favoriteButton.tag
-//            self.viewModel.inputs.tappedButtonIndex
-//            .onNext(index)
-//            self.viewModel.inputs.cellModelData
-//                .onNext(self.cellModelData)
-//            //self.viewModel.inputs.cellModelData
-//            //.onNext(cellModelData)
-//
-//        }.disposed(by: disposeBag)
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
