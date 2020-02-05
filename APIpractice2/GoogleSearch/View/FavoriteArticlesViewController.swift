@@ -32,17 +32,11 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         return cell
     })
     
+    
     @IBOutlet weak var tableView: UITableView!
     
+    
     override func viewWillAppear(_ animated: Bool) {
-        //input
-        rx.sentMessage(#selector(viewWillAppear(_:)))
-            .bind(to: viewModel.inputs.viewWillAppearTrigger)
-            .disposed(by: disposeBag)
-        
-        //            .subscribe(onNext: { event in
-        //                viewModel.inputs.viewWillAppearTrigger
-        //            })
     }
     
     override func viewDidLoad() {
@@ -50,10 +44,15 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
         
+        //input
+        rx.sentMessage(#selector(viewWillAppear(_:)))
+            .bind(to: viewModel.inputs.viewWillAppearTrigger)
+            .disposed(by: disposeBag)
+        
         //output
         viewModel.outputs.favoriteArticles
             .bind(to: tableView.rx.items(dataSource: dataSource))
-            
+            .disposed(by: disposeBag)
         
         //other
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
@@ -65,23 +64,7 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
                 vc.articleUrl = model.articleUrl
                 self?.navigationController?.pushViewController(vc, animated: true)
             }).disposed(by: disposeBag)
-        
-//        Observable.just(())
-//            .withLatestFrom(viewModel.outputs.favoriteArticles)
-        
-//        viewModel.outputs.favoriteArticles
-//            .bind(to: )
-        
-//            .subscribe(onNext: { element in
-//                print("FavoVC: favoriteArticlesをsubscribe")
-//                for data in element {
-//                    self.favoriteArticlesList? += [data]
-//                }
-//            }).disposed(by: disposeBag)
-//
-//        print("FavoVC: favoriteArticlesListの中身: \(self.favoriteArticlesList)")
     }
-    
 }
 
 
@@ -103,28 +86,5 @@ extension FavoriteArticlesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return favoriteArticlesList?.count ?? 0
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
-//        guard let title = favoriteArticlesList?[indexPath.row].title, let imageUrl = favoriteArticlesList?[indexPath.row].imageUrl else {
-//            return cell
-//        }
-        
-        
-//        cell.googleBindData(title: title, imageUrl: imageUrl)
-//        return cell
-//    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = ArticleViewController.instantiate()
-//        vc.articleTitle = favoriteArticlesList?[indexPath.row].title
-//        vc.articleUrl = favoriteArticlesList?[indexPath.row].articleUrl
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
     
 }
