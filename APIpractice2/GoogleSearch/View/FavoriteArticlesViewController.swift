@@ -21,7 +21,7 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
     
     let dataSource = RxTableViewSectionedReloadDataSource<FavoriteArticlesDataSource>(configureCell: {(dataSource: TableViewSectionedDataSource<FavoriteArticlesDataSource>, tableView: UITableView, indexPath: IndexPath, item: FavoriteArticles) in
         
-    let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
+        let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
         
         print(item)
         let title = item.title
