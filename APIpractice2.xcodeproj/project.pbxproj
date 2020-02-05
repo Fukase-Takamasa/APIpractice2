@@ -195,6 +195,18 @@
 			path = ../Entity;
 			sourceTree = "<group>";
 		};
+		591065BA23EA711C00E99968 /* 使わなくなったFileなど */ = {
+			isa = PBXGroup;
+			children = (
+				597CBFD423E2AA4F00A51144 /* _BrowsingHistoryDataSource.swift */,
+				5986F4B923E91D1E00367AAB /* GoogleDataModel.swift */,
+				59C2D1AF23E043FF00515C9D /* FavoriteArticlesData.swift */,
+				597CBFCE23E282FA00A51144 /* BrowsingHistoryData.swift */,
+			);
+			name = "使わなくなったFileなど";
+			path = "使わなくなったFileなど";
+			sourceTree = "<group>";
+		};
 		5913447823960E0A001F9862 = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +277,7 @@
 		59A5F4F923D825A400039029 /* GoogleSearch */ = {
 			isa = PBXGroup;
 			children = (
+				591065BA23EA711C00E99968 /* 使わなくなったFileなど */,
 				59A5F4FA23D826A500039029 /* API */,
 				59A5F50023D8271B00039029 /* Repository */,
 				59A5F50123D8273D00039029 /* Entity */,
@@ -295,8 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				5903C47A239A65B000841106 /* GoogleData.swift */,
-				59C2D1AF23E043FF00515C9D /* FavoriteArticlesData.swift */,
-				597CBFCE23E282FA00A51144 /* BrowsingHistoryData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -307,9 +318,7 @@
 				59DA61B6239FAC4E0064367E /* GoogleDataSource.swift */,
 				5986F4BE23E98E0A00367AAB /* FavoriteArticlesDataSource.swift */,
 				59B155B123EA69C2004379C1 /* BrowsingHistoryDataSource.swift */,
-				597CBFD423E2AA4F00A51144 /* _BrowsingHistoryDataSource.swift */,
 				59EAA35223E410530046D379 /* RealmModel.swift */,
-				5986F4B923E91D1E00367AAB /* GoogleDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

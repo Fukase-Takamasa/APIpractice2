@@ -6,9 +6,9 @@
 //  Copyright © 2020 深瀬 貴将. All rights reserved.
 //
 
-import Foundation
-import RxSwift
-import RxCocoa
+//import Foundation
+//import RxSwift
+//import RxCocoa
 
 //APIで取得したデータを一覧VC以外でも扱いやすくしたくて作ったclass
 //（使わなくなった）
