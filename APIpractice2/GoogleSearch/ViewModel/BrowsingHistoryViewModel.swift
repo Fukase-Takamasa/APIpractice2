@@ -64,7 +64,7 @@ class BrowsingHistoryViewModel: BrowsingHistoryViewModelInputs, BrowsingHistoryV
                 let dataArray = Array(data)
                 let dataSource = BrowsingHistoryDataSource.init(items: dataArray)
                 _browsedArticles.accept([dataSource])
-                print("履歴VM: realm.objectsの中身: \(realm.objects(FavoriteArticles.self))")
+                print("履歴VM: realm.objectsの中身: \(realm.objects(BrowsingHistory.self))")
                 print("履歴VM: RealmDataSourceのacceptする中身: \([dataSource])")
                 print("履歴VM: RealmFunction: データを取得してacceptしました")
             }catch {
