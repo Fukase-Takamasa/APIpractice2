@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 import RealmSwift
 import Instantiate
 import InstantiateStandard
@@ -16,23 +17,37 @@ import InstantiateStandard
 class BrowsingHistoryViewController: UIViewController, StoryboardInstantiatable {
 
     let disposeBag = DisposeBag()
-    let historyViewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
+    let viewModel: BrowsingHistoryViewModelType = BrowsingHistoryViewModel()
+    
+//    let dataSource =
         
-    var browsingHistoryList: Results<BrowsingHistory>?
+    var browsingHistoryList: Results<BrowsingHistory>?//
+    
 
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        self.tableView.reloadData()
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = self //
+        tableView.dataSource = self //
         
         TableViewUtil.registerCell(tableView, identifier: GoogleApiCell.reusableIdentifier)
+        
+        //input
+        
+        //output
+        
+        //other
+        
+        //tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        //tableView.rx.modelSelected((RealmDataSource.Item.self))
+            //.subscribe(onNext: { [weak self] model in
+        
+            //}).disposed(by: disposeBag)
         
         //Realmに保存されているデータを取得する処理
          do {
@@ -76,7 +91,7 @@ extension BrowsingHistoryViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return browsingHistoryList?.count ?? 0
+        return browsingHistoryList?.count ?? 0 //
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

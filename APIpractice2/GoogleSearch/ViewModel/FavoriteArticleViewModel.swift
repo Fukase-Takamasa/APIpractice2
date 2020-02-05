@@ -16,7 +16,7 @@ protocol FavoriteArticleViewModelInputs {
 }
 
 protocol FavoriteArticleViewModelOutputs {
-    var favoriteArticles: Observable<[RealmDataSource]> {get}
+    var favoriteArticles: Observable<[FavoriteArticlesDataSource]> {get}
 }
 
 protocol FavoriteArticleViewModelType {
@@ -32,7 +32,7 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
     var viewWillAppearTrigger: AnyObserver<[Any]>
     
     //output
-    var favoriteArticles: Observable<[RealmDataSource]>
+    var favoriteArticles: Observable<[FavoriteArticlesDataSource]>
     
     //other
     private let scheduler: SchedulerType
@@ -43,7 +43,7 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         self.scheduler = scheduler
         
         //output
-        let _favoriteArticles = PublishRelay<[RealmDataSource]>()
+        let _favoriteArticles = PublishRelay<[FavoriteArticlesDataSource]>()
         self.favoriteArticles = _favoriteArticles.asObservable()
         
         //input
@@ -56,27 +56,25 @@ class FavoriteArticleViewModel: FavoriteArticleViewModelInputs, FavoriteArticleV
         }
         
         _viewWillAppearTrigger.subscribe(onNext: { event in
-            print("FavoVM: viewWillAppearTrigger")
+            print("お気に入りVM: viewWillAppearTrigger")
             
             //Realmに保存されているデータを取得する処理
             do {
                 let realm = try Realm()
-                
                 let data = realm.objects(FavoriteArticles.self)
+            //Realm版ArrayみたいなResults<Element>型だとacceptする上で都合が悪いのでArray型に変換
                 let dataArray = Array(data)
-                
-                let dataSource = RealmDataSource.init(items: dataArray)
+                let dataSource = FavoriteArticlesDataSource.init(items: dataArray)
                 _favoriteArticles.accept([dataSource])
-                print("FavoVM: realm.objectsの中身: \(realm.objects(FavoriteArticles.self))")
-                print("RealmDataSourceのacceptする中身: \([dataSource])")
-                print("FavoVM: RealmFunction: データを取得してacceptしました")
+                print("お気に入りVM: realm.objectsの中身: \(realm.objects(FavoriteArticles.self))")
+                print("お気に入りVM: RealmDataSourceのacceptする中身: \([dataSource])")
+                print("お気に入りVM: RealmFunction: データを取得してacceptしました")
             }catch {
-                print("FavoVM: RealmFunction: データを取得できませんでした")
+                print("お気に入りVM: RealmFunction: データを取得できませんでした")
             }
             //↓で取得したURLの使い方
             //RealmBrowser開いて、open file→　command + shift + Gでパス入力フォームを表示してから、 取得したURLのfile://より後ろだけを貼り付け。
-            print("FavoVM: Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
-            
+            print("お気に入りVM: Realmの保存先URL: \(Realm.Configuration.defaultConfiguration.fileURL!)")
         }).disposed(by: disposeBag)
     }
 }

@@ -9,8 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RealmSwift
 import RxDataSources
+import RealmSwift
 import Instantiate
 import InstantiateStandard
 
@@ -19,7 +19,7 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
     let disposeBag = DisposeBag()
     let viewModel: FavoriteArticleViewModelType = FavoriteArticleViewModel()
     
-    let dataSource = RxTableViewSectionedReloadDataSource<RealmDataSource>(configureCell: {(dataSource: TableViewSectionedDataSource<RealmDataSource>, tableView: UITableView, indexPath: IndexPath, item: FavoriteArticles) in
+    let dataSource = RxTableViewSectionedReloadDataSource<FavoriteArticlesDataSource>(configureCell: {(dataSource: TableViewSectionedDataSource<FavoriteArticlesDataSource>, tableView: UITableView, indexPath: IndexPath, item: FavoriteArticles) in
         
     let cell = TableViewUtil.createCell(tableView, identifier: GoogleApiCell.reusableIdentifier, indexPath) as! GoogleApiCell
         
@@ -57,7 +57,7 @@ class FavoriteArticlesViewController: UIViewController, StoryboardInstantiatable
         //other
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
-        tableView.rx.modelSelected((RealmDataSource.Item.self))
+        tableView.rx.modelSelected((FavoriteArticlesDataSource.Item.self))
             .subscribe(onNext: { [weak self] model in
                 let vc = ArticleViewController.instantiate()
                 vc.articleTitle = model.title

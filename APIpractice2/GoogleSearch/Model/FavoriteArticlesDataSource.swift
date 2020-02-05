@@ -1,5 +1,5 @@
 //
-//  RealmDataSource.swift
+//  FavoriteArticlesDataSource.swift
 //  APIpractice2
 //
 //  Created by 深瀬 貴将 on 2020/02/04.
@@ -10,11 +10,11 @@ import Foundation
 import RealmSwift
 import RxDataSources
 
-struct RealmDataSource {
+struct FavoriteArticlesDataSource {
     var items: [Item]
 }
 
-extension RealmDataSource: SectionModelType {
+extension FavoriteArticlesDataSource: SectionModelType {
     typealias Item = FavoriteArticles
     
     init(original: Self, items: [Item]) {
