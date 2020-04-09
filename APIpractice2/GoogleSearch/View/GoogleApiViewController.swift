@@ -33,9 +33,9 @@ class GoogleApiViewController: UIViewController, StoryboardInstantiatable {
         //cell.googleBindTitle(title: title)
         cell.favoriteButton.isHidden = false
         cell.favoriteButton.tag = indexPath.row
-        cell.cellModelData["title"] = item.title
-        cell.cellModelData["imageUrl"] = item.link
-        cell.cellModelData["articleUrl"] = item.image.contextLink
+//        cell.cellModelData["title"] = item.title
+//        cell.cellModelData["imageUrl"] = item.link
+//        cell.cellModelData["articleUrl"] = item.image.contextLink
         cell.favoriteButton.rx.tap.subscribe(onNext: { _ in
             let viewModel: GoogleViewModelType = GoogleViewModel()
             viewModel.inputs.favoriteCellModelData
